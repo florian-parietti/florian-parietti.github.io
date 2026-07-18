@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Active Lifestyle Plan — Florian Parietti</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;
+  --bg-2:#0f0f0f;
+  --bg-3:#141414;
+  --bg-4:#1a1a1a;
+  --border:#222222;
+  --border-2:#2a2a2a;
+  --white:#ffffff;
+  --gray-6:#999999;
+  --gray-4:#666666;
+  --gray-2:#333333;
+  --accent:#0066FF;
+  --accent-dim:#0052cc;
+  --accent-bg:rgba(0,102,255,0.08);
+  --accent-border:rgba(0,102,255,0.2);
+  --green:#22c55e;
+  --green-bg:rgba(34,197,94,0.08);
+  --red:#ef4444;
+  --red-bg:rgba(239,68,68,0.08);
+  --radius:12px;
+  --radius-sm:8px;
+  --radius-xs:6px;
+  --font:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+.nav{padding:20px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);z-index:100}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-name{font-size:0.9rem;font-weight:500;letter-spacing:-0.01em}
+.nav-cta{font-size:0.82rem;font-weight:500;color:var(--white);text-decoration:none;background:var(--accent);border-radius:100px;padding:9px 22px;transition:background 0.15s}
+.nav-cta:hover{background:var(--accent-dim)}
+
+/* HERO */
+.hero{padding:100px 0 80px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-6);border:1px solid var(--border-2);border-radius:100px;padding:7px 18px;margin-bottom:36px}
+.hero-dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.04em;margin-bottom:8px}
+.hero h1 em{font-style:normal;color:var(--gray-6)}
+.hero-sub{font-size:1.05rem;color:var(--gray-6);max-width:480px;margin:20px auto 0;line-height:1.7}
+.hero-sub strong{color:var(--white)}
+.hero-video{margin:48px auto 0;max-width:560px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-video-placeholder{text-align:center}
+.hero-video-icon{font-size:48px;margin-bottom:12px;opacity:0.3}
+.hero-video-text{font-size:0.82rem;color:var(--gray-4)}
+
+/* GATE */
+.gate{padding:80px 0;border-bottom:1px solid var(--border)}
+.gate-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:48px 40px;max-width:520px;margin:0 auto;text-align:center}
+.gate-title{font-size:1.4rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px}
+.gate-sub{font-size:0.9rem;color:var(--gray-6);margin-bottom:36px;line-height:1.6}
+.form-group{margin-bottom:16px;text-align:left}
+.form-label{font-size:0.78rem;font-weight:500;color:var(--gray-6);letter-spacing:0.04em;margin-bottom:6px;display:block}
+.form-input,.form-select{width:100%;background:var(--bg-3);border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:13px 16px;font-size:0.9rem;color:var(--white);font-family:var(--font);transition:border-color 0.15s;outline:none;appearance:none}
+.form-input::placeholder{color:var(--gray-4)}
+.form-input:focus,.form-select:focus{border-color:var(--accent)}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+.form-select option{background:var(--bg-3);color:var(--white)}
+.submit-btn{width:100%;background:var(--accent);color:var(--white);font-family:var(--font);font-size:1rem;font-weight:600;padding:16px;border-radius:100px;border:none;cursor:pointer;transition:background 0.15s;margin-top:8px;letter-spacing:-0.01em}
+.submit-btn:hover{background:var(--accent-dim)}
+.form-note{font-size:11px;color:var(--gray-4);margin-top:12px}
+.error-msg{font-size:0.82rem;color:var(--red);margin-top:8px;display:none}
+
+/* CONTENT (hidden until form submitted) */
+.plan-content{display:none}
+
+/* SECTION */
+.section{padding:72px 0;border-bottom:1px solid var(--border)}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:1.7rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:8px;line-height:1.2}
+.section-desc{font-size:0.95rem;color:var(--gray-6);margin-bottom:48px;max-width:520px;line-height:1.7}
+
+/* TRANSFORM */
+.transform-grid{display:grid;grid-template-columns:1fr 48px 1fr;align-items:center;gap:0}
+.transform-col{padding:28px}
+.transform-col.before{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius) 0 0 var(--radius)}
+.transform-col.after{background:var(--bg-2);border:1px solid var(--border);border-left:none;border-radius:0 var(--radius) var(--radius) 0}
+.transform-arrow{display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--accent);background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);height:100%}
+.transform-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-4);margin-bottom:20px}
+.transform-col.after .transform-label{color:var(--green)}
+.transform-item{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:var(--gray-6);padding:7px 0;border-bottom:1px solid var(--border)}
+.transform-col.after .transform-item{color:var(--white)}
+.transform-item:last-child{border-bottom:none}
+.t-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.t-dot.bad{background:var(--red)}
+.t-dot.good{background:var(--green)}
+.transform-photo{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;margin-bottom:48px;max-width:340px;margin-left:auto;margin-right:auto}
+.transform-photo-placeholder{text-align:center;padding:24px}
+.transform-photo-icon{font-size:32px;opacity:0.2;margin-bottom:8px}
+.transform-photo-text{font-size:0.78rem;color:var(--gray-4)}
+
+/* TABS */
+.tabs{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:32px;overflow-x:auto}
+.tab-btn{flex:1;min-width:max-content;padding:10px 16px;font-size:0.82rem;font-weight:500;color:var(--gray-6);background:none;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font);transition:all 0.15s;white-space:nowrap}
+.tab-btn.active{background:var(--bg-4);color:var(--white)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* CARDS */
+.card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:12px}
+.card-title{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:16px}
+.card ul{list-style:none}
+.card li{font-size:0.88rem;color:var(--gray-6);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;line-height:1.4}
+.card li:last-child{border-bottom:none}
+.card li strong{color:var(--white);font-weight:500;flex-shrink:0}
+.card li span{color:var(--gray-6)}
+.quote-block{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:20px 24px;margin-bottom:24px;font-size:0.92rem;color:var(--white);font-style:italic;line-height:1.6;border-left:3px solid var(--accent)}
+
+/* MACROS */
+.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.macro-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:center}
+.macro-pct{font-size:2rem;font-weight:600;letter-spacing:-0.04em;color:var(--white)}
+.macro-label{font-size:0.78rem;color:var(--gray-6);margin-top:4px}
+.macro-detail{font-size:0.7rem;color:var(--gray-4);margin-top:2px}
+
+/* TAGS */
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:0.78rem;color:var(--gray-6);background:var(--bg-3);border:1px solid var(--border-2);border-radius:100px;padding:5px 14px}
+.tag.avoid{color:var(--red);background:var(--red-bg);border-color:rgba(239,68,68,0.2)}
+.tag.good{color:var(--green);background:var(--green-bg);border-color:rgba(34,197,94,0.2)}
+
+/* SPLIT */
+.split-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.split-day{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.split-day-name{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:5px}
+.split-day-focus{font-size:0.88rem;color:var(--white);font-weight:500}
+.split-day.rest .split-day-focus{color:var(--gray-4)}
+
+/* PARAMS */
+.params-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+.param-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.param-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:6px}
+.param-value{font-size:0.92rem;color:var(--white);font-weight:500}
+
+/* ROUTINE */
+.routine-list{margin-top:16px}
+.routine-row{display:grid;grid-template-columns:72px 1fr;gap:0}
+.routine-time{font-size:0.72rem;font-weight:600;color:var(--accent);padding:10px 12px 10px 0;border-right:1px solid var(--border);text-align:right;line-height:1.3}
+.routine-desc{font-size:0.85rem;color:var(--gray-6);padding:10px 0 10px 16px;border-bottom:1px solid var(--bg-4);line-height:1.4}
+.routine-desc strong{color:var(--white);font-weight:500}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tool-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-decoration:none;display:block;transition:border-color 0.15s}
+.tool-card:hover{border-color:var(--accent)}
+.tool-num{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:var(--accent);margin-bottom:12px}
+.tool-card h3{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:8px}
+.tool-card p{font-size:0.82rem;color:var(--gray-6);line-height:1.5}
+.tool-link{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--accent);margin-top:16px}
+
+/* CTA FINAL */
+.cta-final{padding:100px 0;text-align:center}
+.cta-final h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:600;letter-spacing:-0.035em;line-height:1.15;margin-bottom:16px}
+.cta-final h2 em{font-style:normal;color:var(--gray-4)}
+.cta-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:48px 40px;max-width:480px;margin:48px auto 0}
+.cta-box-title{font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.cta-box-sub{font-size:0.88rem;color:var(--gray-6);margin-bottom:32px;line-height:1.6}
+.cta-big-btn{display:block;background:var(--accent);color:var(--white);font-weight:600;font-size:1rem;padding:18px 36px;border-radius:100px;text-decoration:none;transition:background 0.15s;letter-spacing:-0.01em}
+.cta-big-btn:hover{background:var(--accent-dim)}
+.cta-note{font-size:11px;color:var(--gray-4);margin-top:14px}
+
+/* DISCLAIMER */
+.disclaimer{padding:32px 0 48px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--gray-4);line-height:1.7;text-align:center;max-width:600px;margin:0 auto}
+.disclaimer strong{color:var(--gray-6)}
+
+/* SECTION HEADER INLINE */
+.pilier-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.pilier-num{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius-xs);padding:5px 10px}
+.pilier-title{font-size:1.2rem;font-weight:600;letter-spacing:-0.015em}
+
+@media(max-width:600px){
+  .transform-grid{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .transform-col.before{border-radius:var(--radius) var(--radius) 0 0}
+  .transform-col.after{border-left:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius)}
+  .transform-arrow{border:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px;transform:rotate(90deg)}
+  .tools-grid{grid-template-columns:1fr}
+  .split-grid{grid-template-columns:1fr}
+  .params-grid{grid-template-columns:1fr}
+  .gate-box{padding:32px 24px}
+  .cta-box{padding:32px 24px}
+  .tabs{gap:2px}
+  .tab-btn{padding:8px 12px;font-size:0.78rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <span class="nav-name">Florian Parietti</span>
+      <a href="https://calendly.com/florian-parietti/30min" class="nav-cta" target="_blank">Bilan gratuit →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow"><span class="hero-dot"></span>Free Active Lifestyle Plan</div>
+    <h1>Performance humaine.<br><em>Sans excuse. Sans raccourci.</em></h1>
+    <p class="hero-sub">Les 4 piliers que j'applique chaque jour pour devenir <strong>la version la plus esthétique et puissante de moi-même</strong> — et que tu peux commencer ce soir.</p>
+    <div class="hero-video">
+      <div class="hero-video-placeholder">
+        <div class="hero-video-icon">▶</div>
+        <div class="hero-video-text">Vidéo intro — à intégrer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GATE — FORMULAIRE -->
+<section class="gate" id="gate-section">
+  <div class="container">
+    <div class="gate-box">
+      <div class="gate-title">Accède au plan complet</div>
+      <p class="gate-sub">Gratuit. Remplis ces 3 champs et le plan s'affiche immédiatement en dessous.</p>
+      <form id="access-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="email">Adresse email</label>
+          <input class="form-input" type="email" id="email" placeholder="ton@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="instagram">Compte Instagram</label>
+          <input class="form-input" type="text" id="instagram" placeholder="@toncompte" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="objectif">Ton objectif principal</label>
+          <select class="form-select" id="objectif" required>
+            <option value="" disabled selected>Choisir mon objectif</option>
+            <option value="Perdre du gras et me sécher">Perdre du gras et me sécher</option>
+            <option value="Prendre de la masse musculaire">Prendre de la masse musculaire</option>
+            <option value="Recomposition corporelle">Recomposition corporelle (perdre gras + muscle)</option>
+            <option value="Améliorer ma santé et énergie">Améliorer ma santé et énergie</option>
+            <option value="Optimisation globale performance">Optimisation globale performance</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+        <div class="error-msg" id="error-msg">Merci de remplir tous les champs.</div>
+        <button type="submit" class="submit-btn">Accéder au plan gratuit →</button>
+        <p class="form-note">Aucun spam. Juste le plan + un bilan gratuit si tu le souhaites.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN CONTENT -->
+<div class="plan-content" id="plan-content">
+
+<!-- TRANSFORMATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">La réalité</div>
+    <h2 class="section-title">De 0 à performant</h2>
+    <p class="section-desc">Ce n'est pas de la génétique. C'est un système. Voici le voyage.</p>
+
+    <div class="transform-photo">
+      <div class="transform-photo-placeholder">
+        <div class="transform-photo-icon">📸</div>
+        <div class="transform-photo-text">Photo transformation à intégrer</div>
+      </div>
+    </div>
+
+    <div class="transform-grid">
+      <div class="transform-col before">
+        <div class="transform-label">Avant</div>
+        <div class="transform-item"><span class="t-dot bad"></span>Skinny/fat</div>
+        <div class="transform-item"><span class="t-dot bad"></span>Zéro confiance</div>
+        <div class="transform-item"><span class="t-dot bad"></span>Procrastination chronique</div>
+        <div class="transform-item"><span class="t-dot bad"></span>Low énergie, low focus</div>
+        <div class="transform-item"><span class="t-dot bad"></span>Perdu, sans direction</div>
+      </div>
+      <div class="transform-arrow">→</div>
+      <div class="transform-col after">
+        <div class="transform-label">Maintenant</div>
+        <div class="transform-item"><span class="t-dot good"></span>Physique athlétique & sec</div>
+        <div class="transform-item"><span class="t-dot good"></span>Confiance élevée</div>
+        <div class="transform-item"><span class="t-dot good"></span>Full action, chaque jour</div>
+        <div class="transform-item"><span class="t-dot good"></span>High énergie, haute performance</div>
+        <div class="transform-item"><span class="t-dot good"></span>Vision claire, vie choisie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 PILIERS -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">Le système</div>
+    <h2 class="section-title">Les 4 piliers de la performance humaine</h2>
+    <p class="section-desc">Optimise les 4 simultanément. C'est là que la magie opère.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(event,'nutrition')">Nutrition</button>
+      <button class="tab-btn" onclick="switchTab(event,'training')">Entraînement</button>
+      <button class="tab-btn" onclick="switchTab(event,'sleep')">Sommeil</button>
+      <button class="tab-btn" onclick="switchTab(event,'environment')">Environnement</button>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="tab-panel active" id="tab-nutrition">
+      <div class="quote-block">"Chaque calorie doit apporter quelque chose. Ton corps est le seul et unique fournisseur de ton énergie, ta croissance et ta reconstruction cellulaire."</div>
+      <div class="macro-grid">
+        <div class="macro-card">
+          <div class="macro-pct">50%</div>
+          <div class="macro-label">Glucides</div>
+          <div class="macro-detail">complexes & fruits</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-pct">25%</div>
+          <div class="macro-label">Protéines</div>
+          <div class="macro-detail">1,6–2 g/kg de poids</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-pct">25%</div>
+          <div class="macro-label">Lipides</div>
+          <div class="macro-detail">0,8–1 g/kg de poids</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Protéines — priorités</div>
+        <ul>
+          <li><strong>Quotidien</strong><span>Poulet, blanc de dinde, œufs, cottage cheese, whey</span></li>
+          <li><strong>2×/semaine</strong><span>Bœuf (filet pur, côte à l'os), poissons gras, veau maigre, scampi</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Glucides complexes & lipides sains</div>
+        <ul>
+          <li><strong>Glucides</strong><span>Myrtilles, fruits rouges, poire, pastèque, dattes, riz blanc/complet, quinoa, avoine, patate douce, pain au levain, aliments fermentés (kéfir, kimchi)</span></li>
+          <li><strong>Lipides</strong><span>Huile d'olive extra vierge, avocat, noix, amandes, macadamia, chocolat 85%+, graines de chia et courge, beurre nourri à l'herbe</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Compléments que j'utilise</div>
+        <div class="tag-list">
+          <span class="tag good">Magnésium</span>
+          <span class="tag good">Zinc</span>
+          <span class="tag good">Créatine</span>
+          <span class="tag good">Vitamine D</span>
+          <span class="tag good">Whey protéine</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">À éviter — le poison est dans le produit, pas juste la quantité</div>
+        <div class="tag-list">
+          <span class="tag avoid">Sucre raffiné</span>
+          <span class="tag avoid">Charcuterie</span>
+          <span class="tag avoid">Aliments frits</span>
+          <span class="tag avoid">Fast food</span>
+          <span class="tag avoid">Édulcorants (aspartame...)</span>
+          <span class="tag avoid">Alcool</span>
+          <span class="tag avoid">Huiles de graines</span>
+          <span class="tag avoid">Conservateurs</span>
+          <span class="tag avoid">Sirop de maïs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRAÎNEMENT -->
+    <div class="tab-panel" id="tab-training">
+      <div class="quote-block">"La récupération et la surcharge progressive intelligente sont plus importantes que tous les autres paramètres réunis. Aucune exception."</div>
+      <div class="card">
+        <div class="card-title">Mon split — 5 jours musculation</div>
+        <div class="split-grid">
+          <div class="split-day"><div class="split-day-name">Lundi</div><div class="split-day-focus">Push — Pectoraux + Triceps + Deltoïde latéral</div></div>
+          <div class="split-day"><div class="split-day-name">Mardi</div><div class="split-day-focus">Pull — Grand dorsal + Biceps + Ischios</div></div>
+          <div class="split-day rest"><div class="split-day-name">Mercredi</div><div class="split-day-focus">Repos actif</div></div>
+          <div class="split-day"><div class="split-day-name">Jeudi</div><div class="split-day-focus">Push — variation angles</div></div>
+          <div class="split-day"><div class="split-day-name">Vendredi</div><div class="split-day-focus">Pull — variation</div></div>
+          <div class="split-day"><div class="split-day-name">Samedi</div><div class="split-day-focus">Legs complet</div></div>
+          <div class="split-day rest"><div class="split-day-name">Dimanche</div><div class="split-day-focus">Repos / récupération</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Paramètres clés par séance</div>
+        <div class="params-grid">
+          <div class="param-card"><div class="param-label">Séries</div><div class="param-value">2 à 3 par exercice</div></div>
+          <div class="param-card"><div class="param-label">Répétitions</div><div class="param-value">6 à 15 reps</div></div>
+          <div class="param-card"><div class="param-label">Temps de repos</div><div class="param-value">2'30 à 3'15</div></div>
+          <div class="param-card"><div class="param-label">Intensité</div><div class="param-value">0–2 RIR selon série</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Cardio & mouvement quotidien</div>
+        <ul>
+          <li><strong>Zone 2 (2×/sem)</strong><span>Natation ou marche inclinée — 125 à 130 BPM max</span></li>
+          <li><strong>Zone 4-5 (1×/sem)</strong><span>Air bike, rameur ou SkiErg — effort intense</span></li>
+          <li><strong>Pas quotidiens</strong><span>8 000 à 12 000 pas/jour minimum</span></li>
+          <li><strong>Anti-sédentarité</strong><span>10 squats toutes les 45 minutes (contrôle glycémie)</span></li>
+          <li><strong>Mobilité</strong><span>Chaque jour / Stretching 2–3×/semaine éloigné des séances</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOMMEIL -->
+    <div class="tab-panel" id="tab-sleep">
+      <div class="quote-block">"Le dopant naturel le plus puissant au monde. Planifie ta journée autour de ton sommeil — c'est le rendez-vous le plus important de ton agenda. Rien n'influence ton existence plus que ça."</div>
+      <div class="card">
+        <div class="card-title">Protocole soir</div>
+        <ul>
+          <li><strong>Dernier repas</strong><span>Minimum 4 heures avant le coucher — évite les fluctuations de glycémie nocturnes</span></li>
+          <li><strong>Écrans off</strong><span>60 minutes avant de dormir — élève stress, fréquence cardiaque et éveil</span></li>
+          <li><strong>Wind-down 60 min</strong><span>Marche, lecture, journaling, respiration, méditation — pas de travail ni de conflit</span></li>
+          <li><strong>Lumière rouge</strong><span>Remplace lumière bleue le soir — prépare le corps au sommeil</span></li>
+          <li><strong>Environnement</strong><span>Chambre à 18–21°C, obscurité totale, silence ou bruit blanc</span></li>
+          <li><strong>Caféine</strong><span>Stop minimum 8–10 heures avant de dormir (demi-vie de 6 heures dans le sang)</span></li>
+          <li><strong>Heure fixe</strong><span>Même heure chaque soir — la cohérence est aussi importante que la durée</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Protocole matin</div>
+        <ul>
+          <li><strong>Lumière naturelle</strong><span>Dans les 15–30 premières minutes — règle ton rythme circadien et booste la dopamine</span></li>
+          <li><strong>Tracker</strong><span>Mesurer sommeil profond et paradoxal — Apple Watch, Oura Ring, Whoop, Fitbit</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ENVIRONNEMENT -->
+    <div class="tab-panel" id="tab-environment">
+      <div class="quote-block">"Ton environnement impacte tes routines plus que ta propre volonté. Change d'abord ce qui t'entoure — le reste suit naturellement."</div>
+      <div class="card">
+        <div class="card-title">Cuisine — eliminer les toxines invisibles</div>
+        <ul>
+          <li><strong>Poêles</strong><span>Inox uniquement — éviter téflon abîmé et aluminium non anodisé</span></li>
+          <li><strong>Ustensiles</strong><span>Bois ou inox — éviter le plastique en contact avec la chaleur</span></li>
+          <li><strong>Conservation</strong><span>Tupperware en inox ou verre</span></li>
+          <li><strong>Eau</strong><span>Filtre alcalin multi-niveaux, enrichie en sable de corail</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Quotidien — réduire la charge toxique</div>
+        <ul>
+          <li><strong>Vêtements & draps</strong><span>Coton de préférence — éviter le polyester au contact direct de la peau</span></li>
+          <li><strong>Parfums & bougies</strong><span>Minimiser les produits synthétiques parfumés dans l'espace de vie</span></li>
+          <li><strong>Cigarette & carburant</strong><span>Exposition minimale — perturbateurs endocriniens documentés</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Biohacking actif — ce que je pratique</div>
+        <ul>
+          <li><strong>Sauna sec 90–100°C</strong><span>4–5×/semaine, 25–30 min — cardiovasculaire, peau, élimination microplastiques, aussi efficace que le cardio</span></li>
+          <li><strong>Grounding</strong><span>3×/jour — contact avec la terre pour la réduction de l'inflammation</span></li>
+          <li><strong>Exposition solaire</strong><span>Maximum en matinée et fin d'après-midi — sans crème pour la synthèse de vitamine D</span></li>
+          <li><strong>Respiration spécifique</strong><span>Hyperventilation au réveil, cohérence cardiaque en cas de stress, respiration lente au coucher</span></li>
+          <li><strong>Bain froid</strong><span>Occasionnel et éloigné des entraînements — 30 sec à 1 min pour le boost dopamine</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS : SKIN / HAIR / ORAL -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">Bonus</div>
+    <h2 class="section-title">Soin du visage, corps & cheveux</h2>
+    <p class="section-desc">L'esthétique extérieure reflète ce que tu fais de ton corps. Protocole minimaliste et efficace.</p>
+
+    <div class="card">
+      <div class="card-title">Skincare — protocole minimaliste</div>
+      <ul>
+        <li><strong>Soir</strong><span>Nettoyant adapté (CeraVe 3 céramides) → séchage microfibre → sérum (optionnel) → crème hydratante (The Ordinary NMF + HA)</span></li>
+        <li><strong>Matin</strong><span>Rinçage à l'eau → crème solaire SPF50+ (La Roche-Posay Anthelios Uvimune, selon indice UV min. 3)</span></li>
+        <li><strong>Après sauna/douche</strong><span>Crème hydratante légère visage et corps selon état de la peau</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Hair care</div>
+      <ul>
+        <li><strong>Shampoing</strong><span>Sans sulfates, tous les 3–4 jours (ajuster selon sauna, natation)</span></li>
+        <li><strong>Séchage</strong><span>Microfibre uniquement — sèche-cheveux rarement</span></li>
+        <li><strong>Coiffage</strong><span>Produit naturel à base aqueuse</span></li>
+        <li><strong>Nutrition capillaire</strong><span>Protéines, Oméga-3, Biotine, Zinc, Vitamines C/D/E — vient de l'alimentation en priorité</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Oral care</div>
+      <ul>
+        <li><strong>Quotidien matin & soir</strong><span>Hydropulseur ou jet dentaire → soie dentaire → brosse électrique poils souples → gratte-langue (occasionnel)</span></li>
+        <li><strong>Dentiste</strong><span>2×/an minimum</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTINE QUOTIDIENNE -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">Ma journée type</div>
+    <h2 class="section-title">La routine complète</h2>
+    <p class="section-desc">Conçue pour réguler le rythme circadien, maintenir une énergie élevée, optimiser la productivité et la qualité du sommeil.</p>
+    <div class="card">
+      <div class="routine-list">
+        <div class="routine-row"><div class="routine-time">5h00</div><div class="routine-desc"><strong>Réveil naturel</strong> — Mesure corporelle, hydratation + minéraux, lumière thérapie, mobilité, respiration spécifique</div></div>
+        <div class="routine-row"><div class="routine-time">5h30</div><div class="routine-desc">Cardio zone 2 (selon objectif) + marche tête en extension, exposition lumière naturelle</div></div>
+        <div class="routine-row"><div class="routine-time">6h15</div><div class="routine-desc"><strong>Petit déjeuner</strong> — Riche en protéines + bonnes graisses + myrtilles. Lever de soleil si possible.</div></div>
+        <div class="routine-row"><div class="routine-time">7h00</div><div class="routine-desc"><strong>Deep work 1</strong> — Création, planification, analyse (aucun écran avant). Sans téléphone.</div></div>
+        <div class="routine-row"><div class="routine-time">9h00</div><div class="routine-desc">Coaching online + deep work 2</div></div>
+        <div class="routine-row"><div class="routine-time">11h00</div><div class="routine-desc">Marche dehors ou plongeon piscine. <strong>Stop caféine.</strong></div></div>
+        <div class="routine-row"><div class="routine-time">12h00</div><div class="routine-desc"><strong>Déjeuner</strong> — Protéines ++ · Glucides complexes ++ · Lipides +</div></div>
+        <div class="routine-row"><div class="routine-time">14h30</div><div class="routine-desc"><strong>Entraînement + Sauna</strong> — Pré-workout : glucides simples (galette riz chocolat)</div></div>
+        <div class="routine-row"><div class="routine-time">16h15</div><div class="routine-desc">Post-workout protéiné (optionnel) + travail basique</div></div>
+        <div class="routine-row"><div class="routine-time">18h30</div><div class="routine-desc"><strong>Dîner</strong> — Dernier repas : Protéines ++ · Lipides + · Glucides complexes +</div></div>
+        <div class="routine-row"><div class="routine-time">19h30</div><div class="routine-desc">Lunettes anti-lumière bleue. Relax & moment social léger.</div></div>
+        <div class="routine-row"><div class="routine-time">20h30</div><div class="routine-desc"><strong>Zéro stimulation</strong> — Plus d'écran, plus de lumière vive. Marche nocturne courte.</div></div>
+        <div class="routine-row"><div class="routine-time">21h00</div><div class="routine-desc">Préparation au sommeil — calme, obscurité, température fraîche (18–21°C)</div></div>
+        <div class="routine-row"><div class="routine-time">21h30</div><div class="routine-desc"><strong>Début du premier cycle de sommeil</strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTILS -->
+<section class="section">
+  <div class="container">
+    <div class="section-eyebrow">Outils</div>
+    <h2 class="section-title">Passe à l'action maintenant</h2>
+    <p class="section-desc">Deux ressources pour démarrer immédiatement.</p>
+    <div class="tools-grid">
+      <a href="https://docs.google.com/spreadsheets/d/TON_LIEN_ICI/copy" class="tool-card" target="_blank">
+        <div class="tool-num">01</div>
+        <h3>Tracker de performance</h3>
+        <p>Google Sheet pour suivre nutrition, entraînement, sommeil et biohacking — avec colonnes de suivi semaine par semaine.</p>
+        <div class="tool-link">Télécharger le tracker →</div>
+      </a>
+      <a href="https://calendly.com/florian-parietti/30min" class="tool-card" target="_blank">
+        <div class="tool-num">02</div>
+        <h3>Bilan gratuit — 30 min</h3>
+        <p>J'analyse où tu en es, ce qui te bloque réellement et ce que tu dois changer en priorité. Sans engagement.</p>
+        <div class="tool-link">Réserver mon bilan →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
+    <div class="cta-box">
+      <div class="cta-box-title">Bilan gratuit — 30 minutes</div>
+      <p class="cta-box-sub">J'analyse ta situation, ton blocage principal et ce que tu dois changer en premier. Gratuit. Sans bullshit. Sans engagement.</p>
+      <a href="https://calendly.com/florian-parietti/30min" class="cta-big-btn" target="_blank">Réserver mon bilan maintenant →</a>
+      <p class="cta-note">Places limitées — coaching 1-1 uniquement</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="disclaimer">
+    <strong>Avertissement médical.</strong> Ce plan est basé sur mon expérience personnelle et mes recherches. Il ne remplace en aucun cas un avis médical professionnel. Consulte un médecin ou un professionnel de santé qualifié avant tout changement significatif de ton alimentation, de ton entraînement ou de tes habitudes de vie, en particulier si tu présentes des conditions médicales spécifiques (diabète, cholestérol, blessures, pathologies cardiovasculaires). Les résultats présentés sont individuels et ne constituent pas une promesse de résultats identiques. Ce contenu est fourni à titre informatif et éducatif uniquement.
+  </div>
+</div>
+
+</div><!-- end plan-content -->
+
+<script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+
+document.getElementById("access-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const instagram = document.getElementById("instagram").value.trim();
+  const objectif = document.getElementById("objectif").value;
+  const errorEl = document.getElementById("error-msg");
+
+  if (!email || !instagram || !objectif) {
+    errorEl.style.display = "block";
+    return;
+  }
+  errorEl.style.display = "none";
+
+  const btn = this.querySelector(".submit-btn");
+  btn.textContent = "Chargement...";
+  btn.disabled = true;
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        email,
+        instagram,
+        objectif,
+        date: new Date().toLocaleString("fr-BE"),
+        statut: "Nouveau",
+        relance: "",
+        notes: ""
+      })
+    });
+  } catch(err) {}
+
+  document.getElementById("gate-section").style.display = "none";
+  const plan = document.getElementById("plan-content");
+  plan.style.display = "block";
+  plan.scrollIntoView({behavior:"smooth"});
+});
+
+function switchTab(e, id) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  e.target.classList.add("active");
+  document.getElementById("tab-" + id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
