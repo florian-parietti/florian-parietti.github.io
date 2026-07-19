@@ -138,10 +138,10 @@ a{text-decoration:none;color:inherit}
 .t-arrow::before{content:'';position:absolute;width:1px;height:100%;background:rgba(255,255,255,.15);left:50%;transform:translateX(-50%)}
 
 /* PILIERS */
-.pnav{display:flex;gap:2px;background:rgba(255,255,255,.05);border:1px solid var(--glass-border);border-radius:var(--r);padding:4px;margin-bottom:40px;overflow-x:auto}
+.pnav{display:flex;gap:2px;background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:4px;margin-bottom:40px;overflow-x:auto}
 .pbtn{flex:1;min-width:max-content;display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.45);background:none;border:none;border-radius:var(--rs);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
 .pbtn:hover{color:var(--white)}
-.pbtn.active{background:rgba(255,255,255,.1);color:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.pbtn.active{background:rgba(255,255,255,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);color:var(--white)}
 .pbtn-n{font-size:10px;font-weight:700;color:var(--blue);background:rgba(0,102,255,.18);border-radius:100px;padding:2px 8px}
 .pp{display:none}
 .pp.active{display:block;animation:panelIn .35s ease}
@@ -175,8 +175,21 @@ a{text-decoration:none;color:inherit}
 .pmv{font-size:.92rem;color:var(--white);font-weight:700}
 .tip-blue{background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.2);border-radius:var(--rs);padding:14px 16px;margin-top:10px;font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6}
 .tip-blue strong{color:var(--white);font-weight:700}
+/* Encadrés blancs sur fond bleu (Transformation + Routine) */
+.sec-gradient .t-item,
+.sec-gradient .card-dark,
+.sec-gradient .mc,
+.sec-gradient .sd,
+.sec-gradient .pm,
+.sec-gradient .quote,
+.sec-gradient .tip-blue,
+.sec-gradient .pnav{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.25)}
+.sec-gradient .pbtn.active{background:rgba(255,255,255,0.25)}
+.sec-gradient .t-photo{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.25)}
 
-.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* Encadrés blancs sur fond gris vitre (Care + Outils) */
+.sec-vitre .care-card,
+.sec-vitre .tool{background:rgba(255,255,255,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.3)}
 .care-card{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:28px}
 .care-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
 .care-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--white)}
