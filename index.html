@@ -128,7 +128,7 @@ a{text-decoration:none;color:inherit}
 .t-col-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;padding:0 4px}
 .t-lbl-b{color:rgba(255,255,255,.3)}
 .t-lbl-a{color:var(--green)}
-.t-item{background:var(--glass2);border:1px solid var(--glass-border2);border-radius:var(--rs);padding:12px 16px;font-size:.87rem;display:flex;align-items:center;gap:10px;line-height:1.4}
+.t-item{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--rs);padding:12px 16px;font-size:.87rem;display:flex;align-items:center;gap:10px;line-height:1.4}
 .t-item-bad{color:rgba(255,255,255,.6)}
 .t-item-good{color:var(--white);font-weight:500}
 .t-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
@@ -149,7 +149,7 @@ a{text-decoration:none;color:inherit}
 .pp.active{display:block;animation:panelIn .35s ease}
 /* Cards piliers — plus visibles */
 .quote{background:rgba(0,102,255,.07);border:1px solid rgba(0,102,255,.2);border-left:3px solid var(--blue);border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin-bottom:24px;font-size:.93rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.7}
-.card-dark{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:26px;margin-bottom:12px}
+.card-dark{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:26px;margin-bottom:12px}
 .ch-dark{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--glass-border)}
 .card-dark ul{list-style:none}
 .card-dark li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.87rem;align-items:start;line-height:1.5}
@@ -179,7 +179,7 @@ a{text-decoration:none;color:inherit}
 
 /* CARE */
 .care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.care-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:28px}
+.care-card{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:28px}
 .care-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
 .care-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--white)}
 .care-card ul{list-style:none}
@@ -196,7 +196,7 @@ a{text-decoration:none;color:inherit}
 
 /* OUTILS */
 .tg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.tool{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:32px;display:block;transition:all .25s;position:relative;overflow:hidden}
+.tool{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:32px;display:block;transition:all .25s;position:relative;overflow:hidden}
 .tool::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transition:transform .3s;transform-origin:left}
 .tool:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
 .tool:hover::after{transform:scaleX(1)}
@@ -210,7 +210,7 @@ a{text-decoration:none;color:inherit}
 .ctaf::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(0,102,255,.06) 0%,transparent 65%);pointer-events:none}
 .ctaf h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;letter-spacing:-.05em;line-height:1.08;color:var(--white)}
 .ctaf h2 em{font-style:normal;color:rgba(255,255,255,.2)}
-.ctab{background:var(--glass2);border:1px solid var(--glass-border2);border-radius:var(--r);padding:56px 44px;max-width:480px;margin:60px auto 0;position:relative;overflow:hidden}
+.ctab{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:56px 44px;max-width:480px;margin:60px auto 0;position:relative;overflow:hidden}
 .ctab::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent)}
 .ctab-ti{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:var(--white)}
 .ctab-su{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:36px}
@@ -307,16 +307,15 @@ a{text-decoration:none;color:inherit}
 
 <!-- TRANSFORMATION -->
 <div class="sec-sep"></div>
-<section class="sec">
+<section class="sec sec-vitre">
   <div class="wrap">
     <div class="s-ey reveal">La réalité</div>
     <h2 class="s-ti reveal d1">Ma transformation</h2>
     <div class="t-photo reveal d2"><div class="t-ph"><div class="t-ph-ic">📸</div><div class="t-ph-tx">Photos transformation 2019 → 2026 à intégrer</div></div></div>
-    <!-- Grille encadrés reliés -->
     <div class="t-grid reveal d3">
       <div class="t-col">
         <div class="t-col-lbl t-lbl-b">Avant — 2019/2023</div>
-        <div class="t-item"><span class="t-dot bad"></span><span class="t-item-bad">Skinny/fat — image corporelle basse</span></div>
+        <div class="t-item"><span class="t-dot bad"></span><span class="t-item-bad">Skinny/fat</span></div>
         <div class="t-item"><span class="t-dot bad"></span><span class="t-item-bad">Manque de confiance (caché)</span></div>
         <div class="t-item"><span class="t-dot bad"></span><span class="t-item-bad">Mauvaises habitudes & centres d'intérêt</span></div>
         <div class="t-item"><span class="t-dot bad"></span><span class="t-item-bad">Low énergie, low focus</span></div>
@@ -622,15 +621,21 @@ document.getElementById('access-form').addEventListener('submit',async function(
   btn.textContent='Chargement...';btn.disabled=true;
 
   try{
-    const fd=new FormData();
-    fd.append('email',em);
-    fd.append('instagram',ig);
-    fd.append('objectif_physique',ph.join(' | '));
-    fd.append('objectif_sante',sa.join(' | '));
-    fd.append('autre',autre);
-    fd.append('date',new Date().toLocaleString('fr-BE'));
-    fd.append('statut','Nouveau');
-    await fetch(SU,{method:'POST',mode:'no-cors',body:fd});
+    // Méthode iframe — contourne les restrictions CORS de Apps Script
+    const params=new URLSearchParams({
+      email:em,
+      instagram:ig,
+      objectif_physique:ph.join(' | '),
+      objectif_sante:sa.join(' | '),
+      autre:autre,
+      date:new Date().toLocaleString('fr-BE'),
+      statut:'Nouveau'
+    });
+    const iframe=document.createElement('iframe');
+    iframe.style.display='none';
+    iframe.src=SU+'?'+params.toString();
+    document.body.appendChild(iframe);
+    setTimeout(()=>iframe.remove(),5000);
   }catch(x){}
 
   document.getElementById('gate').style.display='none';
