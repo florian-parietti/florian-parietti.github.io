@@ -3,620 +3,707 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Active Lifestyle Plan — Florian Parietti</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<title>Active Lifestyle Plan — Florian Parietti</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080808;
-  --bg-2:#0f0f0f;
-  --bg-3:#141414;
-  --bg-4:#1a1a1a;
-  --border:#222222;
-  --border-2:#2a2a2a;
+  /* Noir "vitre" Oura style */
+  --glass:#0d1117;
+  --glass2:#141b24;
+  --glass3:#1c2532;
+  --glass-border:rgba(255,255,255,0.08);
+  --glass-border2:rgba(255,255,255,0.12);
+
+  /* Blancs et clairs */
   --white:#ffffff;
-  --gray-6:#999999;
-  --gray-4:#666666;
-  --gray-2:#333333;
-  --accent:#0066FF;
-  --accent-dim:#0052cc;
-  --accent-bg:rgba(0,102,255,0.08);
-  --accent-border:rgba(0,102,255,0.2);
-  --green:#22c55e;
-  --green-bg:rgba(34,197,94,0.08);
-  --red:#ef4444;
-  --red-bg:rgba(239,68,68,0.08);
-  --radius:12px;
-  --radius-sm:8px;
-  --radius-xs:6px;
+  --off:#f8f8f6;
+  --light:#f2f2f0;
+
+  /* Noir texte */
+  --black:#0a0a0a;
+  --black2:#1a1a1a;
+
+  /* Gris — utilisé très peu, toujours clair et gras */
+  --gray-light:#d4d4d2;
+  --gray-mid:#9a9a98;
+
+  /* Bleu */
+  --blue:#0066FF;
+  --blue2:#0052cc;
+  --blue-light:#e8f0ff;
+  --blue-border:#c0d4ff;
+
+  /* Sémantique */
+  --green:#16a34a;--green-l:#f0fdf4;--green-b:#bbf7d0;
+  --red:#dc2626;--red-l:#fef2f2;--red-b:#fecaca;
+
+  --r:16px;--rs:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06);
+  --shadow-md:0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.1);
   --font:'Inter',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
-.container{max-width:760px;margin:0 auto;padding:0 24px}
+body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 28px}
 
-/* NAV */
-.nav{padding:20px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);z-index:100}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-name{font-size:0.9rem;font-weight:500;letter-spacing:-0.01em}
-.nav-cta{font-size:0.82rem;font-weight:500;color:var(--white);text-decoration:none;background:var(--accent);border-radius:100px;padding:9px 22px;transition:background 0.15s}
-.nav-cta:hover{background:var(--accent-dim)}
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
 
-/* HERO */
-.hero{padding:100px 0 80px;text-align:center;border-bottom:1px solid var(--border)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-6);border:1px solid var(--border-2);border-radius:100px;padding:7px 18px;margin-bottom:36px}
-.hero-dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
-.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.04em;margin-bottom:8px}
-.hero h1 em{font-style:normal;color:var(--gray-6)}
-.hero-sub{font-size:1.05rem;color:var(--gray-6);max-width:480px;margin:20px auto 0;line-height:1.7}
-.hero-sub strong{color:var(--white)}
-.hero-video{margin:48px auto 0;max-width:560px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-video-placeholder{text-align:center}
-.hero-video-icon{font-size:48px;margin-bottom:12px;opacity:0.3}
-.hero-video-text{font-size:0.82rem;color:var(--gray-4)}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes glowBlue{0%,100%{box-shadow:0 0 0 0 rgba(0,102,255,.18)}50%{box-shadow:0 0 0 10px rgba(0,102,255,.0)}}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* GATE */
-.gate{padding:80px 0;border-bottom:1px solid var(--border)}
-.gate-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:48px 40px;max-width:520px;margin:0 auto;text-align:center}
-.gate-title{font-size:1.4rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px}
-.gate-sub{font-size:0.9rem;color:var(--gray-6);margin-bottom:36px;line-height:1.6}
-.form-group{margin-bottom:16px;text-align:left}
-.form-label{font-size:0.78rem;font-weight:500;color:var(--gray-6);letter-spacing:0.04em;margin-bottom:6px;display:block}
-.form-input,.form-select{width:100%;background:var(--bg-3);border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:13px 16px;font-size:0.9rem;color:var(--white);font-family:var(--font);transition:border-color 0.15s;outline:none;appearance:none}
-.form-input::placeholder{color:var(--gray-4)}
-.form-input:focus,.form-select:focus{border-color:var(--accent)}
-.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
-.form-select option{background:var(--bg-3);color:var(--white)}
-.submit-btn{width:100%;background:var(--accent);color:var(--white);font-family:var(--font);font-size:1rem;font-weight:600;padding:16px;border-radius:100px;border:none;cursor:pointer;transition:background 0.15s;margin-top:8px;letter-spacing:-0.01em}
-.submit-btn:hover{background:var(--accent-dim)}
-.form-note{font-size:11px;color:var(--gray-4);margin-top:12px}
-.error-msg{font-size:0.82rem;color:var(--red);margin-top:8px;display:none}
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rgba(156,161,168,0.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.15);animation:fadeDown .4s ease}
+.nav-i{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:.9rem;font-weight:700;letter-spacing:-.03em;color:var(--white)}
+.nav-logo em{font-style:normal;color:var(--white)}
+/* fond vitre gris → bouton fond blanc écriture noir */
+.nav-btn{font-size:.82rem;font-weight:600;background:var(--white);color:var(--black);border-radius:100px;padding:10px 24px;transition:all .2s}
+.nav-btn:hover{background:var(--off);transform:translateY(-1px)}
 
-/* CONTENT (hidden until form submitted) */
-.plan-content{display:none}
+/* ── HERO — DARK GLASS ── */
+.hero{background:var(--glass);color:var(--white);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 60% 20%,rgba(0,102,255,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(0,102,255,.04) 0%,transparent 60%);pointer-events:none}
+/* tag — fond noir → contour blanc */
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);border:1.5px solid var(--white);border-radius:100px;padding:7px 20px;margin-bottom:36px}
+.hero-tag-dot{width:5px;height:5px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+.hero h1{font-size:clamp(2.8rem,6.5vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-.055em}
+.hero h1 em{font-style:normal;color:var(--blue)} /* Life-changing en bleu */
+.hero-intro{font-size:1.02rem;color:var(--white);max-width:600px;margin:28px 0 20px;line-height:1.88;font-weight:400;background:transparent;border:1.5px solid rgba(255,255,255,0.2);border-radius:var(--r);padding:28px 32px}
+.hero-intro2{font-size:1.05rem;color:var(--white);max-width:480px;margin:0 auto 52px;line-height:1.7;font-weight:500;background:transparent;border:1.5px solid rgba(255,255,255,0.2);border-radius:var(--r);padding:22px 32px;text-align:center;letter-spacing:-.01em}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+/* fond noir → bouton bleu + bouton blanc/noir */
+.btn-blue{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:var(--white);font-weight:600;font-size:.92rem;padding:15px 30px;border-radius:100px;transition:all .2s;animation:glowBlue 2.5s ease infinite}
+.btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--black);font-weight:600;font-size:.92rem;padding:15px 30px;border-radius:100px;transition:all .2s}
+.btn-white:hover{background:var(--off);transform:translateY(-2px)}
+/* fond blanc → bouton noir */
+.btn-black{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--white);font-weight:600;font-size:.92rem;padding:15px 30px;border-radius:100px;transition:all .2s}
+.btn-black:hover{background:var(--black2);transform:translateY(-2px)}
 
-/* SECTION */
-.section{padding:72px 0;border-bottom:1px solid var(--border)}
-.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.section-title{font-size:1.7rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:8px;line-height:1.2}
-.section-desc{font-size:0.95rem;color:var(--gray-6);margin-bottom:48px;max-width:520px;line-height:1.7}
+.hero-divider{border:none;border-top:1px solid var(--glass-border);margin:72px 0 56px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hs{background:rgba(156,161,168,0.25);padding:28px 24px}
+.hs-n{font-size:2rem;font-weight:700;letter-spacing:-.05em;color:var(--white)}
+.hs-l{font-size:.76rem;color:var(--white);margin-top:5px;line-height:1.5;font-weight:600;opacity:.8}
 
-/* TRANSFORM */
-.transform-grid{display:grid;grid-template-columns:1fr 48px 1fr;align-items:center;gap:0}
-.transform-col{padding:28px}
-.transform-col.before{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius) 0 0 var(--radius)}
-.transform-col.after{background:var(--bg-2);border:1px solid var(--border);border-left:none;border-radius:0 var(--radius) var(--radius) 0}
-.transform-arrow{display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--accent);background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);height:100%}
-.transform-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-4);margin-bottom:20px}
-.transform-col.after .transform-label{color:var(--green)}
-.transform-item{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:var(--gray-6);padding:7px 0;border-bottom:1px solid var(--border)}
-.transform-col.after .transform-item{color:var(--white)}
-.transform-item:last-child{border-bottom:none}
-.t-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.t-dot.bad{background:var(--red)}
-.t-dot.good{background:var(--green)}
-.transform-photo{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;margin-bottom:48px;max-width:340px;margin-left:auto;margin-right:auto}
-.transform-photo-placeholder{text-align:center;padding:24px}
-.transform-photo-icon{font-size:32px;opacity:0.2;margin-bottom:8px}
-.transform-photo-text{font-size:0.78rem;color:var(--gray-4)}
+/* ── GATE — FOND NOIR VITRE ── */
+.gate{background:var(--glass);padding:96px 0}
+/* Encadré principal fond gris vitre */
+.gate-box{background:rgba(156,161,168,0.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1.5px solid rgba(255,255,255,0.2);border-radius:var(--r);padding:56px 48px;max-width:560px;margin:0 auto;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+/* Titres et labels en blanc */
+.g-ey{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.g-ti{font-size:1.7rem;font-weight:700;letter-spacing:-.035em;margin-bottom:8px;line-height:1.15;color:var(--white)}
+.g-su{font-size:.9rem;color:var(--white);margin-bottom:40px;line-height:1.7;font-weight:400;opacity:.85}
+/* Labels sections en blanc */
+.fs-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin:28px 0 12px;padding-bottom:8px;border-bottom:1.5px solid rgba(255,255,255,.25)}
+.fs-lbl:first-of-type{margin-top:0}
+.fg{margin-bottom:12px}
+/* Labels champs en blanc */
+.fl{font-size:.8rem;font-weight:600;color:var(--white);margin-bottom:6px;display:block}
+/* Inputs fond blanc, texte noir, bord noir → encadrés info en blanc */
+.fi{width:100%;background:var(--white);border:1.5px solid transparent;border-radius:var(--rs);padding:14px 16px;font-size:.92rem;color:var(--black);font-family:var(--font);transition:border-color .15s,box-shadow .15s;outline:none}
+.fi::placeholder{color:var(--gray-light)}
+.fi:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-light)}
+/* Checkboxes fond blanc bord noir */
+.ckg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ck{display:flex;align-items:flex-start;gap:10px;background:var(--white);border:1.5px solid transparent;border-radius:var(--rs);padding:13px 14px;cursor:pointer;transition:all .15s;user-select:none}
+.ck:hover{background:var(--off)}
+.ck.sel{border-color:var(--blue);background:var(--blue-light)}
+.ck input{display:none}
+.ck-box{width:18px;height:18px;border:1.5px solid var(--gray-light);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .15s}
+.ck.sel .ck-box{background:var(--blue);border-color:var(--blue)}
+.ck-tick{display:none;color:#fff;font-size:11px;font-weight:700}
+.ck.sel .ck-tick{display:block}
+.ck-tx{font-size:.82rem;color:var(--black);line-height:1.4;transition:color .15s;font-weight:500}
+.ck-tx strong{color:var(--black);font-weight:700}
+.ck.sel .ck-tx{color:var(--black)}
+.ck-tx small{font-size:.72rem;color:var(--gray-mid);font-weight:400}
+.ck.sel .ck-tx small{color:var(--blue2)}
+/* Checkbox featured — fond vitre noir, bord bleu, texte blanc */
+.ck-feat{grid-column:1/-1;background:var(--glass);border:1.5px solid var(--blue)}
+.ck-feat .ck-box{border-color:rgba(255,255,255,.3)}
+.ck-feat .ck-tx{color:var(--white)}
+.ck-feat .ck-tx strong{color:var(--white);font-weight:700}
+.ck-feat.sel{background:var(--glass);border-color:var(--blue)}
+.ck-feat.sel .ck-box{background:var(--blue);border-color:var(--blue)}
+.ck-feat.sel .ck-tx{color:var(--white)}
+.ck-feat.sel .ck-tx strong{color:var(--white)}
+/* Bouton principal — fond blanc écriture noir (fond gris → bouton blanc/noir) */
+.sbtn{width:100%;background:var(--white);color:var(--black);font-family:var(--font);font-size:1rem;font-weight:700;padding:17px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;margin-top:24px;letter-spacing:-.01em}
+.sbtn:hover{background:var(--off);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.sbtn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+/* Footnote en blanc */
+.fn{font-size:11px;color:var(--white);margin-top:10px;text-align:center;font-weight:600;opacity:.7}
+.err{font-size:.82rem;color:var(--red);margin-top:10px;display:none;text-align:center;font-weight:700;background:var(--red-l);padding:8px 12px;border-radius:var(--rx)}
 
-/* TABS */
-.tabs{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:32px;overflow-x:auto}
-.tab-btn{flex:1;min-width:max-content;padding:10px 16px;font-size:0.82rem;font-weight:500;color:var(--gray-6);background:none;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font);transition:all 0.15s;white-space:nowrap}
-.tab-btn.active{background:var(--bg-4);color:var(--white)}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
+/* PLAN */
+.plan{display:none}
 
-/* CARDS */
-.card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:12px}
-.card-title{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:16px}
-.card ul{list-style:none}
-.card li{font-size:0.88rem;color:var(--gray-6);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;line-height:1.4}
-.card li:last-child{border-bottom:none}
-.card li strong{color:var(--white);font-weight:500;flex-shrink:0}
-.card li span{color:var(--gray-6)}
-.quote-block{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:20px 24px;margin-bottom:24px;font-size:0.92rem;color:var(--white);font-style:italic;line-height:1.6;border-left:3px solid var(--accent)}
+/* ── SECTIONS ── */
+.sec{padding:96px 0}
+.sec-sep{height:1px;background:var(--light)}
 
-/* MACROS */
-.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-.macro-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:center}
-.macro-pct{font-size:2rem;font-weight:600;letter-spacing:-0.04em;color:var(--white)}
-.macro-label{font-size:0.78rem;color:var(--gray-6);margin-top:4px}
-.macro-detail{font-size:0.7rem;color:var(--gray-4);margin-top:2px}
+/* TRANSFORMATION — fond blanc */
+/* Tableau — fond noir colonne droite, fond blanc gauche, encadré visible */
+.t-intro{font-size:1rem;color:var(--gray-mid);line-height:1.85;margin-bottom:48px;max-width:640px;font-weight:400}
+.t-intro strong{color:var(--black);font-weight:600}
+.t-photo{background:var(--light);border:1.5px solid var(--light);border-radius:var(--r);aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;margin-bottom:32px;overflow:hidden}
+.t-ph{text-align:center;padding:24px}
+.t-ph-ic{font-size:32px;opacity:.2;margin-bottom:8px}
+.t-ph-tx{font-size:.76rem;color:var(--gray-light);font-weight:600}
+.t-grid{display:grid;grid-template-columns:1fr 56px 1fr;align-items:stretch;border:1.5px solid var(--light);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+/* Colonne gauche — fond blanc, texte noir */
+.t-col-before{padding:32px 28px;background:var(--white)}
+/* Colonne droite — fond noir vitre, texte blanc */
+.t-col-after{padding:32px 28px;background:var(--glass)}
+.t-sep{display:flex;align-items:center;justify-content:center;background:var(--off);border-left:1px solid var(--light);border-right:1px solid var(--light)}
+.t-sep-in{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;padding:20px 0}
+.t-sep-l{flex:1;width:1px;background:var(--light)}
+.t-sep-a{font-size:1rem;color:var(--blue);font-weight:700}
+.t-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+.t-lbl.b{color:var(--gray-light)}.t-lbl.a{color:var(--green)}
+.t-it{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:.87rem;line-height:1.4}
+.t-col-before .t-it{border-bottom:1px solid var(--light)}
+.t-col-after .t-it{border-bottom:1px solid rgba(255,255,255,.06)}
+.t-it:last-child{border-bottom:none !important}
+.t-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.t-dot.bad{background:var(--red)}.t-dot.good{background:var(--green)}
+.t-tx-m{color:var(--gray-mid);font-weight:400}
+.t-tx-br{color:rgba(255,255,255,.85);font-weight:500}
 
-/* TAGS */
-.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tag{font-size:0.78rem;color:var(--gray-6);background:var(--bg-3);border:1px solid var(--border-2);border-radius:100px;padding:5px 14px}
-.tag.avoid{color:var(--red);background:var(--red-bg);border-color:rgba(239,68,68,0.2)}
-.tag.good{color:var(--green);background:var(--green-bg);border-color:rgba(34,197,94,0.2)}
+/* 5 PILIERS — fond verre */
+.sec-glass{background:var(--glass);color:var(--white)}
+.pnav{display:flex;gap:2px;background:rgba(255,255,255,.06);border:1px solid var(--glass-border);border-radius:var(--r);padding:4px;margin-bottom:40px;overflow-x:auto}
+.pbtn{flex:1;min-width:max-content;display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.45);background:none;border:none;border-radius:var(--rs);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
+.pbtn:hover{color:var(--white)}
+.pbtn.active{background:rgba(255,255,255,.08);color:var(--white)}
+.pbtn-n{font-size:10px;font-weight:700;color:var(--blue);background:rgba(0,102,255,.15);border-radius:100px;padding:2px 8px}
+.pp{display:none}
+.pp.active{display:block;animation:panelIn .35s ease}
 
-/* SPLIT */
-.split-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-.split-day{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
-.split-day-name{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:5px}
-.split-day-focus{font-size:0.88rem;color:var(--white);font-weight:500}
-.split-day.rest .split-day-focus{color:var(--gray-4)}
+/* Cards sur fond verre — fond légèrement plus clair, bordure visible */
+.quote{background:rgba(255,255,255,.04);border:1px solid var(--glass-border2);border-left:3px solid var(--blue);border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin-bottom:24px;font-size:.93rem;color:rgba(255,255,255,.65);font-style:italic;line-height:1.7}
+/* Encadré visible fond verre foncé, texte blanc */
+.card-dark{background:var(--glass2);border:1px solid var(--glass-border2);border-radius:var(--r);padding:26px;margin-bottom:10px}
+.ch-dark{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--glass-border)}
+.card-dark ul{list-style:none}
+.card-dark li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.87rem;align-items:start;line-height:1.5}
+.card-dark li:last-child{border-bottom:none}
+.card-dark li strong{color:var(--white);font-weight:600;font-size:.8rem;white-space:nowrap}
+.card-dark li span{color:rgba(255,255,255,.55)}
 
-/* PARAMS */
-.params-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
-.param-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
-.param-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-4);margin-bottom:6px}
-.param-value{font-size:0.92rem;color:var(--white);font-weight:500}
+.mr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.mc{background:rgba(255,255,255,.05);border:1px solid var(--glass-border2);border-radius:var(--rs);padding:20px;text-align:center}
+.mn{font-size:2.2rem;font-weight:700;letter-spacing:-.05em;color:var(--white)}
+.ml{font-size:.76rem;color:rgba(255,255,255,.5);margin-top:3px;font-weight:600}
+.ms{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:2px}
 
-/* ROUTINE */
-.routine-list{margin-top:16px}
-.routine-row{display:grid;grid-template-columns:72px 1fr;gap:0}
-.routine-time{font-size:0.72rem;font-weight:600;color:var(--accent);padding:10px 12px 10px 0;border-right:1px solid var(--border);text-align:right;line-height:1.3}
-.routine-desc{font-size:0.85rem;color:var(--gray-6);padding:10px 0 10px 16px;border-bottom:1px solid var(--bg-4);line-height:1.4}
-.routine-desc strong{color:var(--white);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tag{font-size:.75rem;padding:5px 14px;border-radius:100px;border:1px solid;font-weight:600}
+.tag.g{color:var(--green);background:var(--green-l);border-color:var(--green-b)}
+.tag.r{color:var(--red);background:var(--red-l);border-color:var(--red-b)}
+.tag.b{color:var(--blue);background:rgba(0,102,255,.12);border-color:rgba(0,102,255,.25)}
+.tag.w{color:rgba(255,255,255,.8);background:rgba(255,255,255,.07);border-color:var(--glass-border2)}
 
-/* TOOLS */
-.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.tool-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-decoration:none;display:block;transition:border-color 0.15s}
-.tool-card:hover{border-color:var(--accent)}
-.tool-num{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;color:var(--accent);margin-bottom:12px}
-.tool-card h3{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:8px}
-.tool-card p{font-size:0.82rem;color:var(--gray-6);line-height:1.5}
-.tool-link{display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--accent);margin-top:16px}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
+.sd{background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:var(--rs);padding:14px 16px}
+.sdn{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}
+.sdf{font-size:.87rem;color:var(--white);font-weight:500}
+.sd.rest .sdf{color:rgba(255,255,255,.3)}
 
-/* CTA FINAL */
-.cta-final{padding:100px 0;text-align:center}
-.cta-final h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:600;letter-spacing:-0.035em;line-height:1.15;margin-bottom:16px}
-.cta-final h2 em{font-style:normal;color:var(--gray-4)}
-.cta-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:48px 40px;max-width:480px;margin:48px auto 0}
-.cta-box-title{font-size:1.1rem;font-weight:600;margin-bottom:6px}
-.cta-box-sub{font-size:0.88rem;color:var(--gray-6);margin-bottom:32px;line-height:1.6}
-.cta-big-btn{display:block;background:var(--accent);color:var(--white);font-weight:600;font-size:1rem;padding:18px 36px;border-radius:100px;text-decoration:none;transition:background 0.15s;letter-spacing:-0.01em}
-.cta-big-btn:hover{background:var(--accent-dim)}
-.cta-note{font-size:11px;color:var(--gray-4);margin-top:14px}
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
+.pm{background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:var(--rs);padding:14px 16px}
+.pml{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}
+.pmv{font-size:.92rem;color:var(--white);font-weight:700}
 
-/* DISCLAIMER */
-.disclaimer{padding:32px 0 48px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--gray-4);line-height:1.7;text-align:center;max-width:600px;margin:0 auto}
-.disclaimer strong{color:var(--gray-6)}
+.tip-blue{background:rgba(0,102,255,.1);border:1px solid rgba(0,102,255,.2);border-radius:var(--rs);padding:14px 16px;margin-top:10px;font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;font-weight:400}
+.tip-blue strong{color:var(--white);font-weight:700}
 
-/* SECTION HEADER INLINE */
-.pilier-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.pilier-num{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius-xs);padding:5px 10px}
-.pilier-title{font-size:1.2rem;font-weight:600;letter-spacing:-0.015em}
+/* CARE — fond blanc, encadrés visibles, texte noir */
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.care-card{background:var(--white);border:1.5px solid var(--light);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.care-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.care-card h3{font-size:1rem;font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--black)}
+.care-card ul{list-style:none}
+.care-card li{font-size:.83rem;color:var(--gray-mid);padding:7px 0;border-bottom:1px solid var(--light);line-height:1.5;display:flex;gap:8px;font-weight:400}
+.care-card li:last-child{border-bottom:none}
+.care-card li::before{content:'—';color:var(--gray-light);flex-shrink:0;font-weight:700}
 
-@media(max-width:600px){
-  .transform-grid{grid-template-columns:1fr;grid-template-rows:auto auto auto}
-  .transform-col.before{border-radius:var(--radius) var(--radius) 0 0}
-  .transform-col.after{border-left:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius)}
-  .transform-arrow{border:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px;transform:rotate(90deg)}
-  .tools-grid{grid-template-columns:1fr}
-  .split-grid{grid-template-columns:1fr}
-  .params-grid{grid-template-columns:1fr}
-  .gate-box{padding:32px 24px}
-  .cta-box{padding:32px 24px}
-  .tabs{gap:2px}
-  .tab-btn{padding:8px 12px;font-size:0.78rem}
+/* ROUTINE — fond off-white, card fond blanc */
+/* Encadré visible fond blanc, texte noir */
+.card-light{background:var(--white);border:1.5px solid var(--light);border-radius:var(--r);padding:26px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ch-light{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-light);margin-bottom:16px;padding-bottom:10px;border-bottom:1.5px solid var(--light)}
+.card-light ul{list-style:none}
+.card-light li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--off);font-size:.87rem;align-items:start;line-height:1.5}
+.card-light li:last-child{border-bottom:none}
+.card-light li strong{color:var(--black);font-weight:700;font-size:.8rem;white-space:nowrap}
+.card-light li span{color:var(--gray-mid);font-weight:400}
+.tags-light{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+
+.rout{margin-top:0}
+.rr{display:grid;grid-template-columns:72px 1fr;min-height:44px}
+.rt{font-size:.7rem;font-weight:700;color:var(--blue);padding:12px 14px 12px 0;border-right:1px solid var(--glass-border);text-align:right;line-height:1.3}
+.rd{font-size:.85rem;color:rgba(255,255,255,.6);padding:12px 0 12px 18px;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.5}
+.rd strong{color:var(--white);font-weight:700}
+
+/* OUTILS — fond off-white, cards fond blanc */
+.tg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tool{background:var(--white);border:1.5px solid var(--light);border-radius:var(--r);padding:32px;display:block;transition:all .25s;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.tool::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.tool:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.tool:hover::after{transform:scaleX(1)}
+.tool-n{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.tool h3{font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:8px;letter-spacing:-.02em}
+.tool p{font-size:.83rem;color:var(--gray-mid);line-height:1.6;font-weight:400}
+.tool-a{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--black);margin-top:18px;font-weight:700;border-bottom:1.5px solid var(--light);padding-bottom:2px}
+
+/* CTA FINAL — fond verre */
+.ctaf{background:var(--glass);padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.ctaf::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(0,102,255,.07) 0%,transparent 65%);pointer-events:none}
+.ctaf h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;letter-spacing:-.05em;line-height:1.08;color:var(--white)}
+.ctaf h2 em{font-style:normal;color:rgba(255,255,255,.2)}
+/* Encadré visible fond verre foncé, texte blanc */
+.ctab{background:var(--glass2);border:1px solid var(--glass-border2);border-radius:var(--r);padding:56px 44px;max-width:480px;margin:60px auto 0;position:relative;overflow:hidden}
+.ctab::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent)}
+.ctab-ti{font-size:1.2rem;font-weight:700;letter-spacing:-.025em;margin-bottom:8px;color:var(--white)}
+.ctab-su{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:36px;font-weight:400}
+/* fond noir → bouton bleu + bouton blanc */
+.ctaf-btns{display:flex;flex-direction:column;gap:10px}
+.ctab-btn-blue{display:block;background:var(--blue);color:var(--white);font-family:var(--font);font-weight:700;font-size:1rem;padding:18px;border-radius:100px;transition:all .2s;letter-spacing:-.01em;animation:glowBlue 2.5s ease infinite}
+.ctab-btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
+.ctab-no{font-size:11px;color:rgba(255,255,255,.2);margin-top:14px;font-weight:600}
+
+/* DISC */
+.disc{background:var(--glass);border-top:1px solid var(--glass-border);padding:40px 0 56px}
+.disc p{font-size:.73rem;color:rgba(255,255,255,.2);line-height:1.8;text-align:center;max-width:640px;margin:0 auto;font-weight:400}
+.disc p strong{color:rgba(255,255,255,.4);font-weight:700}
+
+/* Section eyebrow et titres sur fond blanc */
+.s-ey{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.s-ey-w{color:rgba(255,255,255,.4)}
+.s-ti{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:12px;color:var(--black)}
+.s-ti-w{color:var(--white)}
+.s-de{font-size:.95rem;color:var(--gray-mid);max-width:520px;line-height:1.8;margin-bottom:52px;font-weight:400}
+.s-de-w{color:rgba(255,255,255,.45)}
+
+@media(max-width:640px){
+  .hero-stats{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .t-sep{border:none;border-top:1px solid var(--light);border-bottom:1px solid var(--light);padding:14px}
+  .t-sep-in{flex-direction:row}
+  .t-sep-l{width:auto;height:1px;flex:1}
+  .mr{grid-template-columns:repeat(3,1fr)}
+  .sg,.pg,.tg,.care-grid{grid-template-columns:1fr}
+  .ckg{grid-template-columns:1fr}
+  .gate-box,.ctab{padding:32px 22px}
+  .pbtn{padding:8px 11px;font-size:.76rem}
+  .hero-ctas{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <span class="nav-name">Florian Parietti</span>
-      <a href="https://calendly.com/florian-parietti/30min" class="nav-cta" target="_blank">Bilan gratuit →</a>
-    </div>
-  </div>
+  <div class="wrap"><div class="nav-i">
+    <div class="nav-logo">Florian <em>Parietti</em></div>
+    <a href="https://calendly.com/florian-parietti/30min" class="nav-btn" target="_blank">Bilan gratuit</a>
+  </div></div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — DARK GLASS -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-eyebrow"><span class="hero-dot"></span>Free Active Lifestyle Plan</div>
-    <h1>Performance humaine.<br><em>Sans excuse. Sans raccourci.</em></h1>
-    <p class="hero-sub">Les 4 piliers que j'applique chaque jour pour devenir <strong>la version la plus esthétique et puissante de moi-même</strong> — et que tu peux commencer ce soir.</p>
-    <div class="hero-video">
-      <div class="hero-video-placeholder">
-        <div class="hero-video-icon">▶</div>
-        <div class="hero-video-text">Vidéo intro — à intégrer</div>
-      </div>
+  <div class="wrap">
+    <!-- fond noir → tag contour blanc, texte blanc gras -->
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Active Lifestyle Plan</div>
+    <h1>Performance humaine.<br><em>Life-changing.</em></h1>
+    <p class="hero-intro">
+      Je ne me suis pas trouvé. J'ai construit mon meilleur <strong>physique</strong>, optimisé chaque dimension de ma <strong>santé</strong>, changé mon <strong>état d'esprit</strong> et mes <strong>centres d'intérêt</strong>. Tout ça m'a créé des <strong>opportunités</strong>, un <strong>cercle social</strong> et une <strong>perspective de vie</strong> que je n'imaginais pas.
+    </p>
+    <p class="hero-intro2">
+      Voici les 5 piliers que j'optimise chaque jour pour atteindre la performance humaine absolue.
+    </p>
+    <!-- fond noir → bouton bleu + bouton blanc/noir -->
+    <div class="hero-ctas">
+      <a href="#gate" class="btn-blue">Accéder au plan</a>
+      <a href="https://calendly.com/florian-parietti/30min" class="btn-white" target="_blank">Réserver un bilan</a>
+    </div>
+    <hr class="hero-divider">
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">5</div><div class="hs-l">Piliers de performance humaine</div></div>
+      <div class="hs"><div class="hs-n">6+</div><div class="hs-l">Années d'optimisation · Diplôme & spécialisations</div></div>
+      <div class="hs"><div class="hs-n">100%</div><div class="hs-l">Transformation vécue · Dernières recherches scientifiques</div></div>
     </div>
   </div>
 </section>
 
-<!-- GATE — FORMULAIRE -->
-<section class="gate" id="gate-section">
-  <div class="container">
-    <div class="gate-box">
-      <div class="gate-title">Accède au plan complet</div>
-      <p class="gate-sub">Gratuit. Remplis ces 3 champs et le plan s'affiche immédiatement en dessous.</p>
+<!-- GATE — OFF WHITE, card fond blanc -->
+<section style="background:var(--glass);padding:96px 0" id="gate">
+  <div class="wrap">
+    <div class="gate-box reveal">
+      <div class="g-ey">Accès gratuit</div>
+      <div class="g-ti">Obtiens le plan complet</div>
+      <p class="g-su">Remplis ces informations — le plan s'affiche immédiatement. Aucun spam, 100% valeur.</p>
       <form id="access-form" novalidate>
-        <div class="form-group">
-          <label class="form-label" for="email">Adresse email</label>
-          <input class="form-input" type="email" id="email" placeholder="ton@email.com" required>
+        <div class="fs-lbl">Tes informations</div>
+        <div class="fg"><label class="fl" for="email">Adresse email</label><input class="fi" type="email" id="email" placeholder="ton@email.com" required></div>
+        <div class="fg"><label class="fl" for="insta">Compte Instagram</label><input class="fi" type="text" id="insta" placeholder="@toncompte" required></div>
+
+        <div class="fs-lbl" style="margin-top:28px">Objectif physique</div>
+        <div class="ckg" id="phys">
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Recomposition corporelle"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Recomposition corporelle<br><small>Perte de gras + prise de muscle</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Prise de muscle — lean bulk"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Prise de muscle<br><small>Lean bulk, gras limité au max</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Perte de gras — définition et maintien"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Perte de gras<br><small>Définition & maintien musculaire</small></span></label>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="instagram">Compte Instagram</label>
-          <input class="form-input" type="text" id="instagram" placeholder="@toncompte" required>
+
+        <div class="fs-lbl" style="margin-top:24px">Objectif santé</div>
+        <div class="ckg" id="sante">
+          <label class="ck ck-feat sel" onclick="tgl(this)" style="grid-column:1/-1"><input type="checkbox" value="Optimisation complète 5 piliers" checked><span class="ck-box"><span class="ck-tick" style="display:block">✓</span></span><span class="ck-tx"><strong>Optimisation complète des 5 piliers</strong></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Sommeil profond"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Sommeil profond<br><small>Protocoles & routines</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Nutrition — alimentation optimale"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Nutrition<br><small>Alimentation optimale</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Environnement non-toxique"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Environnement<br><small>Non-toxique</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Biohacking — sauna, froid, grounding"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Biohacking<br><small>Sauna, froid, grounding...</small></span></label>
+          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Énergie et productivité"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Énergie & productivité<br><small>Performance cognitive & physique</small></span></label>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="objectif">Ton objectif principal</label>
-          <select class="form-select" id="objectif" required>
-            <option value="" disabled selected>Choisir mon objectif</option>
-            <option value="Perdre du gras et me sécher">Perdre du gras et me sécher</option>
-            <option value="Prendre de la masse musculaire">Prendre de la masse musculaire</option>
-            <option value="Recomposition corporelle">Recomposition corporelle (perdre gras + muscle)</option>
-            <option value="Améliorer ma santé et énergie">Améliorer ma santé et énergie</option>
-            <option value="Optimisation globale performance">Optimisation globale performance</option>
-            <option value="Autre">Autre</option>
-          </select>
-        </div>
-        <div class="error-msg" id="error-msg">Merci de remplir tous les champs.</div>
-        <button type="submit" class="submit-btn">Accéder au plan gratuit →</button>
-        <p class="form-note">Aucun spam. Juste le plan + un bilan gratuit si tu le souhaites.</p>
+
+        <p class="err" id="err">Remplis l'email, l'Instagram et choisis au moins un objectif.</p>
+
+        <div class="fs-lbl" style="margin-top:24px">Autre — précise si besoin</div>
+        <textarea class="fi" id="autre-txt" rows="2" placeholder="Ex : je veux améliorer mes performances sportives..." style="resize:none;font-family:var(--font);line-height:1.5"></textarea>
+
+        <button type="submit" class="sbtn">Accéder au plan gratuitement</button>
+        <p class="fn">Aucun spam · 100% valeur · Gratuit</p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- PLAN CONTENT -->
-<div class="plan-content" id="plan-content">
+<div class="plan" id="plan">
 
-<!-- TRANSFORMATION -->
-<section class="section">
-  <div class="container">
-    <div class="section-eyebrow">La réalité</div>
-    <h2 class="section-title">De 0 à performant</h2>
-    <p class="section-desc">Ce n'est pas de la génétique. C'est un système. Voici le voyage.</p>
-
-    <div class="transform-photo">
-      <div class="transform-photo-placeholder">
-        <div class="transform-photo-icon">📸</div>
-        <div class="transform-photo-text">Photo transformation à intégrer</div>
+<!-- TRANSFORMATION — fond noir vitre -->
+<section class="sec sec-glass">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">La réalité</div>
+    <h2 class="s-ti s-ti-w reveal d1">Ma transformation</h2>
+    <p class="t-intro reveal d2" style="color:rgba(255,255,255,.7)">
+      <strong>2019–2023.</strong> Skinny/fat, manque de confiance caché, mauvaises habitudes et centres d'intérêt, low énergie, low focus, perdu et stressé pour mon avenir. Réorientation des études.<br><br>
+      <strong>2023–2026.</strong> Mon meilleur physique, confiance élevée, full action, liberté en ligne (voyage & business), énergie et haute performance, vision très claire, entourage puissant.
+    </p>
+    <div class="t-photo reveal d3" style="background:var(--glass2);border-color:var(--glass-border)"><div class="t-ph"><div class="t-ph-ic">📸</div><div class="t-ph-tx" style="color:rgba(255,255,255,.3)">Photos transformation 2019 → 2026 à intégrer</div></div></div>
+    <div class="t-grid reveal d4">
+      <div class="t-col-before">
+        <div class="t-lbl b">Avant — 2019/2023</div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Skinny/fat — image corporelle basse</span></div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Manque de confiance (caché)</span></div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Mauvaises habitudes & centres d'intérêt</span></div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Low énergie, low focus</span></div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Perdu, stressé pour l'avenir</span></div>
+        <div class="t-it"><span class="t-dot bad"></span><span class="t-tx-m">Réorientation des études</span></div>
       </div>
-    </div>
-
-    <div class="transform-grid">
-      <div class="transform-col before">
-        <div class="transform-label">Avant</div>
-        <div class="transform-item"><span class="t-dot bad"></span>Skinny/fat</div>
-        <div class="transform-item"><span class="t-dot bad"></span>Zéro confiance</div>
-        <div class="transform-item"><span class="t-dot bad"></span>Procrastination chronique</div>
-        <div class="transform-item"><span class="t-dot bad"></span>Low énergie, low focus</div>
-        <div class="transform-item"><span class="t-dot bad"></span>Perdu, sans direction</div>
-      </div>
-      <div class="transform-arrow">→</div>
-      <div class="transform-col after">
-        <div class="transform-label">Maintenant</div>
-        <div class="transform-item"><span class="t-dot good"></span>Physique athlétique & sec</div>
-        <div class="transform-item"><span class="t-dot good"></span>Confiance élevée</div>
-        <div class="transform-item"><span class="t-dot good"></span>Full action, chaque jour</div>
-        <div class="transform-item"><span class="t-dot good"></span>High énergie, haute performance</div>
-        <div class="transform-item"><span class="t-dot good"></span>Vision claire, vie choisie</div>
+      <div class="t-sep"><div class="t-sep-in"><div class="t-sep-l"></div><div class="t-sep-a">→</div><div class="t-sep-l"></div></div></div>
+      <div class="t-col-after">
+        <div class="t-lbl a">Maintenant — 2026</div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Physique athlétique & sec</span></div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Confiance élevée, présence forte</span></div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Full action chaque jour</span></div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Liberté en ligne (voyage & business)</span></div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Énergie & haute performance</span></div>
+        <div class="t-it"><span class="t-dot good"></span><span class="t-tx-br">Vision claire, entourage puissant</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4 PILIERS -->
-<section class="section">
-  <div class="container">
-    <div class="section-eyebrow">Le système</div>
-    <h2 class="section-title">Les 4 piliers de la performance humaine</h2>
-    <p class="section-desc">Optimise les 4 simultanément. C'est là que la magie opère.</p>
+<div class="sec-sep"></div>
 
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab(event,'nutrition')">Nutrition</button>
-      <button class="tab-btn" onclick="switchTab(event,'training')">Entraînement</button>
-      <button class="tab-btn" onclick="switchTab(event,'sleep')">Sommeil</button>
-      <button class="tab-btn" onclick="switchTab(event,'environment')">Environnement</button>
+<!-- 5 PILIERS — fond verre -->
+<section class="sec sec-glass">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Le système</div>
+    <h2 class="s-ti s-ti-w reveal d1">Les 5 piliers</h2>
+    <p class="s-de s-de-w reveal d2">Optimise les 5 simultanément. Chaque pilier amplifie les autres.</p>
+
+    <div class="pnav reveal d3">
+      <button class="pbtn active" onclick="sp(event,'nutrition')"><span class="pbtn-n">01</span>Nutrition</button>
+      <button class="pbtn" onclick="sp(event,'training')"><span class="pbtn-n">02</span>Entraînement</button>
+      <button class="pbtn" onclick="sp(event,'sleep')"><span class="pbtn-n">03</span>Sommeil</button>
+      <button class="pbtn" onclick="sp(event,'env')"><span class="pbtn-n">04</span>Environnement</button>
+      <button class="pbtn" onclick="sp(event,'bio')"><span class="pbtn-n">05</span>Biohacking</button>
     </div>
 
-    <!-- NUTRITION -->
-    <div class="tab-panel active" id="tab-nutrition">
-      <div class="quote-block">"Chaque calorie doit apporter quelque chose. Ton corps est le seul et unique fournisseur de ton énergie, ta croissance et ta reconstruction cellulaire."</div>
-      <div class="macro-grid">
-        <div class="macro-card">
-          <div class="macro-pct">50%</div>
-          <div class="macro-label">Glucides</div>
-          <div class="macro-detail">complexes & fruits</div>
-        </div>
-        <div class="macro-card">
-          <div class="macro-pct">25%</div>
-          <div class="macro-label">Protéines</div>
-          <div class="macro-detail">1,6–2 g/kg de poids</div>
-        </div>
-        <div class="macro-card">
-          <div class="macro-pct">25%</div>
-          <div class="macro-label">Lipides</div>
-          <div class="macro-detail">0,8–1 g/kg de poids</div>
-        </div>
+    <div class="pp active" id="p-nutrition">
+      <div class="quote">"Chaque calorie doit apporter quelque chose. Ton corps est le seul fournisseur de ton énergie, ta croissance et ta reconstruction cellulaire."</div>
+      <div class="mr">
+        <div class="mc"><div class="mn">50%</div><div class="ml">Glucides</div><div class="ms">complexes & fruits</div></div>
+        <div class="mc"><div class="mn">25%</div><div class="ml">Protéines</div><div class="ms">1,6–2 g/kg</div></div>
+        <div class="mc"><div class="mn">25%</div><div class="ml">Lipides</div><div class="ms">0,8–1 g/kg</div></div>
       </div>
-      <div class="card">
-        <div class="card-title">Protéines — priorités</div>
-        <ul>
-          <li><strong>Quotidien</strong><span>Poulet, blanc de dinde, œufs, cottage cheese, whey</span></li>
-          <li><strong>2×/semaine</strong><span>Bœuf (filet pur, côte à l'os), poissons gras, veau maigre, scampi</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Glucides complexes & lipides sains</div>
-        <ul>
-          <li><strong>Glucides</strong><span>Myrtilles, fruits rouges, poire, pastèque, dattes, riz blanc/complet, quinoa, avoine, patate douce, pain au levain, aliments fermentés (kéfir, kimchi)</span></li>
-          <li><strong>Lipides</strong><span>Huile d'olive extra vierge, avocat, noix, amandes, macadamia, chocolat 85%+, graines de chia et courge, beurre nourri à l'herbe</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Compléments que j'utilise</div>
-        <div class="tag-list">
-          <span class="tag good">Magnésium</span>
-          <span class="tag good">Zinc</span>
-          <span class="tag good">Créatine</span>
-          <span class="tag good">Vitamine D</span>
-          <span class="tag good">Whey protéine</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">À éviter — le poison est dans le produit, pas juste la quantité</div>
-        <div class="tag-list">
-          <span class="tag avoid">Sucre raffiné</span>
-          <span class="tag avoid">Charcuterie</span>
-          <span class="tag avoid">Aliments frits</span>
-          <span class="tag avoid">Fast food</span>
-          <span class="tag avoid">Édulcorants (aspartame...)</span>
-          <span class="tag avoid">Alcool</span>
-          <span class="tag avoid">Huiles de graines</span>
-          <span class="tag avoid">Conservateurs</span>
-          <span class="tag avoid">Sirop de maïs</span>
-        </div>
-      </div>
+      <div class="card-dark"><div class="ch-dark">Protéines</div><ul>
+        <li><strong>Quotidien</strong><span>Poulet, blanc de dinde, œufs, cottage cheese, whey</span></li>
+        <li><strong>2×/semaine</strong><span>Bœuf (filet pur, côte à l'os), poissons gras, veau maigre, scampi</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Glucides complexes & lipides sains</div><ul>
+        <li><strong>Fruits</strong><span>Myrtilles, fruits rouges, poire, pastèque, dattes, kiwi</span></li>
+        <li><strong>Féculents</strong><span>Riz blanc/complet, quinoa, avoine, patate douce, pain au levain, lentilles</span></li>
+        <li><strong>Légumes & fermentés</strong><span>Courgette, poivrons, tomates, kéfir, kimchi, choucroute, tempeh</span></li>
+        <li><strong>Lipides</strong><span>Huile d'olive extra vierge, avocat, noix, amandes, chocolat 85%+, graines chia & courge, beurre nourri à l'herbe</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Compléments</div><div class="tags"><span class="tag g">Magnésium</span><span class="tag g">Zinc</span><span class="tag g">Créatine</span><span class="tag g">Vitamine D</span><span class="tag g">Whey</span></div></div>
+      <div class="card-dark"><div class="ch-dark">À limiter ou éviter</div><div class="tags"><span class="tag r">Sucre raffiné</span><span class="tag r">Charcuterie</span><span class="tag r">Aliments frits</span><span class="tag r">Fast food</span><span class="tag r">Édulcorants</span><span class="tag r">Alcool</span><span class="tag r">Huiles de graines</span><span class="tag r">Conservateurs</span></div></div>
     </div>
 
-    <!-- ENTRAÎNEMENT -->
-    <div class="tab-panel" id="tab-training">
-      <div class="quote-block">"La récupération et la surcharge progressive intelligente sont plus importantes que tous les autres paramètres réunis. Aucune exception."</div>
-      <div class="card">
-        <div class="card-title">Mon split — 5 jours musculation</div>
-        <div class="split-grid">
-          <div class="split-day"><div class="split-day-name">Lundi</div><div class="split-day-focus">Push — Pectoraux + Triceps + Deltoïde latéral</div></div>
-          <div class="split-day"><div class="split-day-name">Mardi</div><div class="split-day-focus">Pull — Grand dorsal + Biceps + Ischios</div></div>
-          <div class="split-day rest"><div class="split-day-name">Mercredi</div><div class="split-day-focus">Repos actif</div></div>
-          <div class="split-day"><div class="split-day-name">Jeudi</div><div class="split-day-focus">Push — variation angles</div></div>
-          <div class="split-day"><div class="split-day-name">Vendredi</div><div class="split-day-focus">Pull — variation</div></div>
-          <div class="split-day"><div class="split-day-name">Samedi</div><div class="split-day-focus">Legs complet</div></div>
-          <div class="split-day rest"><div class="split-day-name">Dimanche</div><div class="split-day-focus">Repos / récupération</div></div>
+    <div class="pp" id="p-training">
+      <div class="quote">"La récupération et la surcharge progressive intelligente sont plus importantes que tous les autres paramètres réunis."</div>
+      <div class="card-dark"><div class="ch-dark">Split — 5 jours</div>
+        <div class="sg">
+          <div class="sd"><div class="sdn">Lundi</div><div class="sdf">Push — Pectoraux + Triceps + Deltoïde</div></div>
+          <div class="sd"><div class="sdn">Mardi</div><div class="sdf">Pull — Grand dorsal + Biceps + Ischios</div></div>
+          <div class="sd rest"><div class="sdn">Mercredi</div><div class="sdf">Repos actif</div></div>
+          <div class="sd"><div class="sdn">Jeudi</div><div class="sdf">Push — variation d'angles</div></div>
+          <div class="sd"><div class="sdn">Vendredi</div><div class="sdf">Pull — variation</div></div>
+          <div class="sd"><div class="sdn">Samedi</div><div class="sdf">Legs complet</div></div>
+          <div class="sd rest"><div class="sdn">Dimanche</div><div class="sdf">Repos & récupération</div></div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-title">Paramètres clés par séance</div>
-        <div class="params-grid">
-          <div class="param-card"><div class="param-label">Séries</div><div class="param-value">2 à 3 par exercice</div></div>
-          <div class="param-card"><div class="param-label">Répétitions</div><div class="param-value">6 à 15 reps</div></div>
-          <div class="param-card"><div class="param-label">Temps de repos</div><div class="param-value">2'30 à 3'15</div></div>
-          <div class="param-card"><div class="param-label">Intensité</div><div class="param-value">0–2 RIR selon série</div></div>
+      <div class="card-dark"><div class="ch-dark">Paramètres clés</div>
+        <div class="pg">
+          <div class="pm"><div class="pml">Séries</div><div class="pmv">2 à 3 / exercice</div></div>
+          <div class="pm"><div class="pml">Répétitions</div><div class="pmv">6 à 15 reps</div></div>
+          <div class="pm"><div class="pml">Repos</div><div class="pmv">2'30 à 3'15</div></div>
+          <div class="pm"><div class="pml">Intensité</div><div class="pmv">0–2 RIR / série</div></div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-title">Cardio & mouvement quotidien</div>
-        <ul>
-          <li><strong>Zone 2 (2×/sem)</strong><span>Natation ou marche inclinée — 125 à 130 BPM max</span></li>
-          <li><strong>Zone 4-5 (1×/sem)</strong><span>Air bike, rameur ou SkiErg — effort intense</span></li>
-          <li><strong>Pas quotidiens</strong><span>8 000 à 12 000 pas/jour minimum</span></li>
-          <li><strong>Anti-sédentarité</strong><span>10 squats toutes les 45 minutes (contrôle glycémie)</span></li>
-          <li><strong>Mobilité</strong><span>Chaque jour / Stretching 2–3×/semaine éloigné des séances</span></li>
-        </ul>
-      </div>
+      <div class="card-dark"><div class="ch-dark">Technique</div><ul>
+        <li><strong>Réglages</strong><span>Adapter chaque machine à ta morphologie avant chaque série — siège, dossier, angle des coudes, écartement</span></li>
+        <li><strong>Pectoraux</strong><span>Zéro cambrure excessive — change le faisceau ciblé et surcharge les lombaires</span></li>
+        <li><strong>Dos</strong><span>Éviter la rétraction scapulaire excessive pour cibler le grand dorsal</span></li>
+        <li><strong>Angle du coude</strong><span>Guide le faisceau ciblé — pec inférieur, moyen ou supérieur selon l'angle</span></li>
+        <li><strong>Ordre</strong><span>Commencer par les points faibles — ils reçoivent l'énergie maximale</span></li>
+        <li><strong>Tension</strong><span>Alterner étirement maximal et contraction maximale selon le muscle cible</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Cardio & mouvement</div><ul>
+        <li><strong>Zone 2 — 2×/sem</strong><span>Natation ou marche inclinée — 125–130 BPM, conversation possible</span></li>
+        <li><strong>Zone 4-5 — 1×/sem</strong><span>Air bike, rameur ou SkiErg — effort intense</span></li>
+        <li><strong>Pas quotidiens</strong><span>8 000 à 12 000 pas minimum</span></li>
+        <li><strong>Anti-sédentarité</strong><span>10 squats toutes les 45 minutes</span></li>
+        <li><strong>Mobilité</strong><span>Chaque jour · Stretching 2–3×/semaine éloigné des séances</span></li>
+      </ul></div>
+      <div class="tip-blue"><strong>Référence scientifique :</strong> 3 séances de force + 150 min Zone 2 + 75 min Zone 4-5 par semaine + mobilité.</div>
     </div>
 
-    <!-- SOMMEIL -->
-    <div class="tab-panel" id="tab-sleep">
-      <div class="quote-block">"Le dopant naturel le plus puissant au monde. Planifie ta journée autour de ton sommeil — c'est le rendez-vous le plus important de ton agenda. Rien n'influence ton existence plus que ça."</div>
-      <div class="card">
-        <div class="card-title">Protocole soir</div>
-        <ul>
-          <li><strong>Dernier repas</strong><span>Minimum 4 heures avant le coucher — évite les fluctuations de glycémie nocturnes</span></li>
-          <li><strong>Écrans off</strong><span>60 minutes avant de dormir — élève stress, fréquence cardiaque et éveil</span></li>
-          <li><strong>Wind-down 60 min</strong><span>Marche, lecture, journaling, respiration, méditation — pas de travail ni de conflit</span></li>
-          <li><strong>Lumière rouge</strong><span>Remplace lumière bleue le soir — prépare le corps au sommeil</span></li>
-          <li><strong>Environnement</strong><span>Chambre à 18–21°C, obscurité totale, silence ou bruit blanc</span></li>
-          <li><strong>Caféine</strong><span>Stop minimum 8–10 heures avant de dormir (demi-vie de 6 heures dans le sang)</span></li>
-          <li><strong>Heure fixe</strong><span>Même heure chaque soir — la cohérence est aussi importante que la durée</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">Protocole matin</div>
-        <ul>
-          <li><strong>Lumière naturelle</strong><span>Dans les 15–30 premières minutes — règle ton rythme circadien et booste la dopamine</span></li>
-          <li><strong>Tracker</strong><span>Mesurer sommeil profond et paradoxal — Apple Watch, Oura Ring, Whoop, Fitbit</span></li>
-        </ul>
-      </div>
+    <div class="pp" id="p-sleep">
+      <div class="quote">"Le dopant naturel le plus puissant. Planifie ta journée autour de ton sommeil — c'est le rendez-vous le plus important de ton agenda."</div>
+      <div class="card-dark"><div class="ch-dark">Protocole soir</div><ul>
+        <li><strong>Dernier repas</strong><span>Minimum 4h avant le coucher — préserve la mélatonine, stabilise la glycémie</span></li>
+        <li><strong>Écrans off</strong><span>60 min avant — réduit l'éveil, le cortisol et la fréquence cardiaque</span></li>
+        <li><strong>Wind-down 60 min</strong><span>Marche, lecture, journaling, respiration — aucun travail, aucun conflit</span></li>
+        <li><strong>Lumière rouge</strong><span>Lunettes anti-lumière bleue ou ampoule rouge — prépare le corps au sommeil</span></li>
+        <li><strong>Environnement</strong><span>18–21°C, obscurité totale, silence ou bruit blanc</span></li>
+        <li><strong>Caféine</strong><span>Stop minimum 8–10h avant — demi-vie de 6h dans le sang</span></li>
+        <li><strong>Heure fixe</strong><span>Même heure chaque soir — la régularité compte autant que la durée</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Protocole matin</div><ul>
+        <li><strong>Lumière naturelle</strong><span>Dans les 15–30 premières minutes — règle le rythme circadien</span></li>
+        <li><strong>Tracker</strong><span>Apple Watch, Oura Ring, Whoop, Fitbit — sommeil profond et paradoxal</span></li>
+      </ul></div>
     </div>
 
-    <!-- ENVIRONNEMENT -->
-    <div class="tab-panel" id="tab-environment">
-      <div class="quote-block">"Ton environnement impacte tes routines plus que ta propre volonté. Change d'abord ce qui t'entoure — le reste suit naturellement."</div>
-      <div class="card">
-        <div class="card-title">Cuisine — eliminer les toxines invisibles</div>
+    <div class="pp" id="p-env">
+      <div class="quote">"Ton environnement impacte tes routines plus que ta propre volonté. Commence par changer ce qui t'entoure."</div>
+      <div class="card-dark"><div class="ch-dark">Matériel de cuisine</div><ul>
+        <li><strong>Poêles</strong><span>Inox uniquement — éviter le téflon abîmé et l'aluminium non anodisé</span></li>
+        <li><strong>Ustensiles</strong><span>Bois ou inox — pas de plastique en contact avec la chaleur</span></li>
+        <li><strong>Conservation</strong><span>Contenants en inox ou verre</span></li>
+        <li><strong>Eau</strong><span>Filtre alcalin multi-niveaux, enrichie en sable de corail</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Réduire la charge quotidienne</div><ul>
+        <li><strong>Vêtements & draps</strong><span>Coton de préférence — le polyester libère des microplastiques au contact de la peau</span></li>
+        <li><strong>Produits parfumés</strong><span>Minimiser parfums synthétiques, bougies et sprays — perturbateurs hormonaux documentés</span></li>
+        <li><strong>Expositions chroniques</strong><span>Cigarette, carburant, tickets de caisse (BPA) — limiter autant que possible</span></li>
+      </ul></div>
+    </div>
+
+    <div class="pp" id="p-bio">
+      <div class="quote">"Le biohacking, c'est utiliser la biologie à ton avantage — pas des gadgets, des protocoles validés qui amplifient ce que tu construis déjà."</div>
+      <div class="card-dark"><div class="ch-dark">Sauna — protocole</div><ul>
+        <li><strong>Fréquence</strong><span>4–5×/semaine, 25–30 min à 90–100°C</span></li>
+        <li><strong>Bienfaits</strong><span>Équivalent cardiovasculaire du cardio, élimination des toxines, amélioration de la peau, réduction de l'inflammation</span></li>
+        <li><strong>Optimisation</strong><span>Hydratation avec électrolytes, chapeau sur la tête, glace sous les testicules</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Pratiques quotidiennes</div><ul>
+        <li><strong>Grounding</strong><span>3×/jour — pieds nus sur la terre. Réduit l'inflammation, améliore le sommeil.</span></li>
+        <li><strong>Exposition solaire</strong><span>Maximum en matinée et fin d'après-midi — sans protection pour la vitamine D</span></li>
+        <li><strong>Respiration</strong><span>Hyperventilation au réveil, cohérence cardiaque sous stress, respiration lente au coucher</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Complémentaire</div><ul>
+        <li><strong>Bain chaud post-entraînement</strong><span>Favorise la récupération sans inhiber les adaptations musculaires</span></li>
+        <li><strong>Bain froid</strong><span>Occasionnel, éloigné des séances. 30 sec–1 min. Pas après la salle.</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Outils & mesures</div><ul>
+        <li><strong>Trackers</strong><span>Apple Watch, Whoop (biceps), Oura Ring, Fitbit — sommeil, HRV, fréquence cardiaque</span></li>
+        <li><strong>Environnement nuit</strong><span>Masque, bouchons d'oreilles, strips nasales, lunettes anti-lumière bleue, lumière rouge</span></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-sep"></div>
+
+<!-- CARE — fond gris vitre -->
+<section class="sec" style="background:rgba(156,161,168,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)">
+  <div class="wrap">
+    <div class="s-ey reveal">Aller plus loin</div>
+    <h2 class="s-ti reveal d1">Peau · Cheveux · Bucco-dentaire</h2>
+    <p class="s-de reveal d2">L'apparence extérieure reflète ce que tu construis de l'intérieur. Protocoles minimalistes et efficaces.</p>
+    <div class="care-grid">
+      <div class="care-card reveal d2" style="background:var(--glass2);border-color:var(--glass-border2)">
+        <div class="care-num">PEAU</div>
+        <h3 style="color:var(--white)">Skincare</h3>
         <ul>
-          <li><strong>Poêles</strong><span>Inox uniquement — éviter téflon abîmé et aluminium non anodisé</span></li>
-          <li><strong>Ustensiles</strong><span>Bois ou inox — éviter le plastique en contact avec la chaleur</span></li>
-          <li><strong>Conservation</strong><span>Tupperware en inox ou verre</span></li>
-          <li><strong>Eau</strong><span>Filtre alcalin multi-niveaux, enrichie en sable de corail</span></li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Soir : nettoyant (CeraVe 3 céramides) → séchage microfibre → crème hydratante (The Ordinary NMF + HA)</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Matin : rinçage à l'eau + crème solaire SPF50+ (La Roche-Posay Anthelios)</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Après sauna : crème hydratante légère</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Exposition solaire matinale sans protection pour la vitamine D</li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-title">Quotidien — réduire la charge toxique</div>
+      <div class="care-card reveal d3" style="background:var(--glass2);border-color:var(--glass-border2)">
+        <div class="care-num">CHEVEUX</div>
+        <h3 style="color:var(--white)">Hair care</h3>
         <ul>
-          <li><strong>Vêtements & draps</strong><span>Coton de préférence — éviter le polyester au contact direct de la peau</span></li>
-          <li><strong>Parfums & bougies</strong><span>Minimiser les produits synthétiques parfumés dans l'espace de vie</span></li>
-          <li><strong>Cigarette & carburant</strong><span>Exposition minimale — perturbateurs endocriniens documentés</span></li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Shampoing sans sulfates tous les 3–4 jours</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Séchage microfibre — sèche-cheveux rarement</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Produit coiffant naturel à base aqueuse</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Nutrition capillaire par l'alimentation : protéines, Oméga-3, Zinc, Biotine, Vitamines C/D/E</li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-title">Biohacking actif — ce que je pratique</div>
+      <div class="care-card reveal d4" style="background:var(--glass2);border-color:var(--glass-border2)">
+        <div class="care-num">BOUCHE</div>
+        <h3 style="color:var(--white)">Bucco-dentaire</h3>
         <ul>
-          <li><strong>Sauna sec 90–100°C</strong><span>4–5×/semaine, 25–30 min — cardiovasculaire, peau, élimination microplastiques, aussi efficace que le cardio</span></li>
-          <li><strong>Grounding</strong><span>3×/jour — contact avec la terre pour la réduction de l'inflammation</span></li>
-          <li><strong>Exposition solaire</strong><span>Maximum en matinée et fin d'après-midi — sans crème pour la synthèse de vitamine D</span></li>
-          <li><strong>Respiration spécifique</strong><span>Hyperventilation au réveil, cohérence cardiaque en cas de stress, respiration lente au coucher</span></li>
-          <li><strong>Bain froid</strong><span>Occasionnel et éloigné des entraînements — 30 sec à 1 min pour le boost dopamine</span></li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Matin & soir : hydropulseur ou jet dentaire</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Soie dentaire</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Brosse électrique à poils souples</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Gratte-langue (occasionnel)</li>
+          <li style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.06)">Dentiste 2×/an minimum</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BONUS : SKIN / HAIR / ORAL -->
-<section class="section">
-  <div class="container">
-    <div class="section-eyebrow">Bonus</div>
-    <h2 class="section-title">Soin du visage, corps & cheveux</h2>
-    <p class="section-desc">L'esthétique extérieure reflète ce que tu fais de ton corps. Protocole minimaliste et efficace.</p>
+<div class="sec-sep"></div>
 
-    <div class="card">
-      <div class="card-title">Skincare — protocole minimaliste</div>
-      <ul>
-        <li><strong>Soir</strong><span>Nettoyant adapté (CeraVe 3 céramides) → séchage microfibre → sérum (optionnel) → crème hydratante (The Ordinary NMF + HA)</span></li>
-        <li><strong>Matin</strong><span>Rinçage à l'eau → crème solaire SPF50+ (La Roche-Posay Anthelios Uvimune, selon indice UV min. 3)</span></li>
-        <li><strong>Après sauna/douche</strong><span>Crème hydratante légère visage et corps selon état de la peau</span></li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">Hair care</div>
-      <ul>
-        <li><strong>Shampoing</strong><span>Sans sulfates, tous les 3–4 jours (ajuster selon sauna, natation)</span></li>
-        <li><strong>Séchage</strong><span>Microfibre uniquement — sèche-cheveux rarement</span></li>
-        <li><strong>Coiffage</strong><span>Produit naturel à base aqueuse</span></li>
-        <li><strong>Nutrition capillaire</strong><span>Protéines, Oméga-3, Biotine, Zinc, Vitamines C/D/E — vient de l'alimentation en priorité</span></li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">Oral care</div>
-      <ul>
-        <li><strong>Quotidien matin & soir</strong><span>Hydropulseur ou jet dentaire → soie dentaire → brosse électrique poils souples → gratte-langue (occasionnel)</span></li>
-        <li><strong>Dentiste</strong><span>2×/an minimum</span></li>
-      </ul>
-    </div>
+<!-- ROUTINE — fond noir vitre -->
+<section class="sec sec-glass">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Ma journée type</div>
+    <h2 class="s-ti s-ti-w reveal d1">La routine complète</h2>
+    <p class="s-de s-de-w reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie élevée et maximiser la qualité du sommeil.</p>
+    <div class="card-dark reveal d3"><div class="rout">
+      <div class="rr"><div class="rt">5h00</div><div class="rd"><strong>Réveil naturel</strong> — Hydratation + minéraux, lumière thérapie, mobilisation, respiration</div></div>
+      <div class="rr"><div class="rt">5h30</div><div class="rd">Cardio zone 2 + marche, exposition à la lumière naturelle</div></div>
+      <div class="rr"><div class="rt">6h15</div><div class="rd"><strong>Petit déjeuner</strong> — Protéines + bonnes graisses + myrtilles</div></div>
+      <div class="rr"><div class="rt">7h00</div><div class="rd"><strong>Deep work 1</strong> — Création, planification, analyse. Sans écran ni téléphone au préalable.</div></div>
+      <div class="rr"><div class="rt">9h00</div><div class="rd">Coaching online + deep work 2</div></div>
+      <div class="rr"><div class="rt">11h00</div><div class="rd">Marche dehors ou plongeon piscine — <strong>stop caféine</strong></div></div>
+      <div class="rr"><div class="rt">12h00</div><div class="rd"><strong>Déjeuner</strong> — Protéines ++ · Glucides complexes ++ · Lipides +</div></div>
+      <div class="rr"><div class="rt">14h30</div><div class="rd"><strong>Entraînement + Sauna</strong> — Pré-workout : glucides simples</div></div>
+      <div class="rr"><div class="rt">16h15</div><div class="rd">Post-workout protéiné (optionnel) + travail basique</div></div>
+      <div class="rr"><div class="rt">18h30</div><div class="rd"><strong>Dîner — dernier repas</strong> — Protéines ++ · Lipides + · Glucides complexes +</div></div>
+      <div class="rr"><div class="rt">19h30</div><div class="rd">Lunettes anti-lumière bleue · Relax & moment social</div></div>
+      <div class="rr"><div class="rt">20h30</div><div class="rd"><strong>Zéro stimulation</strong> — Plus d'écran, plus de lumière vive</div></div>
+      <div class="rr"><div class="rt">21h00</div><div class="rd">Préparation au sommeil — obscurité, 18–21°C, calme absolu</div></div>
+      <div class="rr"><div class="rt">21h30</div><div class="rd"><strong>Début du premier cycle de sommeil</strong></div></div>
+    </div></div>
   </div>
 </section>
 
-<!-- ROUTINE QUOTIDIENNE -->
-<section class="section">
-  <div class="container">
-    <div class="section-eyebrow">Ma journée type</div>
-    <h2 class="section-title">La routine complète</h2>
-    <p class="section-desc">Conçue pour réguler le rythme circadien, maintenir une énergie élevée, optimiser la productivité et la qualité du sommeil.</p>
-    <div class="card">
-      <div class="routine-list">
-        <div class="routine-row"><div class="routine-time">5h00</div><div class="routine-desc"><strong>Réveil naturel</strong> — Mesure corporelle, hydratation + minéraux, lumière thérapie, mobilité, respiration spécifique</div></div>
-        <div class="routine-row"><div class="routine-time">5h30</div><div class="routine-desc">Cardio zone 2 (selon objectif) + marche tête en extension, exposition lumière naturelle</div></div>
-        <div class="routine-row"><div class="routine-time">6h15</div><div class="routine-desc"><strong>Petit déjeuner</strong> — Riche en protéines + bonnes graisses + myrtilles. Lever de soleil si possible.</div></div>
-        <div class="routine-row"><div class="routine-time">7h00</div><div class="routine-desc"><strong>Deep work 1</strong> — Création, planification, analyse (aucun écran avant). Sans téléphone.</div></div>
-        <div class="routine-row"><div class="routine-time">9h00</div><div class="routine-desc">Coaching online + deep work 2</div></div>
-        <div class="routine-row"><div class="routine-time">11h00</div><div class="routine-desc">Marche dehors ou plongeon piscine. <strong>Stop caféine.</strong></div></div>
-        <div class="routine-row"><div class="routine-time">12h00</div><div class="routine-desc"><strong>Déjeuner</strong> — Protéines ++ · Glucides complexes ++ · Lipides +</div></div>
-        <div class="routine-row"><div class="routine-time">14h30</div><div class="routine-desc"><strong>Entraînement + Sauna</strong> — Pré-workout : glucides simples (galette riz chocolat)</div></div>
-        <div class="routine-row"><div class="routine-time">16h15</div><div class="routine-desc">Post-workout protéiné (optionnel) + travail basique</div></div>
-        <div class="routine-row"><div class="routine-time">18h30</div><div class="routine-desc"><strong>Dîner</strong> — Dernier repas : Protéines ++ · Lipides + · Glucides complexes +</div></div>
-        <div class="routine-row"><div class="routine-time">19h30</div><div class="routine-desc">Lunettes anti-lumière bleue. Relax & moment social léger.</div></div>
-        <div class="routine-row"><div class="routine-time">20h30</div><div class="routine-desc"><strong>Zéro stimulation</strong> — Plus d'écran, plus de lumière vive. Marche nocturne courte.</div></div>
-        <div class="routine-row"><div class="routine-time">21h00</div><div class="routine-desc">Préparation au sommeil — calme, obscurité, température fraîche (18–21°C)</div></div>
-        <div class="routine-row"><div class="routine-time">21h30</div><div class="routine-desc"><strong>Début du premier cycle de sommeil</strong></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="sec-sep"></div>
 
-<!-- OUTILS -->
-<section class="section">
-  <div class="container">
-    <div class="section-eyebrow">Outils</div>
-    <h2 class="section-title">Passe à l'action maintenant</h2>
-    <p class="section-desc">Deux ressources pour démarrer immédiatement.</p>
-    <div class="tools-grid">
-      <a href="https://docs.google.com/spreadsheets/d/TON_LIEN_ICI/copy" class="tool-card" target="_blank">
-        <div class="tool-num">01</div>
-        <h3>Tracker de performance</h3>
-        <p>Google Sheet pour suivre nutrition, entraînement, sommeil et biohacking — avec colonnes de suivi semaine par semaine.</p>
-        <div class="tool-link">Télécharger le tracker →</div>
+<!-- OUTILS — fond gris vitre -->
+<section class="sec" style="background:rgba(156,161,168,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Passe à l'action</div>
+    <h2 class="s-ti s-ti-w reveal d1">Outils gratuits</h2>
+    <p class="s-de s-de-w reveal d2">Deux ressources pour démarrer immédiatement.</p>
+    <div class="tg">
+      <a href="https://docs.google.com/spreadsheets/d/TON_LIEN_TRACKER/copy" class="tool reveal d2" target="_blank" style="background:var(--glass2);border-color:var(--glass-border2)">
+        <div class="tool-n">OUTIL 01</div>
+        <h3 style="color:var(--white)">Tracker de performance</h3>
+        <p style="color:rgba(255,255,255,.55)">Google Sheet pour suivre tes 5 piliers semaine par semaine.</p>
+        <div class="tool-a" style="color:var(--blue);border-color:var(--glass-border)">Copier le tracker →</div>
       </a>
-      <a href="https://calendly.com/florian-parietti/30min" class="tool-card" target="_blank">
-        <div class="tool-num">02</div>
-        <h3>Bilan gratuit — 30 min</h3>
-        <p>J'analyse où tu en es, ce qui te bloque réellement et ce que tu dois changer en priorité. Sans engagement.</p>
-        <div class="tool-link">Réserver mon bilan →</div>
+      <a href="https://calendly.com/florian-parietti/30min" class="tool reveal d3" target="_blank" style="background:var(--glass2);border-color:var(--glass-border2)">
+        <div class="tool-n">OUTIL 02</div>
+        <h3 style="color:var(--white)">Bilan gratuit — 30 min</h3>
+        <p style="color:rgba(255,255,255,.55)">J'analyse où tu en es, ce qui te bloque et ce que tu dois changer en priorité. Sans engagement.</p>
+        <div class="tool-a" style="color:var(--blue);border-color:var(--glass-border)">Réserver maintenant →</div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="container">
-    <h2>Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
-    <div class="cta-box">
-      <div class="cta-box-title">Bilan gratuit — 30 minutes</div>
-      <p class="cta-box-sub">J'analyse ta situation, ton blocage principal et ce que tu dois changer en premier. Gratuit. Sans bullshit. Sans engagement.</p>
-      <a href="https://calendly.com/florian-parietti/30min" class="cta-big-btn" target="_blank">Réserver mon bilan maintenant →</a>
-      <p class="cta-note">Places limitées — coaching 1-1 uniquement</p>
+<!-- CTA FINAL — fond verre -->
+<section class="ctaf">
+  <div class="wrap">
+    <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
+    <div class="ctab reveal d2">
+      <div class="ctab-ti">Bilan gratuit — 30 minutes</div>
+      <p class="ctab-su">J'analyse ta situation, ton blocage principal et ce que tu dois changer en premier. Gratuit. Sans bullshit. Sans engagement.</p>
+      <div class="ctaf-btns">
+        <!-- fond verre/noir → bouton bleu -->
+        <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn-blue" target="_blank">Réserver mon bilan maintenant</a>
+      </div>
+      <p class="ctab-no">Places limitées · Coaching 1-1 uniquement</p>
     </div>
   </div>
 </section>
 
-<div class="container">
-  <div class="disclaimer">
-    <strong>Avertissement médical.</strong> Ce plan est basé sur mon expérience personnelle et mes recherches. Il ne remplace en aucun cas un avis médical professionnel. Consulte un médecin ou un professionnel de santé qualifié avant tout changement significatif de ton alimentation, de ton entraînement ou de tes habitudes de vie, en particulier si tu présentes des conditions médicales spécifiques (diabète, cholestérol, blessures, pathologies cardiovasculaires). Les résultats présentés sont individuels et ne constituent pas une promesse de résultats identiques. Ce contenu est fourni à titre informatif et éducatif uniquement.
-  </div>
+<div class="disc">
+  <div class="wrap"><p><strong>Avertissement.</strong> Ce plan est basé sur mon expérience personnelle et mes recherches. Il ne remplace pas un avis médical professionnel. Consulte un médecin avant tout changement significatif. Les résultats sont individuels.</p></div>
 </div>
 
-</div><!-- end plan-content -->
+</div><!-- /plan -->
 
 <script>
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-document.getElementById("access-form").addEventListener("submit", async function(e) {
+function tgl(l){l.classList.toggle('sel')}
+
+const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+document.getElementById('access-form').addEventListener('submit',async function(e){
   e.preventDefault();
-  const email = document.getElementById("email").value.trim();
-  const instagram = document.getElementById("instagram").value.trim();
-  const objectif = document.getElementById("objectif").value;
-  const errorEl = document.getElementById("error-msg");
-
-  if (!email || !instagram || !objectif) {
-    errorEl.style.display = "block";
-    return;
-  }
-  errorEl.style.display = "none";
-
-  const btn = this.querySelector(".submit-btn");
-  btn.textContent = "Chargement...";
-  btn.disabled = true;
-
-  try {
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        email,
-        instagram,
-        objectif,
-        date: new Date().toLocaleString("fr-BE"),
-        statut: "Nouveau",
-        relance: "",
-        notes: ""
-      })
-    });
-  } catch(err) {}
-
-  document.getElementById("gate-section").style.display = "none";
-  const plan = document.getElementById("plan-content");
-  plan.style.display = "block";
-  plan.scrollIntoView({behavior:"smooth"});
+  const em=document.getElementById('email').value.trim();
+  const ig=document.getElementById('insta').value.trim();
+  const ph=[...document.querySelectorAll('#phys .ck.sel input')].map(i=>i.value);
+  const sa=[...document.querySelectorAll('#sante .ck.sel input')].map(i=>i.value);
+  const err=document.getElementById('err');
+  if(!em||!ig||[...ph,...sa].length===0){err.style.display='block';return;}
+  err.style.display='none';
+  const autre=document.getElementById('autre-txt').value.trim();
+  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';btn.disabled=true;
+  try{await fetch(SU,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,instagram:ig,objectif_physique:ph.join(' | '),objectif_sante:sa.join(' | '),autre:autre,date:new Date().toLocaleString('fr-BE'),statut:'Nouveau',relance:'',notes:''})});}catch(x){}
+  document.querySelector('[id="gate"]').style.display='none';
+  const p=document.getElementById('plan');
+  p.style.display='block';
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
+  p.scrollIntoView({behavior:'smooth'});
 });
 
-function switchTab(e, id) {
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-  e.target.classList.add("active");
-  document.getElementById("tab-" + id).classList.add("active");
+function sp(e,id){
+  document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.pp').forEach(p=>p.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('p-'+id).classList.add('active');
 }
 </script>
-
 </body>
 </html>
