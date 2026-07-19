@@ -43,17 +43,16 @@ a{text-decoration:none;color:inherit}
 .nav-btn:hover{background:var(--off);transform:translateY(-1px)}
 
 /* HERO */
-.hero{background:var(--glass);color:var(--white);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 100px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 60% 20%,rgba(0,102,255,.07) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(0,102,255,.04) 0%,transparent 60%);pointer-events:none}
+.hero{background:var(--glass);color:var(--white);min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 20%,rgba(0,102,255,.07) 0%,transparent 60%);pointer-events:none}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);border:1.5px solid var(--white);border-radius:100px;padding:7px 20px;margin-bottom:36px}
 .hero-tag-dot{width:5px;height:5px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
-.hero h1{font-size:clamp(2.8rem,6.5vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-.055em}
+.hero h1{font-size:clamp(2.8rem,6.5vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-.055em;text-align:center}
 .hero h1 em{font-style:normal;color:var(--blue)}
-/* Encadrés intro fond transparent bord blanc */
-.hero-intro{font-size:1rem;color:var(--white);max-width:600px;margin:28px 0 16px;line-height:1.88;font-weight:400;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r);padding:28px 32px}
+.hero-intro{font-size:1rem;color:var(--white);max-width:600px;margin:28px auto 16px;line-height:1.88;font-weight:400;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r);padding:28px 32px;text-align:left}
 .hero-intro strong{color:var(--white);font-weight:700}
 .hero-intro2{font-size:1.05rem;color:var(--white);max-width:480px;margin:0 auto 48px;line-height:1.7;font-weight:500;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r);padding:22px 32px;text-align:center}
-.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
 .btn-blue{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:var(--white);font-weight:600;font-size:.92rem;padding:15px 30px;border-radius:100px;transition:all .2s;animation:glowBlue 2.5s ease infinite}
 .btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
 .btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--black);font-weight:600;font-size:.92rem;padding:15px 30px;border-radius:100px;transition:all .2s}
@@ -281,18 +280,18 @@ a{text-decoration:none;color:inherit}
         <div class="fg"><label class="fl" for="insta">Compte Instagram</label><input class="fi" type="text" id="insta" placeholder="@toncompte"></div>
         <div class="fs-lbl" style="margin-top:28px">Objectif physique <span style="font-weight:400;opacity:.6;text-transform:none;letter-spacing:0">(optionnel)</span></div>
         <div class="ckg" id="phys">
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Recomposition corporelle"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Recomposition corporelle<br><small>Perte de gras + prise de muscle</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Prise de muscle — lean bulk"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Prise de muscle<br><small>Lean bulk, gras limité au max</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Perte de gras — définition et maintien"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Perte de gras<br><small>Définition & maintien musculaire</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Recomposition corporelle"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Recomposition corporelle<br><small>Perte de gras + prise de muscle</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Prise de muscle — lean bulk"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Prise de muscle<br><small>Lean bulk, gras limité au max</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Perte de gras — définition et maintien"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Perte de gras<br><small>Définition & maintien musculaire</small></span></label>
         </div>
         <div class="fs-lbl" style="margin-top:24px">Objectif santé <span style="font-weight:400;opacity:.6;text-transform:none;letter-spacing:0">(optionnel)</span></div>
         <div class="ckg" id="sante">
-          <label class="ck ck-feat sel" onclick="tgl(this)" style="grid-column:1/-1"><input type="checkbox" value="Optimisation complète 5 piliers" checked><span class="ck-box"><span class="ck-tick" style="display:block">✓</span></span><span class="ck-tx"><strong>Optimisation complète des 5 piliers</strong></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Sommeil profond"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Sommeil profond<br><small>Protocoles & routines</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Nutrition — alimentation optimale"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Nutrition<br><small>Alimentation optimale</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Environnement non-toxique"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Environnement<br><small>Non-toxique</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Biohacking — sauna, froid, grounding"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Biohacking<br><small>Sauna, froid, grounding...</small></span></label>
-          <label class="ck" onclick="tgl(this)"><input type="checkbox" value="Énergie et productivité"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Énergie & productivité<br><small>Performance cognitive & physique</small></span></label>
+          <label class="ck ck-feat sel" onclick="tgl(this,event)" style="grid-column:1/-1"><input type="checkbox" value="Optimisation complète 5 piliers" checked><span class="ck-box"><span class="ck-tick" style="display:block">✓</span></span><span class="ck-tx"><strong>Optimisation complète des 5 piliers</strong></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Sommeil profond"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Sommeil profond<br><small>Protocoles & routines</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Nutrition — alimentation optimale"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Nutrition<br><small>Alimentation optimale</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Environnement non-toxique"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Environnement<br><small>Non-toxique</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Biohacking — sauna, froid, grounding"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Biohacking<br><small>Sauna, froid, grounding...</small></span></label>
+          <label class="ck" onclick="tgl(this,event)"><input type="checkbox" value="Énergie et productivité"><span class="ck-box"><span class="ck-tick">✓</span></span><span class="ck-tx">Énergie & productivité<br><small>Performance cognitive & physique</small></span></label>
         </div>
         <div class="fs-lbl" style="margin-top:24px">Autre <span style="font-weight:400;opacity:.6;text-transform:none;letter-spacing:0">(optionnel)</span></div>
         <textarea class="fi" id="autre-txt" rows="2" placeholder="Précise ton objectif ou ta situation..." style="resize:none;font-family:var(--font);line-height:1.5"></textarea>
@@ -595,8 +594,13 @@ a{text-decoration:none;color:inherit}
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Checkbox toggle
-function tgl(l){l.classList.toggle('sel')}
+// Checkbox toggle — corrigé pour éviter le double événement label+input
+function tgl(label,event){
+  event.preventDefault();
+  label.classList.toggle('sel');
+  const input=label.querySelector('input');
+  input.checked=label.classList.contains('sel');
+}
 
 // Google Sheet via FormData
 const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
