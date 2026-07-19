@@ -138,44 +138,7 @@ a{text-decoration:none;color:inherit}
 .t-arrow::before{content:'';position:absolute;width:1px;height:100%;background:rgba(255,255,255,.15);left:50%;transform:translateX(-50%)}
 
 /* PILIERS */
-.pnav{display:flex;gap:2px;background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:4px;margin-bottom:40px;overflow-x:auto}
-.pbtn{flex:1;min-width:max-content;display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.45);background:none;border:none;border-radius:var(--rs);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
-.pbtn:hover{color:var(--white)}
-.pbtn.active{background:rgba(255,255,255,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);color:var(--white)}
-.pbtn-n{font-size:10px;font-weight:700;color:var(--blue);background:rgba(0,102,255,.18);border-radius:100px;padding:2px 8px}
-.pp{display:none}
-.pp.active{display:block;animation:panelIn .35s ease}
-.quote{background:rgba(0,102,255,.07);border:1px solid rgba(0,102,255,.2);border-left:3px solid var(--blue);border-radius:0 var(--rs) var(--rs) 0;padding:18px 22px;margin-bottom:24px;font-size:.93rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.7}
-.card-dark{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:26px;margin-bottom:12px}
-.ch-dark{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--glass-border)}
-.card-dark ul{list-style:none}
-.card-dark li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.87rem;align-items:start;line-height:1.5}
-.card-dark li:last-child{border-bottom:none}
-.card-dark li strong{color:var(--white);font-weight:600;font-size:.8rem;white-space:nowrap}
-.card-dark li span{color:rgba(255,255,255,.6)}
-/* 4. Macros 50/25/25 — gris vitre */
-.mr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.mc{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--rs);padding:20px;text-align:center}
-.mn{font-size:2.2rem;font-weight:700;letter-spacing:-.05em;color:var(--white)}
-.ml{font-size:.76rem;color:rgba(255,255,255,.55);margin-top:3px;font-weight:600}
-.ms{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:2px}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.tag{font-size:.75rem;padding:5px 14px;border-radius:100px;border:1px solid;font-weight:600}
-.tag.g{color:var(--green);background:var(--green-l);border-color:var(--green-b)}
-.tag.r{color:var(--red);background:var(--red-l);border-color:var(--red-b)}
-/* 4. Split days et params — gris vitre */
-.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
-.sd{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--rs);padding:14px 16px}
-.sdn{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px}
-.sdf{font-size:.87rem;color:var(--white);font-weight:500}
-.sd.rest .sdf{color:rgba(255,255,255,.3)}
-.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
-.pm{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--rs);padding:14px 16px}
-.pml{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px}
-.pmv{font-size:.92rem;color:var(--white);font-weight:700}
-.tip-blue{background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.2);border-radius:var(--rs);padding:14px 16px;margin-top:10px;font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6}
-.tip-blue strong{color:var(--white);font-weight:700}
-/* Encadrés blancs sur fond bleu (Transformation + Routine) */
+/* Encadrés NOIRS glassmorphism — sur fond BLEU */
 .sec-gradient .t-item,
 .sec-gradient .card-dark,
 .sec-gradient .mc,
@@ -183,20 +146,36 @@ a{text-decoration:none;color:inherit}
 .sec-gradient .pm,
 .sec-gradient .quote,
 .sec-gradient .tip-blue,
-.sec-gradient .pnav{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.25)}
-.sec-gradient .pbtn.active{background:rgba(255,255,255,0.25)}
-.sec-gradient .t-photo{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.25)}
+.sec-gradient .pnav{background:rgba(0,0,0,0.28);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:rgba(0,0,0,0.2)}
+.sec-gradient .pbtn.active{background:rgba(0,0,0,0.38)}
+.sec-gradient .t-photo{background:rgba(0,0,0,0.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:rgba(0,0,0,0.15)}
 
-/* Encadrés blancs sur fond gris vitre (Care + Outils) */
-.sec-vitre .care-card,
-.sec-vitre .tool{background:rgba(255,255,255,0.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:rgba(255,255,255,0.3)}
-.care-card{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:28px}
-.care-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
-.care-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--white)}
+/* CARE — grille 3 colonnes, encadrés blancs solides texte noir */
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.care-card{background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.95);border-radius:var(--r);padding:28px}
+.care-num{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.care-card h3{font-size:1rem;font-weight:800;margin-bottom:16px;color:var(--black)}
 .care-card ul{list-style:none}
-.care-card li{font-size:.83rem;color:rgba(255,255,255,.6);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.5;display:flex;gap:8px}
+.care-card li{font-size:.83rem;color:var(--black);font-weight:500;padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.07);line-height:1.5;display:flex;gap:8px}
 .care-card li:last-child{border-bottom:none}
-.care-card li::before{content:'—';color:rgba(255,255,255,.2);flex-shrink:0}
+.care-card li::before{content:'—';color:var(--gray-mid);flex-shrink:0}
+
+/* OUTILS — encadrés blancs solides texte noir */
+.tool{background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.95);border-radius:var(--r);padding:32px;display:block;transition:all .25s;position:relative;overflow:hidden}
+.tool:hover{background:rgba(255,255,255,0.95);transform:translateY(-3px)}
+.tool:hover::after{transform:scaleX(1)}
+.tool-n{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.tool h3{font-size:1.05rem;font-weight:800;color:var(--black);margin-bottom:8px}
+.tool p{font-size:.83rem;color:var(--black);opacity:.6;line-height:1.6;font-weight:500}
+.tool-a{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--black);margin-top:18px;font-weight:800;border-bottom:1.5px solid rgba(0,0,0,0.15);padding-bottom:2px}
+
+/* Piliers — pnav et encadrés blancs légers sur fond noir */
+.pnav{display:flex;gap:2px;background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:4px;margin-bottom:40px;overflow-x:auto}
+.pbtn.active{background:rgba(255,255,255,0.14);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:var(--white);border-radius:var(--rs)}
+.card-dark{background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);padding:26px;margin-bottom:12px}
+.mc{background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rs);padding:20px;text-align:center}
+.sd{background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rs);padding:14px 16px}
+.pm{background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rs);padding:14px 16px}
 
 /* ROUTINE — tout blanc */
 .rout{margin-top:0}
@@ -207,14 +186,6 @@ a{text-decoration:none;color:inherit}
 
 /* OUTILS */
 .tg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.tool{background:rgba(255,255,255,0.15);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:32px;display:block;transition:all .25s;position:relative;overflow:hidden}
-.tool::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transition:transform .3s;transform-origin:left}
-.tool:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
-.tool:hover::after{transform:scaleX(1)}
-.tool-n{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
-.tool h3{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
-.tool p{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.6}
-.tool-a{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--blue);margin-top:18px;font-weight:700}
 
 /* CTA */
 .ctaf{background:var(--glass);padding:120px 0;text-align:center;position:relative;overflow:hidden}
