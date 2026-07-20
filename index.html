@@ -70,7 +70,7 @@ a{text-decoration:none;color:inherit}
 .p2{width:3px;height:3px;background:rgba(255,255,255,.5);opacity:.5;animation:orbit2 12s linear infinite}
 .p3{width:2px;height:2px;background:rgba(0,102,255,.6);opacity:.4;animation:orbit3 16s linear infinite}
 /* Scan line */
-.hero-scan{position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,rgba(0,102,255,.4),transparent);animation:scanLine 6s ease-in-out infinite;pointer-events:none}
+
 /* Grille */
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white);border:1.5px solid var(--white);border-radius:100px;padding:7px 20px;margin-bottom:36px}
@@ -185,24 +185,23 @@ a{text-decoration:none;color:inherit}
 .t-col{display:flex;flex-direction:column;gap:8px}
 .t-col-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;padding:0 4px}
 .t-lbl-b{color:var(--red)}.t-lbl-a{color:var(--green)}
-.t-item{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:var(--r-md);padding:14px 18px;font-size:.87rem;display:flex;align-items:center;gap:10px;line-height:1.4}
+.t-item{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:var(--r-md);padding:14px 18px;font-size:.87rem;display:flex;align-items:center;gap:10px;line-height:1.4;transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.t-item:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:2}
 .t-connectors{display:flex;flex-direction:column;gap:8px;padding:0 8px;padding-top:32px}
+.t-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .t-dot.bad{background:var(--red)}.t-dot.good{background:var(--green)}
 .t-tx-m{color:rgba(0,0,0,.55);font-weight:500}
 .t-tx-br{color:var(--black);font-weight:700}
-/* Mise en évidence labels */
-.t-lbl-b{color:var(--white);font-weight:800;font-size:11px;background:rgba(220,38,38,.7);display:inline-block;padding:4px 12px;border-radius:20px;letter-spacing:.1em}
-.t-lbl-a{color:var(--white);font-weight:800;font-size:11px;background:rgba(22,163,74,.7);display:inline-block;padding:4px 12px;border-radius:20px;letter-spacing:.1em}
+.t-lbl-b{color:var(--white);font-weight:800;font-size:11px;background:rgba(220,38,38,.8);display:inline-block;padding:4px 12px;border-radius:20px;letter-spacing:.1em}
+.t-lbl-a{color:var(--white);font-weight:800;font-size:11px;background:rgba(22,163,74,.8);display:inline-block;padding:4px 12px;border-radius:20px;letter-spacing:.1em}
 .t-arrow{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
-.t-item{transition:all .25s cubic-bezier(.34,1.56,.64,1)}
-.t-item:hover{transform:scale(1.04);box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:2}
 .t-arrow::before{content:'';position:absolute;width:1px;height:100%;background:rgba(255,255,255,.2);left:50%;transform:translateX(-50%)}
 /* routine sur fond bleu */
-.rout{margin-top:0}
-.rr{display:grid;grid-template-columns:72px 1fr;min-height:48px;transition:background .2s}
-.rr:hover{background:rgba(0,0,0,.03);border-radius:var(--r-md)}
-.rt{font-size:.72rem;font-weight:800;color:var(--blue);padding:14px 14px 14px 0;border-right:1px solid rgba(0,0,0,.08);text-align:right;line-height:1.3;letter-spacing:.02em}
-.rd{font-size:.87rem;color:rgba(0,0,0,.7);padding:14px 0 14px 20px;border-bottom:1px solid rgba(0,0,0,.06);line-height:1.5}
+.rout{margin-top:0;display:flex;flex-direction:column;gap:4px}
+.rr{display:grid;grid-template-columns:72px 1fr;min-height:48px;background:var(--white);border-radius:var(--r-md);transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.rr:hover{transform:scale(1.02) translateX(4px);box-shadow:0 6px 24px rgba(0,0,0,.12);z-index:2}
+.rt{font-size:.72rem;font-weight:800;color:var(--blue);padding:14px 14px 14px 0;border-right:2px solid rgba(0,102,255,.15);text-align:right;line-height:1.3;letter-spacing:.02em}
+.rd{font-size:.87rem;color:rgba(0,0,0,.7);padding:14px 0 14px 20px;line-height:1.5}
 .rd strong{color:var(--black);font-weight:800}
 
 /* ── PILIERS — fond noir, grande card gris vitre, bulles secondaires blanches ── */
@@ -313,7 +312,6 @@ a{text-decoration:none;color:inherit}
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <div class="hero-scan"></div>
   <div class="hero-orbit-wrap">
     <div class="hero-particle p1"></div>
     <div class="hero-particle p2"></div>
@@ -385,7 +383,7 @@ a{text-decoration:none;color:inherit}
     <div class="s-ey s-ey-w reveal">La réalité</div>
     <h2 class="s-ti reveal d1">Ma transformation</h2>
     <div class="t-photo reveal d2"><div style="text-align:center;padding:24px"><div class="t-ph-ic">📸</div><div class="t-ph-tx">Photos transformation 2019 → 2026 à intégrer</div></div></div>
-    <div class="t-grid reveal d3">
+    <div class="t-grid reveal d3" style="background:var(--black);border-radius:var(--r);padding:28px;box-shadow:0 8px 40px rgba(0,0,0,.4)">
       <div class="t-col">
         <div class="t-col-lbl t-lbl-b">Avant — 2019/2023</div>
         <div class="t-item"><span class="t-dot bad"></span><span class="t-tx-m">Skinny/fat</span></div>
@@ -618,7 +616,7 @@ a{text-decoration:none;color:inherit}
     <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
     <p class="s-de reveal d2" style="color:rgba(255,255,255,.7)">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
-    <div class="card-blue reveal d3" style="background:var(--white);border-color:rgba(0,0,0,.08)"><div class="rout">
+    <div class="card-blue reveal d3" style="background:var(--black);border:none;border-radius:var(--r);box-shadow:0 8px 40px rgba(0,0,0,.5);padding:8px"><div class="rout">
       <div class="rr"><div class="rt">5h00</div><div class="rd"><strong>Réveil naturel</strong> — Hydratation + minéraux, lumière thérapie, mobilisation, respiration</div></div>
       <div class="rr"><div class="rt">5h30</div><div class="rd">Cardio zone 2 + marche, exposition à la lumière naturelle</div></div>
       <div class="rr"><div class="rt">6h15</div><div class="rd"><strong>Petit déjeuner</strong> — Protéines + bonnes graisses + myrtilles ou fruits rouges</div></div>
