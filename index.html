@@ -202,12 +202,10 @@ a{text-decoration:none;color:inherit}
 .t-arrow::before{content:'';position:absolute;width:1px;height:100%;background:rgba(255,255,255,.2);left:50%;transform:translateX(-50%)}
 /* routine sur fond bleu */
 .rout{margin-top:0}
-.rout{display:flex;flex-direction:column;gap:6px}
-.rr{display:grid;grid-template-columns:72px 1fr;min-height:44px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:var(--r-md);box-shadow:0 2px 12px rgba(0,0,0,.12);transition:all .25s cubic-bezier(.34,1.56,.64,1)}
-.rr:hover{transform:scale(1.02) translateX(3px);box-shadow:0 6px 24px rgba(0,0,0,.18)}
-.rt{font-size:.72rem;font-weight:800;color:var(--blue);padding:14px 14px 14px 12px;border-right:2px solid rgba(0,102,255,.2);text-align:right;line-height:1.3;letter-spacing:.02em}
-.rd{font-size:.87rem;color:rgba(0,0,0,.75);padding:14px 20px 14px 18px;line-height:1.5;font-weight:500}
-.rd strong{color:var(--black);font-weight:800}
+.rr{display:grid;grid-template-columns:72px 1fr;min-height:44px}
+.rr:hover .rd{background:rgba(0,0,0,.08);border-radius:0 var(--r-md) var(--r-md) 0}
+.rt{font-size:.72rem;font-weight:800;color:var(--blue);padding:14px 14px 14px 0;border-right:2px solid rgba(0,102,255,.15);text-align:right;line-height:1.3;letter-spacing:.02em}
+.rd{font-size:.87rem;color:rgba(0,0,0,.7);padding:14px 0 14px 20px;line-height:1.5}
 .rd strong{color:var(--black);font-weight:800}
 
 /* ── PILIERS — fond noir, grande card gris vitre, bulles secondaires blanches ── */
@@ -323,17 +321,16 @@ a{text-decoration:none;color:inherit}
 .t-photo-img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(0,102,255,.15),0 8px 32px rgba(0,102,255,.25)}
 
 /* BARRE NAV VERTICALE */
-.snav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:300;display:none;flex-direction:column;align-items:flex-end}
+.snav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;flex-direction:column;align-items:flex-end;gap:0;display:none}
 .snav.on{display:flex}
-.snav-item{display:flex;align-items:center;gap:9px;cursor:pointer;position:relative;padding:2px 0}
-.snav-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);white-space:nowrap;transition:all .3s ease;letter-spacing:.05em;text-align:right;line-height:1}
-.snav-dot{width:6px;height:6px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:transparent;flex-shrink:0;transition:all .35s cubic-bezier(.34,1.56,.64,1)}
-.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.7);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
-.snav-item.active .snav-label{color:var(--white);font-weight:800;font-size:11px}
-.snav-seg{display:flex;flex-direction:column;align-items:flex-end;padding:0 5.5px 0 0}
-.snav-seg-bg{width:1.5px;background:rgba(255,255,255,.12);border-radius:2px;position:relative;overflow:hidden}
-.snav-seg-fill{position:absolute;top:0;left:0;right:0;background:rgba(255,255,255,.8);height:0%;transition:height .25s ease;border-radius:2px}
-@media(max-width:900px){.snav{display:none!important}}
+.snav-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:3px 0;position:relative}
+.snav-label{font-size:10px;font-weight:700;color:var(--white);white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s ease;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:3px 10px;border-radius:20px;letter-spacing:.04em;pointer-events:none}
+.snav-item:hover .snav-label,.snav-item.active .snav-label{opacity:1;transform:translateX(0)}
+.snav-dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:transparent;transition:all .3s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.6);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
+.snav-line{width:2px;height:20px;background:rgba(255,255,255,.15);margin:0 3px 0 auto;position:relative;overflow:hidden}
+.snav-fill{position:absolute;top:0;left:0;right:0;background:var(--white);height:0%;transition:height .3s ease}
+@media(max-width:900px){.snav{display:none !important}}
 </style>
 </head>
 <body>
@@ -612,41 +609,25 @@ a{text-decoration:none;color:inherit}
         <li><strong>Trackers</strong><span>Apple Watch, Whoop (biceps), Oura Ring, Fitbit — sommeil, HRV, fréquence cardiaque</span></li>
         <li><strong>Environnement nuit</strong><span>Masque, bouchons d'oreilles, strips nasales, lunettes anti-lumière bleue, lumière rouge</span></li>
       </ul></div>
-
-      </div>
-      <div class="card-dark"><div class="ch-dark">Objectif personnel visé</div>
-        <div class="tags" style="margin-top:0">
-          <span class="tag g">Impact réel</span>
-          <span class="tag g">Liberté construite</span>
-          <span class="tag g">Polyvalence</span>
-          <span class="tag g">Apprentissage continu</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- WORK -->
     <div class="pp" id="p-work">
-      <div class="quote">"Construire sa liberté, c'est travailler avec intention sur ce qui compte — et éliminer le reste."</div>
+      <div class="quote">"Avoir un réel impact — construire ma liberté — Polyvalence — apprentissage continu."</div>
       <div class="card-dark"><div class="ch-dark">Ce que je fais</div><ul>
-        <li><strong>Contenu</strong><span>Création de contenu — réseaux sociaux</span></li>
-        <li><strong>Coaching</strong><span>Coaching en ligne — transformation physique</span></li>
-        <li><strong>Protocoles</strong><span>Création de protocoles avancés — optimisation santé</span></li>
-        <li><strong>Digital</strong><span>Création digitale & marketing — website, landing page, lead magnet...</span></li>
+        <li><strong>Création de contenu</strong><span>Réseaux sociaux</span></li>
+        <li><strong>Coaching en ligne</strong><span>Transformation physique</span></li>
+        <li><strong>Création de protocole avancée</strong><span>Optimisation santé</span></li>
+        <li><strong>Création digitale & marketing</strong><span>Website, landing page, leadmagnet...</span></li>
       </ul></div>
       <div class="card-dark"><div class="ch-dark">Organisation</div><ul>
-        <li><strong>Tôt le matin</strong><span>Deep work & création — tâches complexes ou urgentes</span></li>
-        <li><strong>Fin de matinée</strong><span>Coaching en ligne</span></li>
-        <li><strong>Après-midi</strong><span>Simple work — tâches légères et administratives</span></li>
+        <li><strong>Deep work & création tôt le matin</strong><span>Tâches complexes ou urgentes</span></li>
+        <li><strong>Coaching</strong><span>En fin de matinée ou après-midi</span></li>
+        <li><strong>Simple work</strong><span>Fin d'après-midi</span></li>
       </ul></div>
-      <div class="card-dark"><div class="ch-dark">Concentration & productivité</div>
-        <div class="pg">
-          <div class="pm"><div class="pml">Environnement</div><div class="pmv">Silence / bruit blanc · Mode "ne pas déranger"</div></div>
-          <div class="pm"><div class="pml">Écran</div><div class="pmv">Surélevé · Luminosité élevée</div></div>
-          <div class="pm"><div class="pml">Timer court</div><div class="pmv">45 min · micro pauses actives</div></div>
-          <div class="pm"><div class="pml">Timer long</div><div class="pmv">1h30 · pauses actives</div></div>
-          <div class="pm"><div class="pml">Hydratation</div><div class="pmv">Eau filtrée en continu</div></div>
-          <div class="pm"><div class="pml">Caféine</div><div class="pmv">Optionnel — stop 8h avant coucher</div></div>
-        </div>
+      <div class="card-dark"><div class="ch-dark">Concentration & productivité</div><ul>
+        <li><strong>Environnement</strong><span>Silence / bruit blanc — mode ne pas déranger</span></li>
+        <li><strong>Timer</strong><span>45 minutes (micro pauses actives) — 1h30 (pauses actives)</span></li>
+        <li><strong>Setup</strong><span>Écran surélevé — hydratation — luminosité élevée — caféine (optionnel)</span></li>
+      </ul></div>
+    </div>
     </div>
   </div>
 </section>
@@ -697,7 +678,6 @@ a{text-decoration:none;color:inherit}
 <!-- ROUTINE — fond bleu -->
 <div class="sec-sep"></div>
 <section class="sec sec-blue" id="s-routine">
-  <div class="wrap">
     <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
     <p class="s-de reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
@@ -717,7 +697,6 @@ a{text-decoration:none;color:inherit}
       <div class="rr"><div class="rt">21h00</div><div class="rd">Préparation au sommeil — obscurité, 18–21°C, calme absolu</div></div>
       <div class="rr"><div class="rt">21h30</div><div class="rd"><strong>Début du premier cycle de sommeil</strong></div></div>
     </div></div>
-  </div>
   </div>
 </section>
 
@@ -741,13 +720,6 @@ a{text-decoration:none;color:inherit}
         <p>J'analyse où tu en es, ce qui te bloque et ce que tu dois changer en priorité. Sans engagement.</p>
         <div class="tool-a">Réserver maintenant →</div>
       </a>
-      <div class="tool reveal d4" style="grid-column:1/-1;border:1.5px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)">
-        <div class="tool-n" style="color:var(--blue)">BIENTÔT</div>
-        <h3>Club</h3>
-        <p style="font-weight:600;color:var(--black);margin-bottom:6px">Healthy lifestyle · Business creation · Voyage & expériences · Communauté franco-anglophone privée</p>
-        <p style="font-size:.78rem;color:rgba(0,0,0,.45);font-style:italic;font-weight:500">Where ambitious men build their highest-performing life.</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);border-radius:20px;padding:5px 14px;letter-spacing:.06em;text-transform:uppercase">⏳ En cours de développement</div>
-      </div>
     </div>
   </div>
 </section>
@@ -819,8 +791,8 @@ function sp(e,id){
 (function(){
   const snav=document.getElementById('snav');
   const items=[...document.querySelectorAll('.snav-item')];
-  const fills=[...document.querySelectorAll('.snav-seg-fill')];
-  const ids=['s-transfo','s-piliers','s-care','s-routine','s-outils','s-bilan'];
+  const fills=[...document.querySelectorAll('.snav-fill')];
+  const ids=['s-hero','s-transfo','s-piliers','s-care','s-routine','s-outils','s-bilan'];
 
   items.forEach(item=>{
     item.addEventListener('click',()=>{
@@ -829,33 +801,31 @@ function sp(e,id){
     });
   });
 
-  function getEl(id){return document.getElementById(id);}
-
   function upd(){
-    const plan=getEl('plan');
-    const visible=plan&&plan.style.display!=='none';
-    snav.classList.toggle('on',visible&&window.scrollY>80);
-    if(!visible) return;
+    const y=window.scrollY;
+    // Afficher barre dès qu'on scroll
+    snav.classList.toggle('on', y>80);
 
-    // Index section active
+    // Section active
     let ai=0;
     ids.forEach((id,i)=>{
-      const el=getEl(id);
-      if(el&&el.getBoundingClientRect().top<=window.innerHeight*0.5) ai=i;
+      const el=document.getElementById(id);
+      if(!el) return;
+      if(el.getBoundingClientRect().top<=window.innerHeight*0.5) ai=i;
     });
+    items.forEach((item,i)=>item.classList.toggle('active',i===ai));
 
-    // Points + labels
-    items.forEach((it,i)=>it.classList.toggle('active',i===ai));
-
-    // Segments fill
+    // Remplir les lignes
     fills.forEach((fill,i)=>{
-      const curr=getEl(ids[i]);
-      const next=getEl(ids[i+1]);
-      if(i<ai){fill.style.height='100%';return;}
-      if(i===ai&&curr&&next){
-        const traveled=-curr.getBoundingClientRect().top;
-        const total=next.getBoundingClientRect().top-curr.getBoundingClientRect().top;
-        fill.style.height=Math.min(100,Math.max(0,(traveled/total)*100))+'%';
+      if(i<ai){ fill.style.height='100%'; return; }
+      if(i===ai){
+        const curr=document.getElementById(ids[i]);
+        const next=document.getElementById(ids[i+1]);
+        if(curr&&next){
+          const t=next.getBoundingClientRect().top-curr.getBoundingClientRect().top;
+          const p=-curr.getBoundingClientRect().top;
+          fill.style.height=Math.min(100,Math.max(0,(p/t)*100))+'%';
+        } else fill.style.height='0%';
         return;
       }
       fill.style.height='0%';
@@ -863,45 +833,24 @@ function sp(e,id){
   }
 
   window.addEventListener('scroll',upd,{passive:true});
-  const plan=getEl('plan');
-  if(plan) new MutationObserver(upd).observe(plan,{attributes:true,attributeFilter:['style']});
   upd();
-})();
-
-
-// COOKIE — plan déjà vu
-(function(){
-  function setCookie(n,v,d){document.cookie=n+'='+v+';max-age='+(d*86400)+';path=/';}
-  function getCookie(n){const m=document.cookie.match('(^|;)\s*'+n+'\s*=\s*([^;]+)');return m?m.pop():null;}
-  if(getCookie('plan_access')==='1'){
-    const gate=document.getElementById('gate');
-    const plan=document.getElementById('plan');
-    if(gate) gate.style.display='none';
-    if(plan){
-      plan.style.display='block';
-      setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
-    }
-  }
-  // Sauvegarder cookie après soumission
-  const origSubmit=document.getElementById('access-form');
-  if(origSubmit) origSubmit.addEventListener('submit',function(){
-    setCookie('plan_access','1',365);
-  });
 })();
 
 </script>
 
 <nav class="snav" id="snav">
+  <div class="snav-item" data-s="s-hero"><span class="snav-label">Accueil</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
   <div class="snav-item" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
-  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
   <div class="snav-item" data-s="s-piliers"><span class="snav-label">5 piliers</span><span class="snav-dot"></span></div>
-  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
   <div class="snav-item" data-s="s-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
-  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
-  <div class="snav-item" data-s="s-routine"><span class="snav-label">Day</span><span class="snav-dot"></span></div>
-  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-routine"><span class="snav-label">Routine</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
   <div class="snav-item" data-s="s-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
-  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
   <div class="snav-item" data-s="s-bilan"><span class="snav-label">Bilan</span><span class="snav-dot"></span></div>
 </nav>
 </body>
