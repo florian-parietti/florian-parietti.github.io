@@ -363,7 +363,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <hr class="hero-divider">
     <div class="hero-stats">
-      <div class="hs"><div class="hs-n">5</div><div class="hs-l">Piliers de performance humaine</div></div>
+      <div class="hs"><div class="hs-n">6</div><div class="hs-l">Piliers de performance humaine</div></div>
       <div class="hs"><div class="hs-n">6+</div><div class="hs-l">Années d'optimisation · Diplôme & spécialisations</div></div>
       <div class="hs"><div class="hs-n">100%</div><div class="hs-l">Transformation vécue · Dernières recherches scientifiques</div></div>
     </div>
@@ -748,6 +748,14 @@ a{text-decoration:none;color:inherit}
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+// COOKIE — afficher plan directement si déjà soumis
+function setCK(n,v,d){document.cookie=n+'='+v+';max-age='+(d*86400)+';path=/';}
+function getCK(n){const m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():null;}
+if(getCK('plan_ok')==='1'){
+  const g=document.getElementById('gate');if(g)g.style.display='none';
+  const p=document.getElementById('plan');if(p){p.style.display='block';setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);}
+}
+
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
 
 const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
@@ -772,6 +780,7 @@ document.getElementById('access-form').addEventListener('submit',async function(
   }catch(x){}
   document.getElementById('gate').style.display='none';
   const p=document.getElementById('plan');
+  setCK('plan_ok','1',365);
   p.style.display='block';
   setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
   setTimeout(()=>{
