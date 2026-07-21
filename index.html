@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Active Lifestyle Plan — Florian Parietti</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -135,7 +135,7 @@ a{text-decoration:none;color:inherit}
 .fn{font-size:11px;color:var(--white);margin-top:10px;text-align:center;font-weight:600;opacity:.7}
 .err{font-size:.82rem;color:#ff6b6b;margin-top:10px;display:none;text-align:center;font-weight:700}
 
-.plan{display:none}
+.plan{visibility:hidden;height:0;overflow:hidden;position:absolute;pointer-events:none}
 .sec{padding:96px 0;background:var(--glass)}
 /* Fond gris vitre (care, outils) */
 .sec-gray{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
@@ -331,6 +331,29 @@ a{text-decoration:none;color:inherit}
 .snav-line{width:2px;height:20px;background:rgba(255,255,255,.15);margin:0 3px 0 auto;position:relative;overflow:hidden}
 .snav-fill{position:absolute;top:0;left:0;right:0;background:var(--white);height:0%;transition:height .3s ease}
 @media(max-width:900px){.snav{display:none !important}}
+
+/* MOBILE FIXES */
+@media(max-width:640px){
+  .hero h1{font-size:2.2rem;letter-spacing:-.04em}
+  .hero-intro{padding:20px 18px;font-size:.92rem}
+  .hero-intro2{padding:18px;font-size:.95rem}
+  .t-photos-stack{gap:8px}
+  .t-grid3{grid-template-columns:1fr;gap:16px}
+  .care-grid{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr}
+  .mr{grid-template-columns:repeat(3,1fr)}
+  .sg{grid-template-columns:1fr}
+  .pg{grid-template-columns:1fr}
+  .rout{max-width:100%}
+  .gate-box{padding:32px 18px}
+  .ckg{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr}
+  .pnav{gap:2px}
+  .pbtn{padding:8px 10px;font-size:.75rem}
+  .wrap{padding:0 16px}
+  .t-photo-img{width:90%!important;max-width:100%!important}
+  .snav{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -761,7 +784,7 @@ function setCK(n,v,d){document.cookie=n+'='+v+';max-age='+(d*86400)+';path=/';}
 function getCK(n){const m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():null;}
 if(getCK('plan_ok')==='1'){
   const g=document.getElementById('gate');if(g)g.style.display='none';
-  const p=document.getElementById('plan');if(p){p.style.display='block';setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);}
+  const p=document.getElementById('plan');if(p){p.style.cssText='visibility:visible;height:auto;overflow:visible;position:relative;pointer-events:auto';setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);}
 }
 
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
@@ -789,7 +812,7 @@ document.getElementById('access-form').addEventListener('submit',async function(
   document.getElementById('gate').style.display='none';
   const p=document.getElementById('plan');
   setCK('plan_ok','1',365);
-  p.style.display='block';
+  p.style.cssText='visibility:visible;height:auto;overflow:visible;position:relative;pointer-events:auto';
   setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
   setTimeout(()=>{
     const routine=document.getElementById('section-routine');
