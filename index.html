@@ -770,7 +770,7 @@ document.getElementById('access-form').addEventListener('submit',async function(
   const ph=[...document.querySelectorAll('#phys .ck.sel input')].map(i=>i.value);
   const sa=[...document.querySelectorAll('#sante .ck.sel input')].map(i=>i.value);
   const autre=document.getElementById('autre-txt').value.trim();
-  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';btn.disabled=true;
+  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';
   try{
     const params=new URLSearchParams({email:em,instagram:ig,objectif_physique:ph.join(' | '),objectif_sante:sa.join(' | '),autre:autre,date:new Date().toLocaleString('fr-BE'),statut:'Nouveau'});
     const iframe=document.createElement('iframe');
