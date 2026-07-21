@@ -735,17 +735,28 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
 
 const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
-document.getElementById('access-form').addEventListener('submit',async function(e){
+document.getElementById('access-form').addEventListener('submit',function(e){
   e.preventDefault();
   const em=document.getElementById('email').value.trim();
   const ig=document.getElementById('insta').value.trim();
   const err=document.getElementById('err');
   if(!em||!ig){err.style.display='block';return;}
   err.style.display='none';
+
+  // Afficher le plan IMMÉDIATEMENT sans attendre Google Sheet
+  document.getElementById('section-gate').style.display='none';
+  const p=document.getElementById('plan');
+  p.style.display='block';
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
+  setTimeout(()=>{
+    const transfo=document.getElementById('section-transfo');
+    if(transfo) transfo.scrollIntoView({behavior:'smooth'});
+  },200);
+
+  // Envoyer les données en arrière-plan (sans bloquer)
   const ph=[...document.querySelectorAll('#phys .ck.sel input')].map(i=>i.value);
   const sa=[...document.querySelectorAll('#sante .ck.sel input')].map(i=>i.value);
   const autre=document.getElementById('autre-txt').value.trim();
-  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';btn.disabled=true;
   try{
     const params=new URLSearchParams({email:em,instagram:ig,objectif_physique:ph.join(' | '),objectif_sante:sa.join(' | '),autre:autre,date:new Date().toLocaleString('fr-BE'),statut:'Nouveau'});
     const iframe=document.createElement('iframe');
@@ -754,15 +765,6 @@ document.getElementById('access-form').addEventListener('submit',async function(
     document.body.appendChild(iframe);
     setTimeout(()=>iframe.remove(),5000);
   }catch(x){}
-  document.getElementById('gate').style.display='none';
-  const p=document.getElementById('plan');
-  p.style.display='block';
-  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
-  setTimeout(()=>{
-    const transfo=document.getElementById('section-transfo');
-    if(transfo) transfo.scrollIntoView({behavior:'smooth'});
-    else p.scrollIntoView({behavior:'smooth'});
-  },400);
 });
 
 // BARRE NAVIGATION VERTICALE
