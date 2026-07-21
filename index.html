@@ -372,7 +372,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- GATE -->
-<section class="sec" id="gate">
+<section class="sec" id="s-gate">
   <div class="wrap">
     <div class="gate-box reveal">
       <div class="g-ey">Accès gratuit</div>
@@ -658,6 +658,7 @@ a{text-decoration:none;color:inherit}
 <!-- ROUTINE — fond bleu -->
 <div class="sec-sep"></div>
 <section class="sec sec-blue" id="s-routine">
+  <div class="wrap">
     <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
     <p class="s-de reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
@@ -784,7 +785,7 @@ function sp(e,id){
   function upd(){
     const y=window.scrollY;
     // Afficher barre dès qu'on scroll
-    snav.classList.toggle('on', y>80);
+    snav.classList.toggle('on', y>100);
 
     // Section active
     let ai=0;
