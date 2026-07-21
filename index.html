@@ -201,9 +201,9 @@ a{text-decoration:none;color:inherit}
 .t-arrow{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
 .t-arrow::before{content:'';position:absolute;width:1px;height:100%;background:rgba(255,255,255,.2);left:50%;transform:translateX(-50%)}
 /* routine sur fond bleu */
-.rout{margin-top:0;display:flex;flex-direction:column;gap:6px;max-width:620px;margin-left:auto;margin-right:auto}
-.rr{display:grid;grid-template-columns:72px 1fr;min-height:44px;background:var(--white);border-radius:var(--r-md);box-shadow:0 2px 12px rgba(0,0,0,.12);transition:all .25s cubic-bezier(.34,1.56,.64,1)}
-.rr:hover{transform:scale(1.02) translateX(3px);box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:2}
+.rout{margin-top:0}
+.rr{display:grid;grid-template-columns:72px 1fr;min-height:44px}
+.rr:hover .rd{background:rgba(0,0,0,.08);border-radius:0 var(--r-md) var(--r-md) 0}
 .rt{font-size:.72rem;font-weight:800;color:var(--blue);padding:14px 14px 14px 0;border-right:2px solid rgba(0,102,255,.15);text-align:right;line-height:1.3;letter-spacing:.02em}
 .rd{font-size:.87rem;color:rgba(0,0,0,.7);padding:14px 0 14px 20px;line-height:1.5}
 .rd strong{color:var(--black);font-weight:800}
@@ -320,22 +320,17 @@ a{text-decoration:none;color:inherit}
 .t-photo-img{display:block;width:100%;border-radius:var(--r-md);transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;box-shadow:0 0 0 0 rgba(0,102,255,.2)}
 .t-photo-img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(0,102,255,.15),0 8px 32px rgba(0,102,255,.25)}
 
-
-
-
-
-/* ── BARRE NAVIGATION VERTICALE ── */
-.snav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;display:none;flex-direction:column;align-items:flex-end;gap:0}
+/* BARRE NAV VERTICALE */
+.snav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;flex-direction:column;align-items:flex-end;gap:0;display:none}
 .snav.on{display:flex}
-.snav-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:4px 0}
-.snav-item:hover .snav-label{opacity:1;transform:translateX(0)}
-.snav-label{font-size:10px;font-weight:700;color:var(--white);white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s ease;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);padding:3px 10px;border-radius:20px;letter-spacing:.04em}
-.snav-dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:transparent;transition:all .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
-.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.5);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
-.snav-item.active .snav-label{opacity:1;transform:translateX(0);color:var(--white);background:rgba(0,0,0,.7)}
-.snav-line{width:1.5px;height:18px;background:rgba(255,255,255,.15);margin-left:auto;margin-right:3px;position:relative;overflow:hidden}
-.snav-line-fill{position:absolute;top:0;left:0;right:0;background:var(--white);height:0%;transition:height .4s ease}
-@media(max-width:768px){.snav{display:none !important}}
+.snav-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:3px 0;position:relative}
+.snav-label{font-size:10px;font-weight:700;color:var(--white);white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s ease;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:3px 10px;border-radius:20px;letter-spacing:.04em;pointer-events:none}
+.snav-item:hover .snav-label,.snav-item.active .snav-label{opacity:1;transform:translateX(0)}
+.snav-dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:transparent;transition:all .3s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.6);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
+.snav-line{width:2px;height:20px;background:rgba(255,255,255,.15);margin:0 3px 0 auto;position:relative;overflow:hidden}
+.snav-fill{position:absolute;top:0;left:0;right:0;background:var(--white);height:0%;transition:height .3s ease}
+@media(max-width:900px){.snav{display:none !important}}
 </style>
 </head>
 <body>
@@ -348,7 +343,7 @@ a{text-decoration:none;color:inherit}
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="section-hero">
+<section class="hero" id="s-hero">
   <div class="hero-glow"></div>
   <div class="hero-orbit-wrap">
     <div class="hero-particle p1"></div>
@@ -377,7 +372,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- GATE -->
-<section class="sec" id="section-gate">
+<section class="sec" id="gate">
   <div class="wrap">
     <div class="gate-box reveal">
       <div class="g-ey">Accès gratuit</div>
@@ -416,7 +411,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- TRANSFORMATION — fond bleu -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray" id="section-transfo">
+<section class="sec sec-gray" id="s-transfo">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">La réalité</div>
     <h2 class="s-ti reveal d1">Ma transformation</h2>
@@ -464,7 +459,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- 5 PILIERS — fond noir -->
 <div class="sec-sep"></div>
-<section class="sec" id="section-piliers">
+<section class="sec" id="s-piliers">
   <div class="wrap">
     <div class="s-ey reveal">Le système</div>
     <h2 class="s-ti reveal d1">Les 5 piliers</h2>
@@ -619,7 +614,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- CARE — fond gris vitre -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray" id="section-care">
+<section class="sec sec-gray" id="s-care">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">Aller plus loin</div>
     <h2 class="s-ti reveal d1">Peau · Cheveux · Bucco-dentaire</h2>
@@ -662,7 +657,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- ROUTINE — fond bleu -->
 <div class="sec-sep"></div>
-<section class="sec sec-blue" id="section-routine">
+<section class="sec sec-blue" id="s-routine">
     <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
     <p class="s-de reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
@@ -687,7 +682,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- OUTILS — fond gris vitre -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray" id="section-outils">
+<section class="sec sec-gray" id="s-outils">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">Passe à l'action</div>
     <h2 class="s-ti reveal d1">Outils gratuits</h2>
@@ -710,7 +705,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- CTA FINAL -->
-<section class="ctaf" id="section-cta">
+<section class="ctaf" id="s-bilan">
   <div class="wrap">
     <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
     <div class="ctab reveal d2">
@@ -735,28 +730,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
 
 const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
-document.getElementById('access-form').addEventListener('submit',function(e){
+document.getElementById('access-form').addEventListener('submit',async function(e){
   e.preventDefault();
   const em=document.getElementById('email').value.trim();
   const ig=document.getElementById('insta').value.trim();
   const err=document.getElementById('err');
   if(!em||!ig){err.style.display='block';return;}
   err.style.display='none';
-
-  // Afficher le plan IMMÉDIATEMENT sans attendre Google Sheet
-  document.getElementById('section-gate').style.display='none';
-  const p=document.getElementById('plan');
-  p.style.display='block';
-  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
-  setTimeout(()=>{
-    const transfo=document.getElementById('section-transfo');
-    if(transfo) transfo.scrollIntoView({behavior:'smooth'});
-  },200);
-
-  // Envoyer les données en arrière-plan (sans bloquer)
   const ph=[...document.querySelectorAll('#phys .ck.sel input')].map(i=>i.value);
   const sa=[...document.querySelectorAll('#sante .ck.sel input')].map(i=>i.value);
   const autre=document.getElementById('autre-txt').value.trim();
+  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';btn.disabled=true;
   try{
     const params=new URLSearchParams({email:em,instagram:ig,objectif_physique:ph.join(' | '),objectif_sante:sa.join(' | '),autre:autre,date:new Date().toLocaleString('fr-BE'),statut:'Nouveau'});
     const iframe=document.createElement('iframe');
@@ -765,59 +749,16 @@ document.getElementById('access-form').addEventListener('submit',function(e){
     document.body.appendChild(iframe);
     setTimeout(()=>iframe.remove(),5000);
   }catch(x){}
+  document.getElementById('gate').style.display='none';
+  const p=document.getElementById('plan');
+  p.style.display='block';
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
+  setTimeout(()=>{
+    const routine=document.getElementById('section-routine');
+    if(routine) routine.scrollIntoView({behavior:'smooth'});
+    else p.scrollIntoView({behavior:'smooth'});
+  },400);
 });
-
-// BARRE NAVIGATION VERTICALE
-(function(){
-  const snav = document.getElementById('snav');
-  const items = document.querySelectorAll('.snav-item');
-  const fills = document.querySelectorAll('.snav-line-fill');
-  const sectionIds = ['section-hero','section-transfo','section-piliers','section-care','section-routine','section-outils','section-cta'];
-
-  // Clic → scroll
-  items.forEach((item,i) => {
-    item.addEventListener('click', () => {
-      const target = document.getElementById(item.dataset.target);
-      if(target) target.scrollIntoView({behavior:'smooth'});
-    });
-  });
-
-  function update(){
-    // Afficher la barre dès qu'on scroll
-    if(window.scrollY > 100) snav.classList.add('on');
-    else snav.classList.remove('on');
-
-    // Trouver la section active
-    let activeIdx = 0;
-    sectionIds.forEach((id, i) => {
-      const el = document.getElementById(id);
-      if(!el) return;
-      const rect = el.getBoundingClientRect();
-      if(rect.top <= window.innerHeight * 0.55) activeIdx = i;
-    });
-
-    // Mettre à jour les points
-    items.forEach((item, i) => item.classList.toggle('active', i === activeIdx));
-
-    // Animer les lignes entre sections (fill = 100% si section passée, 0% sinon)
-    fills.forEach((fill, i) => {
-      if(i < activeIdx) fill.style.height = '100%';
-      else if(i === activeIdx){
-        // Progression dans la section courante
-        const curr = document.getElementById(sectionIds[i]);
-        const next = document.getElementById(sectionIds[i+1]);
-        if(curr && next){
-          const total = next.getBoundingClientRect().top - curr.getBoundingClientRect().top;
-          const passed = -curr.getBoundingClientRect().top;
-          fill.style.height = Math.min(100, Math.max(0, (passed/total)*100)) + '%';
-        } else { fill.style.height = '0%'; }
-      } else { fill.style.height = '0%'; }
-    });
-  }
-
-  window.addEventListener('scroll', update, {passive:true});
-  update();
-})();
 
 function sp(e,id){
   document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
@@ -826,55 +767,71 @@ function sp(e,id){
   document.getElementById('p-'+id).classList.add('active');
 }
 
-// NAVIGATION BARRE VERTICALE
-const sectionNav = document.getElementById('section-nav');
-const navDots = document.querySelectorAll('.section-nav-dot');
+// BARRE NAV
+(function(){
+  const snav=document.getElementById('snav');
+  const items=[...document.querySelectorAll('.snav-item')];
+  const fills=[...document.querySelectorAll('.snav-fill')];
+  const ids=['s-hero','s-transfo','s-piliers','s-care','s-routine','s-outils','s-bilan'];
 
-navDots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    const target = document.getElementById(dot.dataset.target);
-    if(target) target.scrollIntoView({behavior:'smooth'});
+  items.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const el=document.getElementById(item.dataset.s);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    });
   });
-});
 
-function updateNavDots(){
-  const sections = ['section-transfo','section-piliers','section-care','section-routine','section-outils'];
-  let active = null;
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if(!el) return;
-    const rect = el.getBoundingClientRect();
-    if(rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) active = id;
-  });
-  navDots.forEach(dot => {
-    dot.classList.toggle('active', dot.dataset.target === active);
-  });
-  // Afficher/masquer la barre selon si le plan est visible
-  const plan = document.getElementById('plan');
-  if(plan && plan.style.display !== 'none'){
-    sectionNav.classList.add('visible');
+  function upd(){
+    const y=window.scrollY;
+    // Afficher barre dès qu'on scroll
+    snav.classList.toggle('on', y>80);
+
+    // Section active
+    let ai=0;
+    ids.forEach((id,i)=>{
+      const el=document.getElementById(id);
+      if(!el) return;
+      if(el.getBoundingClientRect().top<=window.innerHeight*0.5) ai=i;
+    });
+    items.forEach((item,i)=>item.classList.toggle('active',i===ai));
+
+    // Remplir les lignes
+    fills.forEach((fill,i)=>{
+      if(i<ai){ fill.style.height='100%'; return; }
+      if(i===ai){
+        const curr=document.getElementById(ids[i]);
+        const next=document.getElementById(ids[i+1]);
+        if(curr&&next){
+          const t=next.getBoundingClientRect().top-curr.getBoundingClientRect().top;
+          const p=-curr.getBoundingClientRect().top;
+          fill.style.height=Math.min(100,Math.max(0,(p/t)*100))+'%';
+        } else fill.style.height='0%';
+        return;
+      }
+      fill.style.height='0%';
+    });
   }
-}
 
-window.addEventListener('scroll', updateNavDots, {passive:true});
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+
 </script>
 
-
-<!-- BARRE NAVIGATION VERTICALE -->
 <nav class="snav" id="snav">
-  <div class="snav-item" data-target="section-hero"><span class="snav-label">Accueil</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-0"></div></div>
-  <div class="snav-item" data-target="section-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-1"></div></div>
-  <div class="snav-item" data-target="section-piliers"><span class="snav-label">5 piliers</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-2"></div></div>
-  <div class="snav-item" data-target="section-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-3"></div></div>
-  <div class="snav-item" data-target="section-routine"><span class="snav-label">Routine</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-4"></div></div>
-  <div class="snav-item" data-target="section-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
-  <div class="snav-line"><div class="snav-line-fill" id="fill-5"></div></div>
-  <div class="snav-item" data-target="section-cta"><span class="snav-label">Bilan</span><span class="snav-dot"></span></div>
+  <div class="snav-item" data-s="s-hero"><span class="snav-label">Accueil</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-piliers"><span class="snav-label">5 piliers</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-routine"><span class="snav-label">Routine</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-bilan"><span class="snav-label">Bilan</span><span class="snav-dot"></span></div>
 </nav>
 </body>
 </html>
