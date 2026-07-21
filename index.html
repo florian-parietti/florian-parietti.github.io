@@ -319,6 +319,18 @@ a{text-decoration:none;color:inherit}
 .t-item3 .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .t-photo-img{display:block;width:100%;border-radius:var(--r-md);transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;box-shadow:0 0 0 0 rgba(0,102,255,.2)}
 .t-photo-img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(0,102,255,.15),0 8px 32px rgba(0,102,255,.25)}
+
+/* ── BARRE DE NAVIGATION VERTICALE ── */
+.section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:150;display:none;flex-direction:column;align-items:center;gap:0}
+.section-nav.visible{display:flex}
+.section-nav-line{width:1.5px;height:20px;background:rgba(255,255,255,.15)}
+.section-nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative}
+.section-nav-dot:hover{transform:scale(1.4);background:rgba(255,255,255,.7)}
+.section-nav-dot.active{background:var(--white);border-color:var(--white);transform:scale(1.5);box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.section-nav-dot[data-color="blue"].active{background:var(--blue);border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,102,255,.3)}
+.section-nav-label{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:600;color:var(--white);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;background:rgba(0,0,0,.5);padding:3px 10px;border-radius:20px;backdrop-filter:blur(8px)}
+.section-nav-dot:hover .section-nav-label{opacity:1}
+@media(max-width:900px){.section-nav{right:12px}}
 </style>
 </head>
 <body>
@@ -399,7 +411,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- TRANSFORMATION — fond bleu -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray">
+<section class="sec sec-gray" id="section-transfo">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">La réalité</div>
     <h2 class="s-ti reveal d1">Ma transformation</h2>
@@ -447,7 +459,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- 5 PILIERS — fond noir -->
 <div class="sec-sep"></div>
-<section class="sec">
+<section class="sec" id="section-piliers">
   <div class="wrap">
     <div class="s-ey reveal">Le système</div>
     <h2 class="s-ti reveal d1">Les 5 piliers</h2>
@@ -602,7 +614,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- CARE — fond gris vitre -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray">
+<section class="sec sec-gray" id="section-care">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">Aller plus loin</div>
     <h2 class="s-ti reveal d1">Peau · Cheveux · Bucco-dentaire</h2>
@@ -646,6 +658,7 @@ a{text-decoration:none;color:inherit}
 <!-- ROUTINE — fond bleu -->
 <div class="sec-sep"></div>
 <section class="sec sec-blue" id="section-routine">
+    <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
     <p class="s-de reveal d2" style="color:rgba(255,255,255,.7)">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
     <div class="reveal d3"><div class="rout">
@@ -669,7 +682,7 @@ a{text-decoration:none;color:inherit}
 
 <!-- OUTILS — fond gris vitre -->
 <div class="sec-sep"></div>
-<section class="sec sec-gray">
+<section class="sec sec-gray" id="section-outils">
   <div class="wrap">
     <div class="s-ey s-ey-w reveal">Passe à l'action</div>
     <h2 class="s-ti reveal d1">Outils gratuits</h2>
@@ -741,8 +754,8 @@ document.getElementById('access-form').addEventListener('submit',async function(
   p.style.display='block';
   setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
   setTimeout(()=>{
-    const routine=document.getElementById('section-routine');
-    if(routine) routine.scrollIntoView({behavior:'smooth'});
+    const transfo=document.getElementById('section-transfo');
+    if(transfo) transfo.scrollIntoView({behavior:'smooth'});
     else p.scrollIntoView({behavior:'smooth'});
   },400);
 });
@@ -753,6 +766,51 @@ function sp(e,id){
   e.currentTarget.classList.add('active');
   document.getElementById('p-'+id).classList.add('active');
 }
+
+// NAVIGATION BARRE VERTICALE
+const sectionNav = document.getElementById('section-nav');
+const navDots = document.querySelectorAll('.section-nav-dot');
+
+navDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const target = document.getElementById(dot.dataset.target);
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+function updateNavDots(){
+  const sections = ['section-transfo','section-piliers','section-care','section-routine','section-outils'];
+  let active = null;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    const rect = el.getBoundingClientRect();
+    if(rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) active = id;
+  });
+  navDots.forEach(dot => {
+    dot.classList.toggle('active', dot.dataset.target === active);
+  });
+  // Afficher/masquer la barre selon si le plan est visible
+  const plan = document.getElementById('plan');
+  if(plan && plan.style.display !== 'none'){
+    sectionNav.classList.add('visible');
+  }
+}
+
+window.addEventListener('scroll', updateNavDots, {passive:true});
 </script>
+
+<!-- BARRE NAVIGATION VERTICALE -->
+<nav class="section-nav" id="section-nav" aria-label="Navigation sections">
+  <div class="section-nav-dot" data-target="section-transfo" data-color="blue"><span class="section-nav-label">Transformation</span></div>
+  <div class="section-nav-line"></div>
+  <div class="section-nav-dot" data-target="section-piliers"><span class="section-nav-label">Les 5 piliers</span></div>
+  <div class="section-nav-line"></div>
+  <div class="section-nav-dot" data-target="section-care"><span class="section-nav-label">Peau · Cheveux · Bucco</span></div>
+  <div class="section-nav-line"></div>
+  <div class="section-nav-dot" data-target="section-routine" data-color="blue"><span class="section-nav-label">Routine</span></div>
+  <div class="section-nav-line"></div>
+  <div class="section-nav-dot" data-target="section-outils"><span class="section-nav-label">Outils</span></div>
+</nav>
 </body>
 </html>
