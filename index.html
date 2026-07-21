@@ -135,8 +135,11 @@ a{text-decoration:none;color:inherit}
 .fn{font-size:11px;color:var(--white);margin-top:10px;text-align:center;font-weight:600;opacity:.7}
 .err{font-size:.82rem;color:#ff6b6b;margin-top:10px;display:none;text-align:center;font-weight:700}
 
+
+/* GATE WRAPPER — empêche scroll vers plan non déverrouillé */
+.gate-wrapper{min-height:100vh}
 .plan{display:none}
-html.locked,body.locked{overflow:hidden!important;height:100vh!important}
+
 .sec{padding:96px 0;background:var(--glass)}
 /* Fond gris vitre (care, outils) */
 .sec-gray{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
@@ -344,6 +347,7 @@ html.locked,body.locked{overflow:hidden!important;height:100vh!important}
 </nav>
 
 <!-- HERO -->
+<div class="gate-wrapper">
 <section class="hero" id="s-hero">
   <div class="hero-glow"></div>
   <div class="hero-orbit-wrap">
@@ -407,6 +411,7 @@ html.locked,body.locked{overflow:hidden!important;height:100vh!important}
     </div>
   </div>
 </section>
+</div><!-- /gate-wrapper -->
 
 <div class="plan" id="plan">
 
@@ -754,10 +759,6 @@ html.locked,body.locked{overflow:hidden!important;height:100vh!important}
 </div><!-- /plan -->
 
 <script>
-// Verrouiller scroll tant que plan pas visible
-document.documentElement.classList.add('locked');
-document.body.classList.add('locked');
-
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
@@ -766,7 +767,7 @@ function setCK(n,v,d){document.cookie=n+'='+v+';max-age='+(d*86400)+';path=/';}
 function getCK(n){const m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():null;}
 if(getCK('plan_ok')==='1'){
   const g=document.getElementById('gate');if(g)g.style.display='none';
-  const p=document.getElementById('plan');if(p){p.style.display='block';document.documentElement.classList.remove('locked');document.body.classList.remove('locked');setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);}
+  const p=document.getElementById('plan');if(p){p.style.display='block';setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);}
 }
 
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
@@ -795,8 +796,6 @@ document.getElementById('access-form').addEventListener('submit',async function(
   const p=document.getElementById('plan');
   setCK('plan_ok','1',365);
   p.style.display='block';
-  document.documentElement.classList.remove('locked');
-  document.body.classList.remove('locked');
   setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
   setTimeout(()=>{
     const routine=document.getElementById('section-routine');
