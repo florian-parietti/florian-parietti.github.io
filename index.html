@@ -323,16 +323,17 @@ a{text-decoration:none;color:inherit}
 .t-photo-img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(0,102,255,.15),0 8px 32px rgba(0,102,255,.25)}
 
 /* BARRE NAV VERTICALE */
-.snav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:300;flex-direction:column;align-items:flex-end;gap:0;display:none}
+.snav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:300;display:none;flex-direction:column;align-items:flex-end}
 .snav.on{display:flex}
-.snav-track{width:2px;background:rgba(255,255,255,.12);border-radius:2px;position:relative;margin:0 3px 0 auto}
-.snav-progress{position:absolute;top:0;left:0;right:0;background:var(--white);border-radius:2px;height:0%;transition:height .2s ease}
-.snav-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:5px 0;position:relative}
-.snav-dot{width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;transition:all .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0;position:relative;z-index:1}
-.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.6);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
-.snav-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);white-space:nowrap;transition:all .25s ease;letter-spacing:.04em;text-align:right}
-.snav-item.active .snav-label{color:var(--white);font-size:11px}
-@media(max-width:900px){.snav{display:none !important}}
+.snav-item{display:flex;align-items:center;gap:9px;cursor:pointer;position:relative;padding:2px 0}
+.snav-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);white-space:nowrap;transition:all .3s ease;letter-spacing:.05em;text-align:right;line-height:1}
+.snav-dot{width:6px;height:6px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:transparent;flex-shrink:0;transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.7);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
+.snav-item.active .snav-label{color:var(--white);font-weight:800;font-size:11px}
+.snav-seg{display:flex;flex-direction:column;align-items:flex-end;padding:0 5.5px 0 0}
+.snav-seg-bg{width:1.5px;background:rgba(255,255,255,.12);border-radius:2px;position:relative;overflow:hidden}
+.snav-seg-fill{position:absolute;top:0;left:0;right:0;background:rgba(255,255,255,.8);height:0%;transition:height .25s ease;border-radius:2px}
+@media(max-width:900px){.snav{display:none!important}}
 </style>
 </head>
 <body>
@@ -704,6 +705,12 @@ a{text-decoration:none;color:inherit}
         <p>J'analyse où tu en es, ce qui te bloque et ce que tu dois changer en priorité. Sans engagement.</p>
         <div class="tool-a">Réserver maintenant →</div>
       </a>
+      <div class="tool reveal d4" style="grid-column:1/-1;border:1.5px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)">
+        <div class="tool-n" style="color:var(--blue)">BIENTÔT</div>
+        <h3>De clients à membre — Le Club</h3>
+        <p>Healthy lifestyle · Création & online business · Voyage · Communauté franco-anglophone privée</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);border-radius:20px;padding:5px 14px;letter-spacing:.06em;text-transform:uppercase">⏳ En cours de développement</div>
+      </div>
     </div>
   </div>
 </section>
@@ -775,10 +782,9 @@ function sp(e,id){
 (function(){
   const snav=document.getElementById('snav');
   const items=[...document.querySelectorAll('.snav-item')];
-  const progs=[...document.querySelectorAll('.snav-progress')];
+  const fills=[...document.querySelectorAll('.snav-seg-fill')];
   const ids=['s-transfo','s-piliers','s-care','s-routine','s-outils','s-bilan'];
 
-  // Clic scroll
   items.forEach(item=>{
     item.addEventListener('click',()=>{
       const el=document.getElementById(item.dataset.s);
@@ -786,60 +792,79 @@ function sp(e,id){
     });
   });
 
-  function upd(){
-    // Afficher uniquement quand le plan est visible
-    const plan=document.getElementById('plan');
-    const planVisible=plan&&plan.style.display!=='none';
-    snav.classList.toggle('on', planVisible&&window.scrollY>100);
-    if(!planVisible) return;
+  function getEl(id){return document.getElementById(id);}
 
-    // Section active
+  function upd(){
+    const plan=getEl('plan');
+    const visible=plan&&plan.style.display!=='none';
+    snav.classList.toggle('on',visible&&window.scrollY>80);
+    if(!visible) return;
+
+    // Index section active
     let ai=0;
     ids.forEach((id,i)=>{
-      const el=document.getElementById(id);
-      if(!el) return;
-      if(el.getBoundingClientRect().top<=window.innerHeight*0.45) ai=i;
+      const el=getEl(id);
+      if(el&&el.getBoundingClientRect().top<=window.innerHeight*0.5) ai=i;
     });
+
+    // Points + labels
     items.forEach((it,i)=>it.classList.toggle('active',i===ai));
 
-    // Remplir les barres progressivement
-    progs.forEach((prog,i)=>{
-      if(i<ai){prog.style.height='100%';return;}
-      if(i===ai){
-        const curr=document.getElementById(ids[i]);
-        const next=document.getElementById(ids[i+1]);
-        if(curr&&next){
-          const traveled=-curr.getBoundingClientRect().top;
-          const total=next.getBoundingClientRect().top-curr.getBoundingClientRect().top;
-          prog.style.height=Math.min(100,Math.max(0,(traveled/total)*100))+'%';
-        } else prog.style.height='50%';
+    // Segments fill
+    fills.forEach((fill,i)=>{
+      const curr=getEl(ids[i]);
+      const next=getEl(ids[i+1]);
+      if(i<ai){fill.style.height='100%';return;}
+      if(i===ai&&curr&&next){
+        const traveled=-curr.getBoundingClientRect().top;
+        const total=next.getBoundingClientRect().top-curr.getBoundingClientRect().top;
+        fill.style.height=Math.min(100,Math.max(0,(traveled/total)*100))+'%';
         return;
       }
-      prog.style.height='0%';
+      fill.style.height='0%';
     });
   }
 
   window.addEventListener('scroll',upd,{passive:true});
-  // Relancer après affichage plan
-  const obs=new MutationObserver(upd);
-  const plan=document.getElementById('plan');
-  if(plan) obs.observe(plan,{attributes:true,attributeFilter:['style']});
+  const plan=getEl('plan');
+  if(plan) new MutationObserver(upd).observe(plan,{attributes:true,attributeFilter:['style']});
   upd();
+})();
+
+
+// COOKIE — plan déjà vu
+(function(){
+  function setCookie(n,v,d){document.cookie=n+'='+v+';max-age='+(d*86400)+';path=/';}
+  function getCookie(n){const m=document.cookie.match('(^|;)\s*'+n+'\s*=\s*([^;]+)');return m?m.pop():null;}
+  if(getCookie('plan_access')==='1'){
+    const gate=document.getElementById('gate');
+    const plan=document.getElementById('plan');
+    if(gate) gate.style.display='none';
+    if(plan){
+      plan.style.display='block';
+      setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
+    }
+  }
+  // Sauvegarder cookie après soumission
+  const origSubmit=document.getElementById('access-form');
+  if(origSubmit) origSubmit.addEventListener('submit',function(){
+    setCookie('plan_access','1',365);
+  });
 })();
 
 </script>
 
 <nav class="snav" id="snav">
-  <div class="snav-item active" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
-  <div class="snav-track" style="height:28px"><div class="snav-progress" id="sf0"></div></div>
+  <div class="snav-item" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
+  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
   <div class="snav-item" data-s="s-piliers"><span class="snav-label">5 piliers</span><span class="snav-dot"></span></div>
-  <div class="snav-track" style="height:28px"><div class="snav-progress" id="sf1"></div></div>
+  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
   <div class="snav-item" data-s="s-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
-  <div class="snav-track" style="height:28px"><div class="snav-progress" id="sf2"></div></div>
+  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
   <div class="snav-item" data-s="s-routine"><span class="snav-label">Day</span><span class="snav-dot"></span></div>
-  <div class="snav-track" style="height:28px"><div class="snav-progress" id="sf3"></div></div>
+  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
   <div class="snav-item" data-s="s-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
-  <div class="snav-track" style="height:28px"><div class="snav-progress" id="sf4"></div></div>
+  <div class="snav-seg"><div class="snav-seg-bg" style="height:32px"><div class="snav-seg-fill"></div></div></div>
   <div class="snav-item" data-s="s-bilan"><span class="snav-label">Bilan</span><span class="snav-dot"></span></div>
 </nav>
 </body>
