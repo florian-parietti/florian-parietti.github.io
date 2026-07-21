@@ -372,7 +372,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- GATE -->
-<section class="sec" id="s-gate">
+<section class="sec" id="gate">
   <div class="wrap">
     <div class="gate-box reveal">
       <div class="g-ey">Accès gratuit</div>
@@ -679,6 +679,7 @@ a{text-decoration:none;color:inherit}
       <div class="rr"><div class="rt">21h30</div><div class="rd"><strong>Début du premier cycle de sommeil</strong></div></div>
     </div></div>
   </div>
+  </div>
 </section>
 
 <!-- OUTILS — fond gris vitre -->
@@ -731,30 +732,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function tgl(l,e){e.preventDefault();l.classList.toggle('sel');l.querySelector('input').checked=l.classList.contains('sel')}
 
 const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
-document.getElementById('access-form').addEventListener('submit',function(e){
+document.getElementById('access-form').addEventListener('submit',async function(e){
   e.preventDefault();
   const em=document.getElementById('email').value.trim();
   const ig=document.getElementById('insta').value.trim();
   const err=document.getElementById('err');
   if(!em||!ig){err.style.display='block';return;}
   err.style.display='none';
-
-  // Afficher le plan IMMÉDIATEMENT
-  const gate=document.getElementById('s-gate')||document.getElementById('gate');
-  if(gate) gate.style.display='none';
-  const p=document.getElementById('plan');
-  p.style.display='block';
-  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
-  setTimeout(()=>{
-    const transfo=document.getElementById('s-transfo');
-    if(transfo) transfo.scrollIntoView({behavior:'smooth'});
-    else p.scrollIntoView({behavior:'smooth'});
-  },200);
-
-  // Envoyer données en arrière-plan sans bloquer
   const ph=[...document.querySelectorAll('#phys .ck.sel input')].map(i=>i.value);
   const sa=[...document.querySelectorAll('#sante .ck.sel input')].map(i=>i.value);
   const autre=document.getElementById('autre-txt').value.trim();
+  const btn=this.querySelector('.sbtn');btn.textContent='Chargement...';btn.disabled=true;
   try{
     const params=new URLSearchParams({email:em,instagram:ig,objectif_physique:ph.join(' | '),objectif_sante:sa.join(' | '),autre:autre,date:new Date().toLocaleString('fr-BE'),statut:'Nouveau'});
     const iframe=document.createElement('iframe');
@@ -763,6 +751,15 @@ document.getElementById('access-form').addEventListener('submit',function(e){
     document.body.appendChild(iframe);
     setTimeout(()=>iframe.remove(),5000);
   }catch(x){}
+  document.getElementById('gate').style.display='none';
+  const p=document.getElementById('plan');
+  p.style.display='block';
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),50);
+  setTimeout(()=>{
+    const routine=document.getElementById('section-routine');
+    if(routine) routine.scrollIntoView({behavior:'smooth'});
+    else p.scrollIntoView({behavior:'smooth'});
+  },400);
 });
 
 function sp(e,id){
@@ -789,7 +786,7 @@ function sp(e,id){
   function upd(){
     const y=window.scrollY;
     // Afficher barre dès qu'on scroll
-    snav.classList.toggle('on', y>100);
+    snav.classList.toggle('on', y>80);
 
     // Section active
     let ai=0;
