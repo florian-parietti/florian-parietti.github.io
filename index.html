@@ -320,17 +320,22 @@ a{text-decoration:none;color:inherit}
 .t-photo-img{display:block;width:100%;border-radius:var(--r-md);transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;box-shadow:0 0 0 0 rgba(0,102,255,.2)}
 .t-photo-img:hover{transform:scale(1.03);box-shadow:0 0 0 8px rgba(0,102,255,.15),0 8px 32px rgba(0,102,255,.25)}
 
-/* ── BARRE DE NAVIGATION VERTICALE ── */
-.section-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:150;display:none;flex-direction:column;align-items:center;gap:0}
-.section-nav.visible{display:flex}
-.section-nav-line{width:1.5px;height:20px;background:rgba(255,255,255,.15)}
-.section-nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative}
-.section-nav-dot:hover{transform:scale(1.4);background:rgba(255,255,255,.7)}
-.section-nav-dot.active{background:var(--white);border-color:var(--white);transform:scale(1.5);box-shadow:0 0 0 3px rgba(255,255,255,.2)}
-.section-nav-dot[data-color="blue"].active{background:var(--blue);border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,102,255,.3)}
-.section-nav-label{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:600;color:var(--white);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;background:rgba(0,0,0,.5);padding:3px 10px;border-radius:20px;backdrop-filter:blur(8px)}
-.section-nav-dot:hover .section-nav-label{opacity:1}
-@media(max-width:900px){.section-nav{right:12px}}
+
+
+
+
+/* ── BARRE NAVIGATION VERTICALE ── */
+.snav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;display:none;flex-direction:column;align-items:flex-end;gap:0}
+.snav.on{display:flex}
+.snav-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:4px 0}
+.snav-item:hover .snav-label{opacity:1;transform:translateX(0)}
+.snav-label{font-size:10px;font-weight:700;color:var(--white);white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s ease;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);padding:3px 10px;border-radius:20px;letter-spacing:.04em}
+.snav-dot{width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:transparent;transition:all .35s cubic-bezier(.34,1.56,.64,1);flex-shrink:0}
+.snav-item.active .snav-dot{background:var(--white);border-color:var(--white);transform:scale(1.5);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
+.snav-item.active .snav-label{opacity:1;transform:translateX(0);color:var(--white);background:rgba(0,0,0,.7)}
+.snav-line{width:1.5px;height:18px;background:rgba(255,255,255,.15);margin-left:auto;margin-right:3px;position:relative;overflow:hidden}
+.snav-line-fill{position:absolute;top:0;left:0;right:0;background:var(--white);height:0%;transition:height .4s ease}
+@media(max-width:768px){.snav{display:none !important}}
 </style>
 </head>
 <body>
@@ -343,7 +348,7 @@ a{text-decoration:none;color:inherit}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="section-hero">
   <div class="hero-glow"></div>
   <div class="hero-orbit-wrap">
     <div class="hero-particle p1"></div>
@@ -372,7 +377,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- GATE -->
-<section class="sec" id="gate">
+<section class="sec" id="section-gate">
   <div class="wrap">
     <div class="gate-box reveal">
       <div class="g-ey">Accès gratuit</div>
@@ -660,7 +665,7 @@ a{text-decoration:none;color:inherit}
 <section class="sec sec-blue" id="section-routine">
     <div class="s-ey s-ey-w reveal">Ma journée type</div>
     <h2 class="s-ti reveal d1">La routine complète</h2>
-    <p class="s-de reveal d2" style="color:rgba(255,255,255,.7)">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
+    <p class="s-de reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
     <div class="reveal d3"><div class="rout">
       <div class="rr"><div class="rt">5h00</div><div class="rd"><strong>Réveil naturel</strong> — Hydratation + minéraux, lumière thérapie, mobilisation, respiration</div></div>
       <div class="rr"><div class="rt">5h30</div><div class="rd">Cardio zone 2 + marche, exposition à la lumière naturelle</div></div>
@@ -705,7 +710,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- CTA FINAL -->
-<section class="ctaf">
+<section class="ctaf" id="section-cta">
   <div class="wrap">
     <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
     <div class="ctab reveal d2">
@@ -760,6 +765,58 @@ document.getElementById('access-form').addEventListener('submit',async function(
   },400);
 });
 
+// BARRE NAVIGATION VERTICALE
+(function(){
+  const snav = document.getElementById('snav');
+  const items = document.querySelectorAll('.snav-item');
+  const fills = document.querySelectorAll('.snav-line-fill');
+  const sectionIds = ['section-hero','section-transfo','section-piliers','section-care','section-routine','section-outils','section-cta'];
+
+  // Clic → scroll
+  items.forEach((item,i) => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  function update(){
+    // Afficher la barre dès qu'on scroll
+    if(window.scrollY > 100) snav.classList.add('on');
+    else snav.classList.remove('on');
+
+    // Trouver la section active
+    let activeIdx = 0;
+    sectionIds.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      const rect = el.getBoundingClientRect();
+      if(rect.top <= window.innerHeight * 0.55) activeIdx = i;
+    });
+
+    // Mettre à jour les points
+    items.forEach((item, i) => item.classList.toggle('active', i === activeIdx));
+
+    // Animer les lignes entre sections (fill = 100% si section passée, 0% sinon)
+    fills.forEach((fill, i) => {
+      if(i < activeIdx) fill.style.height = '100%';
+      else if(i === activeIdx){
+        // Progression dans la section courante
+        const curr = document.getElementById(sectionIds[i]);
+        const next = document.getElementById(sectionIds[i+1]);
+        if(curr && next){
+          const total = next.getBoundingClientRect().top - curr.getBoundingClientRect().top;
+          const passed = -curr.getBoundingClientRect().top;
+          fill.style.height = Math.min(100, Math.max(0, (passed/total)*100)) + '%';
+        } else { fill.style.height = '0%'; }
+      } else { fill.style.height = '0%'; }
+    });
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+
 function sp(e,id){
   document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.pp').forEach(p=>p.classList.remove('active'));
@@ -800,17 +857,22 @@ function updateNavDots(){
 window.addEventListener('scroll', updateNavDots, {passive:true});
 </script>
 
+
 <!-- BARRE NAVIGATION VERTICALE -->
-<nav class="section-nav" id="section-nav" aria-label="Navigation sections">
-  <div class="section-nav-dot" data-target="section-transfo" data-color="blue"><span class="section-nav-label">Transformation</span></div>
-  <div class="section-nav-line"></div>
-  <div class="section-nav-dot" data-target="section-piliers"><span class="section-nav-label">Les 5 piliers</span></div>
-  <div class="section-nav-line"></div>
-  <div class="section-nav-dot" data-target="section-care"><span class="section-nav-label">Peau · Cheveux · Bucco</span></div>
-  <div class="section-nav-line"></div>
-  <div class="section-nav-dot" data-target="section-routine" data-color="blue"><span class="section-nav-label">Routine</span></div>
-  <div class="section-nav-line"></div>
-  <div class="section-nav-dot" data-target="section-outils"><span class="section-nav-label">Outils</span></div>
+<nav class="snav" id="snav">
+  <div class="snav-item" data-target="section-hero"><span class="snav-label">Accueil</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-0"></div></div>
+  <div class="snav-item" data-target="section-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-1"></div></div>
+  <div class="snav-item" data-target="section-piliers"><span class="snav-label">5 piliers</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-2"></div></div>
+  <div class="snav-item" data-target="section-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-3"></div></div>
+  <div class="snav-item" data-target="section-routine"><span class="snav-label">Routine</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-4"></div></div>
+  <div class="snav-item" data-target="section-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-line-fill" id="fill-5"></div></div>
+  <div class="snav-item" data-target="section-cta"><span class="snav-label">Bilan</span><span class="snav-dot"></span></div>
 </nav>
 </body>
 </html>
