@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Ton plan est prêt — Florian Parietti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+<div class="merci">
+
+  <h1 class="merci-h1">C'est bon <span id="pn"></span>— ton plan est prêt.</h1>
+  <p class="merci-sub">Lis les 90 secondes ci-dessous avant de l'ouvrir. Ça change la façon dont tu vas l'utiliser.</p>
+
+  <div class="merci-cta-box">
+    <a href="plan.html" class="cta-main">Ouvrir le plan maintenant</a>
+    <p class="cta-micro">Garde cette page en favori — tu peux y revenir quand tu veux.</p>
+  </div>
+
+  <!-- ═══ VIDÉO ═══
+       Remplace le bloc .vid-ph par ton embed :
+       YouTube (non répertorié) :
+       <iframe src="https://www.youtube.com/embed/TON_ID?rel=0" allowfullscreen title="Message de Florian"></iframe>
+       ou fichier local :
+       <video src="video/message.mp4" controls playsinline poster="img/transfo-face-3.jpg"></video>
+  -->
+  <div class="vid-box">
+    <div class="vid-ph">
+      <strong style="color:var(--white);font-size:15px">Vidéo à insérer ici</strong>
+      <span>2 minutes, face caméra. Le script est dans tes notes.</span>
+    </div>
+  </div>
+
+  <div class="offer">
+    <div class="s2-ey" style="text-align:center">L'étape suivante</div>
+    <h2>Le plan te donne le <em style="font-style:normal;color:var(--blue)">quoi</em>.
+        Il ne te donne pas l'ordre pour <em style="font-style:normal;color:var(--blue)">ta</em> situation.</h2>
+    <p>
+      C'est là que la majorité des gens se plantent : bon protocole, mauvais moment.
+      Un déficit avant d'avoir corrigé le sommeil. Du volume avant d'avoir corrigé la technique.
+      Résultat : 2 ans perdus.
+    </p>
+
+    <ul>
+      <li>Je regarde ta situation actuelle : physique, sommeil, énergie, emploi du temps</li>
+      <li>J'identifie le seul blocage qui t'empêche d'avancer maintenant</li>
+      <li>Je te donne l'ordre exact des 3 prochains changements à faire</li>
+      <li>Et je te dis si un accompagnement a du sens pour toi — ou pas</li>
+    </ul>
+
+    <a href="https://calendly.com/florian-parietti/30min" class="cta-main" target="_blank" rel="noopener">
+      Réserver mon appel diagnostic (20 min)
+    </a>
+    <p class="cta-micro">
+      En visio. Gratuit. Pas de vente déguisée : si ce n'est pas le bon moment pour toi, je te le dirai.
+    </p>
+  </div>
+
+  <div class="ig-box">
+    <p>Optionnel — je poste mes protocoles et mes tests en direct sur Instagram.</p>
+    <div class="ig-row">
+      <input class="fi" type="text" id="insta" placeholder="@toncompte" autocomplete="off">
+      <button type="button" id="ig-btn">Envoyer</button>
+    </div>
+    <p id="ig-ok" style="display:none;margin-top:12px;color:var(--blue);font-size:13px">Reçu. À bientôt.</p>
+  </div>
+
+</div>
+</div>
+
+<script>
+const SU = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+
+/* Prénom dans le titre */
+try {
+  const p = sessionStorage.getItem('fp_prenom');
+  if (p) document.getElementById('pn').textContent = p + ' ';
+} catch (x) {}
+
+/* Instagram optionnel */
+document.getElementById('ig-btn').addEventListener('click', function () {
+  const ig = document.getElementById('insta').value.trim();
+  if (!ig) return;
+  const params = new URLSearchParams({
+    prenom: sessionStorage.getItem('fp_prenom') || '',
+    email: sessionStorage.getItem('fp_email') || '',
+    instagram: ig,
+    objectif_physique: '', objectif_sante: '', autre: '',
+    date: new Date().toLocaleString('fr-BE'),
+    statut: 'Instagram'
+  });
+  const f = document.createElement('iframe');
+  f.style.display = 'none';
+  f.src = SU + '?' + params.toString();
+  document.body.appendChild(f);
+  this.disabled = true;
+  document.getElementById('ig-ok').style.display = 'block';
+});
+</script>
+
+</body>
+</html>

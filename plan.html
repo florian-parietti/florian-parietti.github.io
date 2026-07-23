@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Active Lifestyle Plan — Florian Parietti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="plan" style="display:block">
+
+
+<!-- TRANSFORMATION — fond bleu -->
+<div class="sec-sep"></div>
+<section class="sec sec-gray" id="s-transfo">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">La réalité</div>
+    <h2 class="s-ti reveal d1">Ma transformation</h2>
+    <!-- Photos transformation -->
+    <div class="reveal d2" style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+      <img src="img/transfo-dos-2020-2025.jpg" loading="lazy" alt="Transformation dos 2020→2025" class="t-photo-img" style="width:65%;max-width:480px;margin:0 auto;border-radius:var(--r-md)">
+      <img src="img/transfo-dos-3.jpg" loading="lazy" alt="Transformation dos 2020→2023→2025" class="t-photo-img" style="width:65%;max-width:480px;margin:0 auto;border-radius:var(--r-md)">
+      <img src="img/transfo-face-3.jpg" loading="lazy" alt="Transformation face 2020→2023→2025" class="t-photo-img" style="width:65%;max-width:480px;margin:0 auto;border-radius:var(--r-md)">
+    </div>
+    <!-- Grille 3 colonnes -->
+    <div class="t-grid3 reveal d3" style="background:none;padding:0">
+      <!-- 2020-21 -->
+      <div class="t-col3">
+        <div class="t-col3-lbl bad">Avant — 2020/21<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Football, blessure & méniscectomie</span></div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Football, blessure & méniscectomie</div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Skinny fat</div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Manque de confiance (tendance à prouver)</div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Soirées, alcool, distraction</div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Mauvaise influence</div>
+        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Fin de l'école, aucune direction</div>
+      </div>
+      <!-- 2023-24 -->
+      <div class="t-col3">
+        <div class="t-col3-lbl mid">2023/24<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Transfo physique</span></div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Bulky</div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Musculation & streetlifting</div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Perdu mais meilleure confiance</div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Personal grow</div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Low focus & procrastination</div>
+        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Stressé — réorientation des études</div>
+      </div>
+      <!-- 2025-26 -->
+      <div class="t-col3">
+        <div class="t-col3-lbl good">Maintenant — 2025/26<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Optimisation santé & physique</span></div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Physique athlétique & hybride</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Confiance élevée, présence forte</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Healthy lifestyle & consistent learning</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Énergie & haute performance</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Liberté en ligne (voyage & business)</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Vision claire, entourage puissant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 PILIERS — fond noir -->
+<div class="sec-sep"></div>
+<section class="sec" id="s-piliers">
+  <div class="wrap">
+    <div class="s-ey reveal">Le système</div>
+    <h2 class="s-ti reveal d1">Les 6 piliers</h2>
+    <p class="s-de reveal d2">Optimise les 6 simultanément. Chaque pilier amplifie les autres.</p>
+    <div class="pnav reveal d3">
+      <button class="pbtn active" onclick="sp(event,'nutrition')"><span class="pbtn-n">01</span>Nutrition</button>
+      <button class="pbtn" onclick="sp(event,'training')"><span class="pbtn-n">02</span>Entraînement</button>
+      <button class="pbtn" onclick="sp(event,'sleep')"><span class="pbtn-n">03</span>Sommeil</button>
+      <button class="pbtn" onclick="sp(event,'env')"><span class="pbtn-n">04</span>Environnement</button>
+      <button class="pbtn" onclick="sp(event,'bio')"><span class="pbtn-n">05</span>Biohacking</button>
+      <button class="pbtn" onclick="sp(event,'work')"><span class="pbtn-n">06</span>Work</button>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="pp active" id="p-nutrition">
+      <div class="quote">"Chaque calorie doit apporter quelque chose. Ton corps est le seul fournisseur de ton énergie, ta croissance et ta reconstruction cellulaire."</div>
+      <div class="mr">
+        <div class="mc"><div class="mn">50%</div><div class="ml">Glucides</div><div class="ms">complexes & fruits</div></div>
+        <div class="mc"><div class="mn">25%</div><div class="ml">Protéines</div><div class="ms">1,6–2 g/kg</div></div>
+        <div class="mc"><div class="mn">25%</div><div class="ml">Lipides</div><div class="ms">0,8–1 g/kg</div></div>
+      </div>
+      <div class="card-dark"><div class="ch-dark">Protéines</div><ul>
+        <li><strong>Quotidien</strong><span>Poulet, blanc de dinde, œufs, cottage cheese, whey</span></li>
+        <li><strong>2×/semaine</strong><span>Bœuf (filet pur, côte à l'os), poissons gras, veau maigre, scampi</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Glucides complexes & lipides sains</div><ul>
+        <li><strong>Fruits</strong><span>Myrtilles, fruits rouges, poire, pastèque, dattes, kiwi</span></li>
+        <li><strong>Féculents</strong><span>Riz blanc/complet, quinoa, avoine, patate douce, pain au levain, lentilles</span></li>
+        <li><strong>Légumes & fermentés</strong><span>Courgette, poivrons, tomates, kéfir, kimchi, choucroute, tempeh</span></li>
+        <li><strong>Lipides</strong><span>Huile d'olive extra vierge, avocat, noix, amandes, chocolat 85%+, graines chia & courge, beurre nourri à l'herbe</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Compléments</div><div class="tags"><span class="tag g">Magnésium</span><span class="tag g">Zinc</span><span class="tag g">Créatine</span><span class="tag g">Vitamine D</span><span class="tag g">Whey</span></div></div>
+      <div class="card-dark"><div class="ch-dark">À limiter ou éviter</div><div class="tags"><span class="tag r">Sucre raffiné</span><span class="tag r">Charcuterie</span><span class="tag r">Aliments frits</span><span class="tag r">Fast food</span><span class="tag r">Édulcorants</span><span class="tag r">Alcool</span><span class="tag r">Huiles de graines</span><span class="tag r">Conservateurs</span></div></div>
+    </div>
+
+    <!-- ENTRAÎNEMENT -->
+    <div class="pp" id="p-training">
+      <div class="quote">"La récupération et la surcharge progressive intelligente sont plus importantes que tous les autres paramètres réunis."</div>
+      <div class="card-dark"><div class="ch-dark">Split — 5 jours</div>
+        <div class="sg">
+          <div class="sd"><div class="sdn">Lundi</div><div class="sdf">Push - Focus pec moyen/sup & haut + Triceps + Deltoïde lat.</div></div>
+          <div class="sd"><div class="sdn">Mardi</div><div class="sdf">Pull - Focus grand dorsal + Trapèze moyen + Biceps</div></div>
+          <div class="sd rest"><div class="sdn">Mercredi</div><div class="sdf">Repos actif</div></div>
+          <div class="sd"><div class="sdn">Jeudi</div><div class="sdf">Push - Focus idem</div></div>
+          <div class="sd"><div class="sdn">Vendredi</div><div class="sdf">Pull - Focus idem</div></div>
+          <div class="sd"><div class="sdn">Samedi</div><div class="sdf">Legs complet</div></div>
+          <div class="sd rest"><div class="sdn">Dimanche</div><div class="sdf">Repos actif</div></div>
+        </div>
+      </div>
+      <div class="card-dark"><div class="ch-dark">Paramètres clés</div>
+        <div class="pg">
+          <div class="pm"><div class="pml">Séries</div><div class="pmv">2 à 3 / exercice</div></div>
+          <div class="pm"><div class="pml">Répétitions</div><div class="pmv">6 à 15 reps</div></div>
+          <div class="pm"><div class="pml">Repos</div><div class="pmv">2'30 à 3'15</div></div>
+          <div class="pm"><div class="pml">Intensité</div><div class="pmv">0–2 RIR / série</div></div>
+        </div>
+      </div>
+      <div class="card-dark"><div class="ch-dark">Technique</div><ul>
+        <li><strong>Réglages</strong><span>Adapter chaque machine à ta morphologie avant chaque série — siège, dossier, angle des coudes, écartement</span></li>
+        <li><strong>Pectoraux</strong><span>Zéro cambrure excessive — modifie le faisceau ciblé</span></li>
+        <li><strong>Dos</strong><span>Éviter la rétraction scapulaire, la flexion de coude et la cambrure lombaire pour cibler le grand dorsal</span></li>
+        <li><strong>Angle du coude</strong><span>Guide le faisceau ciblé — pec inférieur, moyen ou supérieur selon l'angle</span></li>
+        <li><strong>Ordre</strong><span>Commencer par les points faibles — ils reçoivent l'énergie maximale</span></li>
+        <li><strong>Tension</strong><span>Alterner exercice à tension d'étirement avec contraction selon le muscle cible</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Cardio & mouvement</div><ul>
+        <li><strong>Zone 2 — 2×/sem</strong><span>Natation ou marche inclinée — 125–130 BPM, conversation possible</span></li>
+        <li><strong>Zone 4-5 — 1×/sem</strong><span>Air bike, rameur ou SkiErg — effort intense</span></li>
+        <li><strong>Pas quotidiens</strong><span>8 000 à 12 000 pas minimum</span></li>
+        <li><strong>Anti-sédentarité</strong><span>10 squats toutes les 45 minutes</span></li>
+        <li><strong>Mobilité</strong><span>Chaque jour · Stretching 2–3×/semaine éloigné des séances</span></li>
+      </ul></div>
+      <div class="tip-blue"><strong>Recommandation longévité :</strong> 3 sessions de force · 3 sessions de cardio · 150 min Zone 2 · 75 min Zone 4-5 (HIIT) · Flexibilité, équilibre et mobilité inclus.</div>
+    </div>
+
+    <!-- SOMMEIL -->
+    <div class="pp" id="p-sleep">
+      <div class="quote">"Le dopant naturel le plus puissant. Planifie ta journée autour de ton sommeil — c'est le rendez-vous le plus important de ton agenda."</div>
+      <div class="card-dark"><div class="ch-dark">Protocole soir</div><ul>
+        <li><strong>Dernier repas</strong><span>Minimum 4h avant le coucher</span></li>
+        <li><strong>Écrans off</strong><span>60 min avant de dormir</span></li>
+        <li><strong>Wind-down 60 min</strong><span>Marche, lecture, journaling, respiration, méditation</span></li>
+        <li><strong>Lumière rouge</strong><span>Lunettes anti-lumière bleue ou ampoule rouge le soir</span></li>
+        <li><strong>Environnement</strong><span>18–21°C, obscurité totale, silence ou bruit blanc</span></li>
+        <li><strong>Caféine</strong><span>Stop minimum 8–10h avant de dormir</span></li>
+        <li><strong>Heure fixe</strong><span>Même heure chaque soir</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Protocole matin</div><ul>
+        <li><strong>Lumière naturelle</strong><span>Dans les 15–30 premières minutes après le réveil</span></li>
+        <li><strong>Tracker</strong><span>Apple Watch, Oura Ring, Whoop, Fitbit — sommeil profond et paradoxal</span></li>
+      </ul></div>
+      <div class="sg">
+        <div class="sd"><div class="sdn">Durée cible</div><div class="sdf">7h30 – 9h / nuit</div></div>
+        <div class="sd"><div class="sdn">Sommeil profond</div><div class="sdf">≥ 20% du total</div></div>
+        <div class="sd"><div class="sdn">Sommeil paradoxal</div><div class="sdf">≥ 20–25% du total</div></div>
+        <div class="sd"><div class="sdn">Heure fixe</div><div class="sdf">7j/7 — même le weekend</div></div>
+      </div>
+    </div>
+
+    <!-- ENVIRONNEMENT -->
+    <div class="pp" id="p-env">
+      <div class="quote">"Ton environnement impacte tes routines plus que ta propre volonté. Commence par changer ce qui t'entoure."</div>
+      <div class="card-dark"><div class="ch-dark">Matériel de cuisine</div><ul>
+        <li><strong>Poêles</strong><span>Inox uniquement — éviter le téflon abîmé et l'aluminium non anodisé</span></li>
+        <li><strong>Cuisson</strong><span>Ne pas surchauffer les huiles et aliments dans la poêle — cancérigène</span></li>
+        <li><strong>Ustensiles</strong><span>Bois ou inox — pas de plastique en contact avec la chaleur</span></li>
+        <li><strong>Conservation</strong><span>Contenants en inox ou verre</span></li>
+        <li><strong>Eau</strong><span>Filtre alcalin multi-niveaux, enrichie en sable de corail</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Réduire la charge quotidienne</div><ul>
+        <li><strong>Vêtements & draps</strong><span>Coton de préférence — éviter polyester</span></li>
+        <li><strong>Produits parfumés</strong><span>Minimiser parfums synthétiques, bougies et sprays d'intérieur</span></li>
+        <li><strong>Expositions chroniques</strong><span>Cigarette, carburant, tickets de caisse (BPA) — limiter autant que possible</span></li>
+      </ul></div>
+      <div class="pg">
+        <div class="pm"><div class="pml">Priorité #1</div><div class="pmv">Eau filtrée</div></div>
+        <div class="pm"><div class="pml">Priorité #2</div><div class="pmv">Cuisine inox/verre</div></div>
+        <div class="pm"><div class="pml">Priorité #3</div><div class="pmv">Textiles naturels</div></div>
+        <div class="pm"><div class="pml">Priorité #4</div><div class="pmv">Air intérieur sain</div></div>
+      </div>
+    </div>
+
+    <!-- BIOHACKING -->
+    <div class="pp" id="p-bio">
+      <div class="quote">"Le biohacking, c'est utiliser la biologie à ton avantage — pas des gadgets, des protocoles validés qui amplifient ce que tu construis déjà."</div>
+      <div class="card-dark"><div class="ch-dark">Sauna — protocole</div><ul>
+        <li><strong>Fréquence</strong><span>4–5×/semaine, 25–30 min à 90–100°C</span></li>
+        <li><strong>Bienfaits</strong><span>Équivalent cardiovasculaire du cardio, réduction élevée du taux de microplastiques, amélioration de la peau</span></li>
+        <li><strong>Optimisation</strong><span>Hydratation avec électrolytes, chapeau sur la tête, glace sous les testicules</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Pratiques quotidiennes</div><ul>
+        <li><strong>Grounding</strong><span>1 à 2×/jour — pieds nus sur la terre</span></li>
+        <li><strong>Exposition solaire</strong><span>Maximum en matinée et fin d'après-midi — sans protection pour la vitamine D</span></li>
+        <li><strong>Respiration</strong><span>Hyperventilation au réveil, cohérence cardiaque sous stress, lente au coucher</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Complémentaire</div><ul>
+        <li><strong>Bain chaud post-entraînement</strong><span>Favorise la récupération sans inhiber les adaptations musculaires</span></li>
+        <li><strong>Bain froid</strong><span>Occasionnel, éloigné des séances. 30 sec–1 min. Pas après la salle.</span></li>
+      </ul></div>
+      <div class="sg">
+        <div class="sd"><div class="sdn">Sauna</div><div class="sdf">4–5×/semaine</div></div>
+        <div class="sd"><div class="sdn">Grounding</div><div class="sdf">1–2×/jour</div></div>
+        <div class="sd"><div class="sdn">Soleil matinal</div><div class="sdf">Quotidien</div></div>
+        <div class="sd"><div class="sdn">Respiration</div><div class="sdf">3 protocoles</div></div>
+      </div>
+      <div class="card-dark"><div class="ch-dark">Outils & mesures</div><ul>
+        <li><strong>Trackers</strong><span>Apple Watch, Whoop (biceps), Oura Ring, Fitbit — sommeil, HRV, fréquence cardiaque</span></li>
+        <li><strong>Environnement nuit</strong><span>Masque, bouchons d'oreilles, strips nasales, lunettes anti-lumière bleue, lumière rouge</span></li>
+      </ul></div>
+    </div>
+    <div class="pp" id="p-work">
+      <div class="quote">"Avoir un réel impact — construire ma liberté — Polyvalence — apprentissage continu."</div>
+      <div class="card-dark"><div class="ch-dark">Ce que je fais</div><ul>
+        <li><strong>Création de contenu</strong><span>Réseaux sociaux</span></li>
+        <li><strong>Coaching en ligne</strong><span>Transformation physique</span></li>
+        <li><strong>Création de protocole avancée</strong><span>Optimisation santé</span></li>
+        <li><strong>Création digitale & marketing</strong><span>Website, landing page, leadmagnet...</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Organisation</div><ul>
+        <li><strong>Deep work & création tôt le matin</strong><span>Tâches complexes ou urgentes</span></li>
+        <li><strong>Coaching</strong><span>En fin de matinée ou après-midi</span></li>
+        <li><strong>Simple work</strong><span>Fin d'après-midi</span></li>
+      </ul></div>
+      <div class="card-dark"><div class="ch-dark">Concentration & productivité</div><ul>
+        <li><strong>Environnement</strong><span>Silence / bruit blanc — mode ne pas déranger</span></li>
+        <li><strong>Timer</strong><span>45 minutes (micro pauses actives) — 1h30 (pauses actives)</span></li>
+        <li><strong>Setup</strong><span>Écran surélevé — hydratation — luminosité élevée — caféine (optionnel)</span></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE — fond gris vitre -->
+<div class="sec-sep"></div>
+<section class="sec sec-gray" id="s-care">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Aller plus loin</div>
+    <h2 class="s-ti reveal d1">Peau · Cheveux · Bucco-dentaire</h2>
+    <p class="s-de reveal d2">L'apparence extérieure reflète ce que tu construis de l'intérieur. Protocoles minimalistes.</p>
+    <div class="care-grid">
+      <div class="care-card reveal d2">
+        <div class="care-num">PEAU</div>
+        <h3>Skincare</h3>
+        <ul>
+          <li>Soir : nettoyant adapté → séchage microfibre → sérum → crème hydratante</li>
+          <li>Matin : rinçage à l'eau + crème solaire SPF50+</li>
+          <li>Après sauna : crème hydratante légère</li>
+          <li>Exposition solaire matinale sans protection pour la vitamine D</li>
+        </ul>
+      </div>
+      <div class="care-card reveal d3">
+        <div class="care-num">CHEVEUX</div>
+        <h3>Hair care</h3>
+        <ul>
+          <li>Shampoing sans sulfates tous les 3–4 jours</li>
+          <li>Séchage microfibre — sèche-cheveux rarement</li>
+          <li>Produit coiffant naturel à base aqueuse</li>
+          <li>Nutrition capillaire : protéines, Oméga-3, Zinc, Biotine, Vitamines C/D/E</li>
+        </ul>
+      </div>
+      <div class="care-card reveal d4">
+        <div class="care-num">BOUCHE</div>
+        <h3>Bucco-dentaire</h3>
+        <ul>
+          <li>Matin & soir : hydropulseur ou jet dentaire</li>
+          <li>Soie dentaire</li>
+          <li>Brosse électrique à poils souples</li>
+          <li>Gratte-langue (occasionnel)</li>
+          <li>Dentiste 2×/an minimum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTINE — fond bleu -->
+<div class="sec-sep"></div>
+<section class="sec sec-blue" id="s-routine">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Ma journée type</div>
+    <h2 class="s-ti reveal d1">La routine complète</h2>
+    <p class="s-de reveal d2">Conçue pour réguler le rythme circadien, maintenir une énergie et productivité élevée et maximiser la qualité du sommeil.</p>
+    <div class="reveal d3"><div class="rout">
+      <div class="rr"><div class="rt">5h00</div><div class="rd"><strong>Réveil naturel</strong> — Hydratation + minéraux, lumière thérapie, mobilisation, respiration</div></div>
+      <div class="rr"><div class="rt">5h30</div><div class="rd">Cardio zone 2 + marche, exposition à la lumière naturelle</div></div>
+      <div class="rr"><div class="rt">6h15</div><div class="rd"><strong>Petit déjeuner</strong> — Protéines + bonnes graisses + myrtilles ou fruits rouges</div></div>
+      <div class="rr"><div class="rt">7h00</div><div class="rd"><strong>Deep work 1</strong> — Création, planification, analyse. Sans écran ni téléphone au préalable.</div></div>
+      <div class="rr"><div class="rt">9h00</div><div class="rd">Coaching online + deep work 2</div></div>
+      <div class="rr"><div class="rt">11h00</div><div class="rd">Marche dehors ou plongeon piscine — <strong>stop caféine</strong></div></div>
+      <div class="rr"><div class="rt">12h00</div><div class="rd"><strong>Déjeuner</strong> — Protéines ++ · Glucides complexes ++ · Lipides +</div></div>
+      <div class="rr"><div class="rt">14h30</div><div class="rd"><strong>Entraînement + Sauna</strong> — Pré-workout : glucides simples</div></div>
+      <div class="rr"><div class="rt">16h15</div><div class="rd">Post-workout protéiné (optionnel) + travail basique</div></div>
+      <div class="rr"><div class="rt">18h30</div><div class="rd"><strong>Dîner — dernier repas</strong> — Protéines ++ · Lipides + · Glucides complexes +</div></div>
+      <div class="rr"><div class="rt">19h30</div><div class="rd">Lunettes anti-lumière bleue · Relax & moment social</div></div>
+      <div class="rr"><div class="rt">20h30</div><div class="rd"><strong>Zéro stimulation</strong> — Plus d'écran, plus de lumière vive</div></div>
+      <div class="rr"><div class="rt">21h00</div><div class="rd">Préparation au sommeil — obscurité, 18–21°C, calme absolu</div></div>
+      <div class="rr"><div class="rt">21h30</div><div class="rd"><strong>Début du premier cycle de sommeil</strong></div></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- OUTILS — fond gris vitre -->
+<div class="sec-sep"></div>
+<section class="sec sec-gray" id="s-outils">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Passe à l'action</div>
+    <h2 class="s-ti reveal d1">Outils gratuits</h2>
+    <p class="s-de reveal d2">Deux ressources pour démarrer immédiatement.</p>
+    <div class="tg">
+      <a href="https://docs.google.com/spreadsheets/d/TON_LIEN_TRACKER/copy" class="tool reveal d2" target="_blank">
+        <div class="tool-n">OUTIL 01</div>
+        <h3>Tracker de performance</h3>
+        <p>Google Sheet pour suivre tes 6 piliers semaine par semaine.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);border-radius:20px;padding:5px 14px;letter-spacing:.06em;text-transform:uppercase">⏳ Bientôt disponible</div>
+      </a>
+      <a href="https://calendly.com/florian-parietti/30min" class="tool reveal d3" target="_blank">
+        <div class="tool-n">OUTIL 02</div>
+        <h3>Appel diagnostic — 20 min</h3>
+        <p>20 minutes en visio. J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements.</p>
+        <div class="tool-a">Réserver maintenant →</div>
+      </a>
+      <div class="tool reveal d4" style="grid-column:1/-1;border:1.5px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)">
+        <div class="tool-n" style="color:var(--blue)">BIENTÔT</div>
+        <h3>Club</h3>
+        <p style="font-weight:600;color:var(--black);margin-bottom:6px">Healthy lifestyle · Business creation · Voyage & expériences · Communauté franco-anglophone privée</p>
+        <p style="font-size:.78rem;color:rgba(0,0,0,.45);font-style:italic;font-weight:500">Where ambitious men build their highest-performing life.</p>
+        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);border-radius:20px;padding:5px 14px;letter-spacing:.06em;text-transform:uppercase">⏳ En cours de développement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="ctaf" id="s-bilan">
+  <div class="wrap">
+    <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
+    <div class="ctab reveal d2">
+      <div class="ctab-ti">Appel diagnostic — 20 minutes</div>
+      <p class="ctab-su">20 minutes en visio. J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements. Si ce n'est pas le bon moment pour toi, je te le dirai.</p>
+      <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn" target="_blank">Réserver mon appel diagnostic</a>
+      <p class="ctab-no">Places limitées · Coaching 1-1 uniquement</p>
+    </div>
+  </div>
+</section>
+
+<div class="disc">
+  <div class="wrap"><p><strong>Avertissement.</strong> Ce plan est basé sur mon expérience personnelle et mes recherches. Il ne remplace pas un avis médical professionnel. Consulte un médecin avant tout changement significatif. Les résultats sont individuels.</p></div>
+</div>
+
+
+</div>
+
+<nav class="snav" id="snav">
+  <div class="snav-item" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-piliers"><span class="snav-label">6 piliers</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-care"><span class="snav-label">Care</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-routine"><span class="snav-label">Routine</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-outils"><span class="snav-label">Outils</span><span class="snav-dot"></span></div>
+  <div class="snav-line"><div class="snav-fill"></div></div>
+  <div class="snav-item" data-s="s-bilan"><span class="snav-label">Appel</span><span class="snav-dot"></span></div>
+</nav>
+
+<script>
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+function sp(e, id) {
+  document.querySelectorAll('.pbtn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pp').forEach(p => p.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('p-' + id).classList.add('active');
+}
+
+(function () {
+  const snav = document.getElementById('snav');
+  const items = [...document.querySelectorAll('.snav-item')];
+  const fills = [...document.querySelectorAll('.snav-fill')];
+  const ids = ['s-transfo','s-piliers','s-care','s-routine','s-outils','s-bilan'];
+  items.forEach(item => item.addEventListener('click', () => {
+    const el = document.getElementById(item.dataset.s);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }));
+  function upd() {
+    snav.classList.toggle('on', window.scrollY > 80);
+    let ai = 0;
+    ids.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) ai = i;
+    });
+    items.forEach((item, i) => item.classList.toggle('active', i === ai));
+    fills.forEach((fill, i) => {
+      if (i < ai) { fill.style.height = '100%'; return; }
+      if (i === ai) {
+        const c = document.getElementById(ids[i]), n = document.getElementById(ids[i + 1]);
+        if (c && n) {
+          const t = n.getBoundingClientRect().top - c.getBoundingClientRect().top;
+          const p = -c.getBoundingClientRect().top;
+          fill.style.height = Math.min(100, Math.max(0, (p / t) * 100)) + '%';
+        } else fill.style.height = '0%';
+        return;
+      }
+      fill.style.height = '0%';
+    });
+  }
+  window.addEventListener('scroll', upd, { passive: true });
+  upd();
+})();
+</script>
+
+</body>
+</html>
