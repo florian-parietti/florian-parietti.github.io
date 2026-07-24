@@ -50,19 +50,18 @@ Tu dois voir 11 lignes dans la liste d'upload.
 - Soumission → merci.html → une ligne dans le Sheet, colonnes alignées
 
 ## Images
+
 | Fichier | Usage |
 |---|---|
-| hero-face.jpg | Hero — montage face 2020→2025, recomposé depuis tes 4 originaux |
-| story-dos.jpg | Section "Pourquoi m'écouter" — montage dos 2020→2025 |
-| m-vo2.jpg | Carte VO₂ max (59 + niveau Élevé) |
-| m-fc.jpg | Carte fréquence cardiaque au repos |
-| m-sommeil.jpg | Carte sommeil profond |
-| transfo-*.jpg | Utilisées dans plan.html |
+| hero-face.jpg | Hero — face 2020 → 2025 |
+| story-dos.jpg | Section "Pourquoi m'écouter" — dos 2020 → 2025 |
+| m-vo2.jpg / m-fc.jpg / m-sommeil.jpg | Cartes métriques (gabarit identique 1200x560) |
+| plan-face-3.jpg / plan-dos-3.jpg | Montages 3 étapes, utilisés dans plan.html |
 
-Les deux montages sont recomposés depuis tes 4 PNG 2000x3000.
-Règle d'échelle : les deux photos d'une paire sont mises à la même taille de tête,
-même niveau de recadrage haut et bas. Aucune exagération.
-hero-face.jpg fait 1738 px de large, affiché à 470 px : net même sur écran Retina.
+Les deux montages 2020 → 2025 sont recomposés depuis tes PNG 2000x3000.
+Règle d'échelle : même taille de tête dans les deux photos d'une paire, même niveau
+de recadrage haut et bas. Quand deux repères anatomiques divergeaient, j'ai retenu
+celui qui te désavantage. Aucune exagération.
 
 ## Ensuite
 1. Vidéo 2 min → merci.html (bloc commenté)
