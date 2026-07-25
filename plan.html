@@ -327,10 +327,14 @@
       </a>
       <div class="tool reveal d4" style="grid-column:1/-1;border:1.5px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)">
         <div class="tool-n" style="color:var(--blue)">BIENTÔT</div>
-        <h3>Club</h3>
-        <p style="font-weight:600;color:var(--black);margin-bottom:6px">Healthy lifestyle · Business creation · Voyage & expériences · Communauté franco-anglophone privée</p>
-        <p style="font-size:.78rem;color:rgba(0,0,0,.45);font-style:italic;font-weight:500">Where ambitious men build their highest-performing life.</p>
-        <div style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);border-radius:20px;padding:5px 14px;letter-spacing:.06em;text-transform:uppercase">⏳ En cours de développement</div>
+        <h3>La team privée</h3>
+        <p style="font-weight:500;color:var(--black);margin-bottom:14px">Coachs, entrepreneurs, ou ceux qui veulent simplement bâtir leur liberté en ligne, expérimenter un healthy lifestyle et progresser entourés des bonnes personnes. On se réunit, on avance ensemble. Pas d'abonnement, pas de blabla.</p>
+        <p style="font-weight:600;color:var(--black);margin-bottom:12px">Laisse ton Instagram — on te contacte au lancement.</p>
+        <div class="club-row">
+          <input class="club-in" type="text" id="clubInsta" placeholder="@toncompte" autocomplete="off">
+          <button type="button" class="club-btn" id="clubBtn">Je veux être prévenu</button>
+        </div>
+        <p id="clubOk" style="display:none;margin-top:12px;color:var(--blue);font-size:.85rem;font-weight:600">C'est noté. Tu seras dans les premiers prévenus.</p>
       </div>
     </div>
   </div>
@@ -424,15 +428,35 @@ function sp(e, id) {
 
 (function(){
   const fc=document.getElementById('floatCta');
-  const end=document.getElementById('s-bilan');
-  if(!fc) return;
+  const zone=document.getElementById('s-transfo');
+  if(!fc||!zone) return;
   function upd(){
-    const show = window.scrollY>500;
-    let overEnd=false;
-    if(end){const r=end.getBoundingClientRect(); overEnd = r.top < window.innerHeight*0.8;}
-    fc.classList.toggle('on', show && !overEnd);
+    const r=zone.getBoundingClientRect();
+    // visible seulement tant que la section transformation est à l'écran
+    const inView = r.top < window.innerHeight*0.5 && r.bottom > 120;
+    fc.classList.toggle('on', inView);
   }
   window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+
+(function(){
+  const SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+  const btn=document.getElementById('clubBtn');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    const ig=document.getElementById('clubInsta').value.trim();
+    if(!ig) return;
+    let prenom='',email='';
+    try{prenom=sessionStorage.getItem('fp_prenom')||'';email=sessionStorage.getItem('fp_email')||'';}catch(e){}
+    const params=new URLSearchParams({
+      date:new Date().toLocaleString('fr-BE'),
+      prenom:prenom, email:email, statut:'Team — intéressé', instagram:ig
+    });
+    const f=document.createElement('iframe'); f.style.display='none';
+    f.src=SU+'?'+params.toString(); document.body.appendChild(f);
+    btn.disabled=true;
+    document.getElementById('clubOk').style.display='block';
+  });
 })();
 </script>
 
