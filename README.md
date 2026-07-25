@@ -55,8 +55,9 @@ Tu dois voir 11 lignes dans la liste d'upload.
 |---|---|
 | hero-face.jpg | Hero — face 2020 → 2025 |
 | story-dos.jpg | Section "Pourquoi m'écouter" — dos 2020 → 2025 |
-| m-vo2.jpg / m-fc.jpg / m-sommeil.jpg | Cartes métriques (gabarit identique 1200x560) |
-| plan-face-3.jpg / plan-dos-3.jpg | Montages 3 étapes, utilisés dans plan.html |
+| proof-vo2 / proof-fc / proof-sommeil.jpg | Vignettes-preuve (petites captures Apple Santé sous chaque métrique) |
+| plan-full-4.jpg | Montage complet 4 panneaux (dos+face 2020→2025), 1ʳᵉ image du plan |
+| plan-face-3 / plan-dos-3.jpg | Montages 3 étapes, dans plan.html |
 
 Les deux montages 2020 → 2025 sont recomposés depuis tes PNG 2000x3000.
 Règle d'échelle : même taille de tête dans les deux photos d'une paire, même niveau
