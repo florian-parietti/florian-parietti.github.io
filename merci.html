@@ -66,12 +66,12 @@
   </div>
 
   <div class="ig-box">
-    <p>Optionnel — je poste mes protocoles et mes tests en direct sur Instagram.</p>
+    <p><strong style="color:var(--white)">Une team privée est en train de se créer.</strong> Coachs, entrepreneurs, ou ceux qui veulent simplement bâtir leur liberté en ligne, expérimenter un healthy lifestyle et progresser entourés des bonnes personnes. On se réunit, on avance ensemble. Pas d'abonnement, pas de blabla.<br><br>Laisse ton Instagram — on te contacte au lancement.</p>
     <div class="ig-row">
       <input class="fi" type="text" id="insta" placeholder="@toncompte" autocomplete="off">
-      <button type="button" id="ig-btn">Envoyer</button>
+      <button type="button" id="ig-btn">Je veux être prévenu</button>
     </div>
-    <p id="ig-ok" style="display:none;margin-top:12px;color:var(--blue);font-size:13px">Reçu. À bientôt.</p>
+    <p id="ig-ok" style="display:none;margin-top:12px;color:var(--blue);font-size:13px">C'est noté. Tu seras dans les premiers prévenus.</p>
   </div>
 
 </div>
@@ -96,7 +96,7 @@ document.getElementById('ig-btn').addEventListener('click', function () {
     instagram: ig,
     objectif_physique: '', objectif_sante: '', autre: '',
     date: new Date().toLocaleString('fr-BE'),
-    statut: 'Instagram'
+    statut: 'Club — intéressé'
   });
   const f = document.createElement('iframe');
   f.style.display = 'none';

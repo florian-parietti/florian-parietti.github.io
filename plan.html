@@ -32,7 +32,6 @@
       <!-- 2020-21 -->
       <div class="t-col3">
         <div class="t-col3-lbl bad">Avant — 2020/21<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Football, blessure & méniscectomie</span></div>
-        <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Football, blessure & méniscectomie</div>
         <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Skinny fat</div>
         <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Manque de confiance (tendance à prouver)</div>
         <div class="t-item3"><span class="dot" style="background:var(--red)"></span>Soirées, alcool, distraction</div>
@@ -41,9 +40,8 @@
       </div>
       <!-- 2023-24 -->
       <div class="t-col3">
-        <div class="t-col3-lbl mid">2023/24<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Transfo physique</span></div>
+        <div class="t-col3-lbl mid">2023/24<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Musculation & streetlifting</span></div>
         <div class="t-item3"><span class="dot" style="background:#d97706"></span>Bulky</div>
-        <div class="t-item3"><span class="dot" style="background:#d97706"></span>Musculation & streetlifting</div>
         <div class="t-item3"><span class="dot" style="background:#d97706"></span>Perdu mais meilleure confiance</div>
         <div class="t-item3"><span class="dot" style="background:#d97706"></span>Personal grow</div>
         <div class="t-item3"><span class="dot" style="background:#d97706"></span>Low focus & procrastination</div>
@@ -53,11 +51,11 @@
       <div class="t-col3">
         <div class="t-col3-lbl good">Maintenant — 2025/26<br><span style="font-size:9px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0">Optimisation santé & physique</span></div>
         <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Physique athlétique & hybride</div>
-        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Confiance élevée, présence forte</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Confiance élevée</div>
         <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Healthy lifestyle & consistent learning</div>
         <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Énergie & haute performance</div>
-        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Liberté en ligne (voyage & business)</div>
-        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Vision claire, entourage puissant</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Coach sportif en ligne, expert santé</div>
+        <div class="t-item3"><span class="dot" style="background:var(--green)"></span>Création & marketing digital</div>
       </div>
     </div>
   </div>
@@ -358,6 +356,10 @@
 
 </div>
 
+<a href="https://calendly.com/florian-parietti/30min" target="_blank" rel="noopener" class="float-cta" id="floatCta">
+  <span class="float-cta-dot"></span>Évaluation gratuite — 20 min
+</a>
+
 <nav class="snav" id="snav">
   <div class="snav-item" data-s="s-transfo"><span class="snav-label">Transformation</span><span class="snav-dot"></span></div>
   <div class="snav-line"><div class="snav-fill"></div></div>
@@ -418,6 +420,19 @@ function sp(e, id) {
   }
   window.addEventListener('scroll', upd, { passive: true });
   upd();
+})();
+
+(function(){
+  const fc=document.getElementById('floatCta');
+  const end=document.getElementById('s-bilan');
+  if(!fc) return;
+  function upd(){
+    const show = window.scrollY>500;
+    let overEnd=false;
+    if(end){const r=end.getBoundingClientRect(); overEnd = r.top < window.innerHeight*0.8;}
+    fc.classList.toggle('on', show && !overEnd);
+  }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
 })();
 </script>
 

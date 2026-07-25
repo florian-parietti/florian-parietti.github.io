@@ -55,14 +55,12 @@ Tu dois voir 11 lignes dans la liste d'upload.
 |---|---|
 | hero-face.jpg | Hero — face 2020 → 2025 |
 | story-dos.jpg | Section "Pourquoi m'écouter" — dos 2020 → 2025 |
-| proof-vo2 / proof-fc / proof-sommeil.jpg | Vignettes-preuve (petites captures Apple Santé sous chaque métrique) |
-| plan-full-4.jpg | Montage complet 4 panneaux (dos+face 2020→2025), 1ʳᵉ image du plan |
-| plan-face-3 / plan-dos-3.jpg | Montages 3 étapes, dans plan.html |
+| plan-full-4.jpg | Plan — montage complet 4 panneaux (dos + face) |
+| plan-face-3.jpg / plan-dos-3.jpg | Plan — montages 3 étapes (2020-2023-2025), labels + flèches |
 
-Les deux montages 2020 → 2025 sont recomposés depuis tes PNG 2000x3000.
-Règle d'échelle : même taille de tête dans les deux photos d'une paire, même niveau
-de recadrage haut et bas. Quand deux repères anatomiques divergeaient, j'ai retenu
-celui qui te désavantage. Aucune exagération.
+Les métriques santé sont désormais en texte pur (plus de capture d'écran) :
+grand chiffre + interprétation + ligne source. Pour modifier une valeur,
+édite directement le HTML dans la section métriques de index.html.
 
 ## Ensuite
 1. Vidéo 2 min → merci.html (bloc commenté)
