@@ -31,10 +31,10 @@
        <video src="video/message.mp4" controls playsinline poster="img/plan-face-3.jpg"></video>
   -->
   <div class="vid-box">
-    <div class="vid-ph">
-      <strong style="color:var(--white);font-size:15px">Vidéo à insérer ici</strong>
-      <span>2 minutes, face caméra. Le script est dans tes notes.</span>
-    </div>
+    <iframe src="https://www.youtube-nocookie.com/embed/rJp32DG2F0s?rel=0&modestbranding=1&playsinline=1"
+            title="Message de Florian" loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
   </div>
 
   <div class="offer">
@@ -66,7 +66,7 @@
   </div>
 
   <div class="ig-box">
-    <p><strong style="color:var(--white)">Une team privée est en train de se créer.</strong> Coachs, entrepreneurs, ou ceux qui veulent simplement bâtir leur liberté en ligne, expérimenter un healthy lifestyle et progresser entourés des bonnes personnes. On se réunit, on avance ensemble. Pas d'abonnement, pas de blabla.<br><br>Laisse ton Instagram — on te contacte au lancement.</p>
+    <p><strong style="color:var(--white)">14 Day Momentum — bientôt.</strong> Un challenge 100 % gratuit, en groupe. Deux semaines pendant lesquelles je t'accompagne pour démarrer le biohacking, ressentir les premiers effets, et enclencher une dynamique que tu n'auras plus envie de casser.<br><br>Prochaine session bientôt — laisse ton Instagram pour être dans les premiers.</p>
     <div class="ig-row">
       <input class="fi" type="text" id="insta" placeholder="@toncompte" autocomplete="off">
       <button type="button" id="ig-btn">Je veux être prévenu</button>
@@ -96,7 +96,7 @@ document.getElementById('ig-btn').addEventListener('click', function () {
     instagram: ig,
     objectif_physique: '', objectif_sante: '', autre: '',
     date: new Date().toLocaleString('fr-BE'),
-    statut: 'Club — intéressé'
+    statut: '14 Day Momentum'
   });
   const f = document.createElement('iframe');
   f.style.display = 'none';

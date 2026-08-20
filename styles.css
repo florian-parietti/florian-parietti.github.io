@@ -406,8 +406,7 @@ img{max-width:100%;height:auto}
 .merci-sub{font-size:16px;color:var(--gray-light);text-align:center;margin-bottom:34px;line-height:1.6}
 .merci-cta-box{text-align:center;padding:34px 26px;background:rgba(0,102,255,.07);
   border:1px solid rgba(0,102,255,.26);border-radius:var(--r);margin-bottom:44px}
-.vid-box{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;
-  background:var(--black);border:1px solid var(--glass-border2);margin-bottom:34px}
+.vid-box{position:relative;width:100%;max-width:330px;margin:0 auto 34px;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#000;border:1px solid var(--glass-border2)}
 .vid-box iframe,.vid-box video{width:100%;height:100%;border:0;display:block;object-fit:cover}
 .vid-ph{display:flex;align-items:center;justify-content:center;height:100%;
   flex-direction:column;gap:10px;color:var(--gray-mid);font-size:14px;text-align:center;padding:20px}
