@@ -434,7 +434,7 @@ img{max-width:100%;height:auto}
 /* --- HERO CENTRÉ V3 --- */
 .hero-center{text-align:center;max-width:900px;margin:0 auto}
 .hero-center h1{margin-left:auto;margin-right:auto;max-width:20ch}
-.hero-center .hero-sub{margin-left:auto;margin-right:auto;margin-bottom:26px;max-width:62ch;font-size:16px}
+.hero-center .hero-sub{margin:32px auto 0;max-width:62ch;font-size:16px}
 .hero-wide{margin:0 auto 18px;width:100%;max-width:470px}
 .hero-wide img{width:100%;height:auto;display:block;border-radius:var(--r);border:1px solid var(--glass-border2);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .hero-wide figcaption{margin-top:12px;font-size:12.5px;color:var(--gray-mid);letter-spacing:.02em}
@@ -548,7 +548,7 @@ img{max-width:100%;height:auto}
 
 /* --- TITRE : promesse blanche intégrée au H1 --- */
 .h1-sub{display:block;margin-top:11px;font-size:clamp(15px,1.9vw,20px);font-weight:600;
-  letter-spacing:-.005em;line-height:1.45;color:#fff;opacity:.92}
+  letter-spacing:-.005em;line-height:1.45;color:var(--blue)}
 .hero-v2 h1 em{color:var(--blue)}
 
 /* --- SOUS-TITRE : piliers en bleu sur leur ligne --- */
@@ -566,3 +566,7 @@ img{max-width:100%;height:auto}
   -webkit-mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' stroke='black' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat, linear-gradient(#000,#000);
   -webkit-mask-composite:xor;mask-composite:exclude}
 @media(max-width:600px){.call-list li{font-size:15px}}
+
+/* --- CTA intégré à la section "Pourquoi m'écouter" --- */
+.story-cta{margin-top:28px}
+@media(max-width:900px){.story-cta{text-align:center}}
