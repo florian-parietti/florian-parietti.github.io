@@ -465,8 +465,8 @@ img{max-width:100%;height:auto}
 
 .wrong-order{list-style:none;text-align:left;max-width:470px;margin:0 auto 20px;
   display:flex;flex-direction:column;gap:9px}
-.wrong-order li{display:flex;gap:10px;font-size:14px;line-height:1.5;color:var(--gray-light)}
-.wrong-order li::before{content:'\203A';color:var(--blue);font-weight:700;flex:0 0 auto;font-size:15px;line-height:1.2;margin-top:1px}
+.wrong-order li{display:block;font-size:14px;line-height:1.6;color:var(--gray-light);padding-left:20px;position:relative}
+.wrong-order li::before{content:'\203A';color:var(--blue);font-weight:700;font-size:16px;position:absolute;left:4px;top:0;line-height:1.5}
 
 /* --- BLOC QUALIFICATION --- */
 .qualif{max-width:520px;margin:0 auto 22px;padding:24px 28px;
@@ -631,3 +631,69 @@ img{max-width:100%;height:auto}
 .form-wrap .sbtn:hover{background:var(--blue2)}
 .form-wrap .fn{color:rgba(0,0,0,.5);opacity:1}
 .form-wrap .err{color:#d92020}
+
+/* ═══ TITRE : un bénéfice par ligne ═══ */
+.hero-v2 h1 .b{display:block}
+.hero-v2 h1{max-width:none;line-height:1.2}
+
+/* ═══ ÉTIQUETTES PILIERS DANS LA LISTE D'OBJECTIONS ═══ */
+.wrong-order .pil{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--blue);
+  background:rgba(0,102,255,.12);border:1px solid rgba(0,102,255,.30);
+  border-radius:100px;padding:2px 9px;white-space:nowrap;vertical-align:1px}
+
+/* ═══ SECTION SOUS LA VIDÉO — CARTE CLAIRE ═══ */
+.offer{background:#fff;border:1px solid rgba(0,0,0,.10);box-shadow:0 14px 44px rgba(0,0,0,.32)}
+.offer .s2-ey{color:var(--blue)}
+.offer h2{color:var(--black)}
+.offer h2 em{color:var(--blue)!important}
+.offer p{color:rgba(0,0,0,.72)}
+.offer p b,.offer p strong{color:var(--black)!important}
+.wrong-order li{color:rgba(0,0,0,.78)}
+.wrong-order li::before{color:var(--blue)}
+.offer .cta-micro{color:rgba(0,0,0,.55)}
+.call-block{border-top:1px solid rgba(0,0,0,.12)}
+.call-list li{color:var(--black)}
+
+/* ═══ 14 DAY MOMENTUM — FOND BLEU ═══ */
+.ig-box{background:var(--blue);border:1px solid var(--blue);border-radius:var(--r);
+  padding:28px 24px;box-shadow:0 14px 40px rgba(0,102,255,.30)}
+.ig-box p{color:#fff;font-weight:600;font-size:14px;line-height:1.6;margin-bottom:18px}
+.ig-box p strong{color:#fff!important;font-weight:800}
+.ig-row .fi{background:#fff;border:1.5px solid rgba(255,255,255,.5);color:var(--black)}
+.ig-row .fi::placeholder{color:rgba(0,0,0,.4)}
+.ig-row button{background:#fff;color:var(--blue);border:1px solid #fff;font-weight:700}
+.ig-row button:hover{background:rgba(255,255,255,.88)}
+#ig-ok{color:#fff!important;font-weight:700}
+
+/* ═══ CORRECTIF SPÉCIFICITÉ : liste d'objections sur carte blanche ═══ */
+.offer ul.wrong-order li{display:block;color:rgba(0,0,0,.78);font-size:14px;line-height:1.6;
+  padding-left:20px;position:relative;gap:0}
+.offer ul.wrong-order li::before{content:'\203A';color:var(--blue);font-weight:700;font-size:16px;
+  position:absolute;left:4px;top:0;line-height:1.5}
+.offer ul.wrong-order .pil{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--blue);
+  background:rgba(0,102,255,.10);border:1px solid rgba(0,102,255,.28);
+  border-radius:100px;padding:2px 9px;white-space:nowrap;line-height:1.5}
+
+/* ═══ CORRECTIF : points de l'appel sur carte blanche ═══ */
+.offer ul.call-list li{display:flex;gap:12px;font-size:16px;line-height:1.5;
+  color:var(--black);font-weight:500;padding-left:0;position:static}
+.offer ul.call-list li::before{content:'';position:static;flex:0 0 18px;height:18px;margin-top:3px;
+  border-radius:50%;background:var(--blue);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' stroke='black' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat, linear-gradient(#000,#000);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.offer .call-ti{color:var(--blue)}
+@media(max-width:600px){.offer ul.call-list li{font-size:15px}}
+
+/* ═══ CARTE TRACK EN BLANC (plan — Aller plus loin) ═══ */
+.card-dark.card-white{background:#fff;border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.card-dark.card-white .ch-dark{color:var(--black);border-bottom-color:rgba(0,0,0,.12)}
+.card-dark.card-white ul li strong{color:var(--black)}
+.card-dark.card-white ul li span{color:rgba(0,0,0,.62)}
+.card-dark.card-white ul li{border-bottom-color:rgba(0,0,0,.08)}
+
+/* ═══ GRILLE "ALLER PLUS LOIN" : 2 colonnes ═══ */
+#s-plus .care-grid{grid-template-columns:1fr 1.25fr;gap:18px;align-items:start}
+@media(max-width:860px){#s-plus .care-grid{grid-template-columns:1fr}}
