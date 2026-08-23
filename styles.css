@@ -697,3 +697,91 @@ img{max-width:100%;height:auto}
 /* ═══ GRILLE "ALLER PLUS LOIN" : 2 colonnes ═══ */
 #s-plus .care-grid{grid-template-columns:1fr 1.25fr;gap:18px;align-items:start}
 @media(max-width:860px){#s-plus .care-grid{grid-template-columns:1fr}}
+
+/* ═══ TIMELINE : 1 colonne sur mobile (fini les mots coupés) ═══ */
+@media(max-width:700px){
+  .t-grid3{grid-template-columns:1fr!important;gap:22px}
+  .t-col3{min-width:0}
+  .t-item3{font-size:.88rem;padding:11px 14px;overflow-wrap:normal;word-break:normal;hyphens:none}
+  .t-col3-lbl{font-size:.72rem}
+}
+/* jamais de césure au milieu d'un mot */
+.t-item3,.bw-t,.bw-d,.call-list li,.wrong-order li,.ig-box p,.metric-ctx,.s2-tx,.hero-sub{
+  hyphens:none;-webkit-hyphens:none;word-break:normal;overflow-wrap:break-word}
+
+/* ═══════════════════════════════════════
+   PAGE MERCI — 3 SECTIONS STRUCTURÉES
+   ═══════════════════════════════════════ */
+.m-sec{padding:56px 0;border-radius:var(--r-xl);margin:0 14px 18px}
+.m-sec:first-of-type{margin-top:14px}
+.m-sec .merci{max-width:660px;margin:0 auto;padding:0;text-align:center}
+
+/* Section A — sombre : intro + plan + vidéo */
+.m-sec-a{background:transparent}
+
+/* Section B — claire : problématique + appel */
+.m-sec-b{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.10)}
+.m-sec-b .s2-ey{color:#fff}
+.m-h2{font-size:clamp(21px,3.2vw,29px);font-weight:700;letter-spacing:-.02em;line-height:1.22;
+  color:#fff;margin:14px auto 16px;max-width:22ch}
+.m-h2 em{font-style:normal;color:#4d94ff}
+.m-lead{font-size:15px;line-height:1.65;color:#e9eaec;margin:0 auto 14px;max-width:48ch}
+.m-lead b{color:#fff;font-weight:700}
+
+/* Cartes internes */
+.m-card{background:#fff;border-radius:var(--r);padding:26px 24px;margin-top:26px;text-align:left;
+  box-shadow:0 12px 36px rgba(0,0,0,.26)}
+@media(max-width:600px){.m-card{padding:22px 18px}}
+.m-card .wrong-order{max-width:none;margin:0}
+.m-card .wrong-order li{display:block;color:rgba(0,0,0,.78);font-size:14px;line-height:1.6;
+  padding-left:20px;position:relative;margin-bottom:12px}
+.m-card .wrong-order li:last-child{margin-bottom:0}
+.m-card .wrong-order li::before{content:'\203A';color:var(--blue);font-weight:700;font-size:16px;
+  position:absolute;left:4px;top:0;line-height:1.5}
+.m-card .pil{display:inline-block;margin-left:6px;font-size:10.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--blue);
+  background:rgba(0,102,255,.10);border:1px solid rgba(0,102,255,.28);
+  border-radius:100px;padding:2px 9px;white-space:nowrap;line-height:1.5}
+.m-result{margin-top:18px;padding-top:16px;border-top:1px solid rgba(0,0,0,.10);
+  font-size:15px;font-weight:700;color:var(--black);text-align:center}
+
+.m-card-light{background:#fff}
+.m-card-light .call-ti{font-size:12px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px;text-align:center}
+.m-card-light .call-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin:0}
+.m-card-light .call-list li{display:flex;gap:11px;font-size:15px;line-height:1.5;
+  color:var(--black);font-weight:500}
+.m-card-light .call-list li::before{content:'';flex:0 0 17px;height:17px;margin-top:3px;border-radius:50%;
+  background:var(--blue);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' stroke='black' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat, linear-gradient(#000,#000);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+
+/* Section C — 14 Day Momentum */
+.m-sec-c{background:transparent;padding-top:8px}
+.m-sec-c .ig-box{margin-top:0}
+
+/* ═══ BORDS ARRONDIS SUR TOUTES LES SECTIONS ═══ */
+.s2-alt,.sec-gray,.sec-blue{border-radius:var(--r-xl)}
+.sec{border-radius:var(--r-xl)}
+.sec-sep{display:none}
+body{overflow-x:hidden}
+@media(max-width:600px){
+  .m-sec{margin:0 10px 14px;padding:40px 0;border-radius:var(--r)}
+  .s2-alt,.sec,.sec-gray,.sec-blue{border-radius:var(--r)}
+}
+
+/* champ instagram : ne pas écraser l'input */
+.ig-row{flex-wrap:wrap;justify-content:center}
+.ig-row .fi{flex:1 1 150px;min-width:130px}
+.ig-row button{flex:0 0 auto}
+/* espace avant la vidéo */
+.m-sec-a .vid-box{margin-top:30px}
+
+/* ═══ MARGES LATÉRALES POUR VOIR LES ARRONDIS ═══ */
+.s2-alt,.sec-gray,.sec-blue{margin-left:14px;margin-right:14px}
+.plan .sec,.sec{margin-left:14px;margin-right:14px}
+.hero,.hero-v2{margin-left:0;margin-right:0;border-radius:0}
+@media(max-width:600px){
+  .s2-alt,.sec,.sec-gray,.sec-blue{margin-left:10px;margin-right:10px}
+}
