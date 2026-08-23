@@ -604,3 +604,30 @@ img{max-width:100%;height:auto}
 .cta-micro{color:rgba(255,255,255,.78)}
 .hero-eyebrow{color:#4d94ff;background:rgba(0,102,255,.16);border-color:rgba(0,102,255,.42)}
 .hero-eyebrow::before{background:#4d94ff}
+.hero-center .hero-sub strong{color:#fff;font-weight:700}
+
+/* ═══ CARTES MÉTRIQUES EN BLANC ═══ */
+.s2-alt .metric,.metric{background:#fff;border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.metric-top{border-bottom:1px solid rgba(0,0,0,.10)}
+.s2-alt .metric-lbl,.metric-lbl{color:rgba(0,0,0,.55)}
+.metric-n{color:var(--black)}
+.metric-n span{color:var(--blue)}
+.s2-alt .metric-ctx,.metric-ctx{color:rgba(0,0,0,.72)}
+.metric-ctx b{color:var(--black)}
+.metric-pending{border-style:dashed;border-color:rgba(0,102,255,.35)}
+.metric-tag{color:var(--blue);background:rgba(0,102,255,.08);border-color:rgba(0,102,255,.28)}
+
+/* ═══ FORMULAIRE EN CARTE BLANCHE ═══ */
+.form-wrap{background:#fff;border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 14px 40px rgba(0,0,0,.30)}
+.form-wrap .g-ti{color:var(--black)}
+.form-wrap .g-su{color:rgba(0,0,0,.62);opacity:1}
+.form-wrap .fl{color:rgba(0,0,0,.72)}
+.form-wrap .fi{background:#f5f6f8;border:1.5px solid rgba(0,0,0,.12);color:var(--black)}
+.form-wrap .fi::placeholder{color:rgba(0,0,0,.38)}
+.form-wrap .fi:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,102,255,.14);background:#fff}
+.form-wrap .sbtn{background:var(--blue);color:#fff}
+.form-wrap .sbtn:hover{background:var(--blue2)}
+.form-wrap .fn{color:rgba(0,0,0,.5);opacity:1}
+.form-wrap .err{color:#d92020}
