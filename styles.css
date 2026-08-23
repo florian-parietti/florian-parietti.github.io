@@ -584,3 +584,23 @@ img{max-width:100%;height:auto}
   border:1px solid var(--glass-border2);box-shadow:0 30px 70px rgba(0,0,0,.55)}
 .story picture img{width:100%;height:auto;display:block;border-radius:var(--r-md);
   border:1px solid var(--glass-border2)}
+
+/* ═══ ALTERNANCE DES SECTIONS — LANDING ═══ */
+.s2-alt{background:var(--gray-vitre);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)}
+.s2-alt .s2-tx,.s2-alt .metric-ctx{color:#f0f1f3}
+.s2-alt .s2-ey{color:#fff}
+.s2-alt .metric-src{color:rgba(255,255,255,.8)}
+.s2-alt .story-cta .cta-micro{color:rgba(255,255,255,.85)}
+.s2-alt .metric{background:rgba(10,10,10,.82);border-color:rgba(255,255,255,.16)}
+.s2-alt .metric-lbl{color:rgba(255,255,255,.72)}
+
+/* ═══ CONTRASTE DU PREMIER ÉCRAN ═══ */
+.hero-v2 h1{text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.h1-sub{color:#3d8bff;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-center .hero-sub{color:#e6e7ea}
+.hero-pillars{color:#3d8bff}
+.hero-wide figcaption{color:rgba(255,255,255,.75)}
+.cta-micro{color:rgba(255,255,255,.78)}
+.hero-eyebrow{color:#4d94ff;background:rgba(0,102,255,.16);border-color:rgba(0,102,255,.42)}
+.hero-eyebrow::before{background:#4d94ff}
