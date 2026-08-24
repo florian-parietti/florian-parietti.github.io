@@ -792,3 +792,22 @@ body{overflow-x:hidden}
   border-radius:100px;padding:2px 9px;white-space:nowrap;line-height:1.6}
 .m-sec-b .m-result{margin:26px auto 0;padding-top:0;border-top:0;
   font-size:16px;font-weight:700;color:#fff;text-align:center}
+
+/* ═══ DÉFINITION DU BIOHACKING ═══ */
+.s2-def{padding:0 0 52px}
+.def-box{max-width:640px;margin:0 auto;text-align:center;
+  padding:30px 30px 28px;border-radius:var(--r);
+  background:rgba(0,102,255,.07);border:1px solid rgba(0,102,255,.26)}
+@media(max-width:600px){.def-box{padding:24px 20px}}
+.def-ey{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#4d94ff;margin-bottom:14px}
+.def-main{font-size:16px;line-height:1.65;color:#fff;margin:0 0 14px;font-weight:500}
+.def-sub{font-size:14.5px;line-height:1.6;color:#c9ccd2;margin:0}
+.def-sub strong{color:#fff;font-weight:700}
+/* version compacte sur la page merci */
+.def-mini{max-width:540px;margin:30px auto 0;padding:18px 22px;border-radius:var(--r-md);
+  background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.24);
+  font-size:14.5px;line-height:1.6;color:#d7dade;text-align:center}
+.def-mini strong{color:#fff;font-weight:700;display:block;margin-bottom:5px}
+.m-sec-a .vid-box{margin-top:22px}
+@media(max-width:600px){.def-mini{padding:16px 18px;font-size:14px}}
