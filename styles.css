@@ -712,8 +712,8 @@ img{max-width:100%;height:auto}
 /* ═══════════════════════════════════════
    PAGE MERCI — 3 SECTIONS STRUCTURÉES
    ═══════════════════════════════════════ */
-.m-sec{padding:56px 0;border-radius:var(--r-xl);margin:0 14px 18px}
-.m-sec:first-of-type{margin-top:14px}
+.m-sec{padding:56px 0}
+.m-sec:first-of-type{padding-top:44px}
 .m-sec .merci{max-width:660px;margin:0 auto;padding:0;text-align:center}
 
 /* Section A — sombre : intro + plan + vidéo */
@@ -761,14 +761,12 @@ img{max-width:100%;height:auto}
 .m-sec-c{background:transparent;padding-top:8px}
 .m-sec-c .ig-box{margin-top:0}
 
-/* ═══ BORDS ARRONDIS SUR TOUTES LES SECTIONS ═══ */
-.s2-alt,.sec-gray,.sec-blue{border-radius:var(--r-xl)}
-.sec{border-radius:var(--r-xl)}
+/* ═══ SECTIONS BORD À BORD (les cartes internes portent l'arrondi) ═══ */
+.s2-alt,.sec,.sec-gray,.sec-blue{border-radius:0;margin-left:0;margin-right:0}
 .sec-sep{display:none}
 body{overflow-x:hidden}
 @media(max-width:600px){
-  .m-sec{margin:0 10px 14px;padding:40px 0;border-radius:var(--r)}
-  .s2-alt,.sec,.sec-gray,.sec-blue{border-radius:var(--r)}
+  .m-sec{margin:0;padding:40px 0;border-radius:0}
 }
 
 /* champ instagram : ne pas écraser l'input */
@@ -778,10 +776,19 @@ body{overflow-x:hidden}
 /* espace avant la vidéo */
 .m-sec-a .vid-box{margin-top:30px}
 
-/* ═══ MARGES LATÉRALES POUR VOIR LES ARRONDIS ═══ */
-.s2-alt,.sec-gray,.sec-blue{margin-left:14px;margin-right:14px}
-.plan .sec,.sec{margin-left:14px;margin-right:14px}
-.hero,.hero-v2{margin-left:0;margin-right:0;border-radius:0}
-@media(max-width:600px){
-  .s2-alt,.sec,.sec-gray,.sec-blue{margin-left:10px;margin-right:10px}
-}
+/* sections pleine largeur, aucun arrondi ni marge */
+.hero,.hero-v2{margin:0;border-radius:0}
+
+/* ═══ QUESTIONS POSÉES SUR LE FOND (page merci) ═══ */
+.m-sec-b .wrong-order{max-width:520px;margin:28px auto 0;text-align:left}
+.m-sec-b .wrong-order li{display:block;color:#e9eaec;font-size:15px;line-height:1.6;
+  padding-left:22px;position:relative;margin-bottom:16px}
+.m-sec-b .wrong-order li:last-child{margin-bottom:0}
+.m-sec-b .wrong-order li::before{content:'\203A';color:#4d94ff;font-weight:700;font-size:17px;
+  position:absolute;left:4px;top:0;line-height:1.5}
+.m-sec-b .wrong-order .pil{display:inline-block;margin-left:7px;font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:#9cc4ff;
+  background:rgba(77,148,255,.14);border:1px solid rgba(77,148,255,.34);
+  border-radius:100px;padding:2px 9px;white-space:nowrap;line-height:1.6}
+.m-sec-b .m-result{margin:26px auto 0;padding-top:0;border-top:0;
+  font-size:16px;font-weight:700;color:#fff;text-align:center}
