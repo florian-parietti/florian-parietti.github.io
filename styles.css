@@ -1251,3 +1251,24 @@ body.merci-light .ig-box{box-shadow:0 8px 30px rgba(0,102,255,.24)}
 @media(max-width:700px){
   body.merci-light .m-sec-b{margin:0 12px;padding:52px 0 50px;border-radius:24px}
 }
+
+/* ═══ MERCI : rappel définition en gris (comme étape suivante) ═══ */
+body.merci-light .def-mini{background:#1d1d1f!important;border:0!important;
+  box-shadow:0 2px 6px rgba(0,0,0,.22),0 16px 44px rgba(0,0,0,.32)!important;
+  color:rgba(255,255,255,.72)!important}
+body.merci-light .def-mini strong{color:#fff!important}
+
+/* ═══ BARRE VERTICALE : toutes les sections visibles ═══ */
+body.plan-light .snav{right:26px}
+body.plan-light .snav-item{padding:5px 0}
+body.plan-light .snav-label{opacity:1;transform:none;font-size:10.5px;font-weight:650;
+  background:transparent;backdrop-filter:none;color:#86868b;padding:2px 8px;
+  transition:color .25s ease,font-weight .25s ease}
+body.plan-light .snav-item:hover .snav-label{color:#1d1d1f}
+body.plan-light .snav-item.active .snav-label{color:var(--blue);font-weight:800}
+body.plan-light .snav-dot{width:7px;height:7px;border:2px solid rgba(0,0,0,.22);background:transparent}
+body.plan-light .snav-item.active .snav-dot{background:var(--blue);border-color:var(--blue);
+  transform:scale(1.5);box-shadow:0 0 0 4px rgba(0,102,255,.14)}
+body.plan-light .snav-line{background:rgba(0,0,0,.14);height:22px}
+body.plan-light .snav-fill{background:var(--blue)}
+@media(max-width:1100px){body.plan-light .snav-label{display:none}}
