@@ -1045,3 +1045,86 @@ body.plan-light .sg .sd{background:#f5f5f7;border:1px solid rgba(0,0,0,.06);box-
 .bw-note{color:rgba(255,255,255,.6)}
 body.plan-light .bw-intro{color:#6e6e73}
 body.plan-light .bw-note{color:#86868b}
+
+/* ═══ DÉFINITION : carte claire (palette du plan) ═══ */
+.def-box{background:#f5f5f7!important;border:1px solid rgba(0,0,0,.06)!important;
+  border-radius:24px;padding:38px 34px;
+  box-shadow:0 2px 4px rgba(0,0,0,.18),0 20px 56px rgba(0,0,0,.42)!important}
+.def-ti{color:#1d1d1f}
+.def-main{color:#6e6e73}
+.def-sub{color:#6e6e73;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
+.def-sub strong{color:var(--blue)}
+@media(max-width:600px){.def-box{padding:28px 22px}}
+
+/* ═══ PRISE DE SANG : carte grise pour la distinguer ═══ */
+.metric-pending{background:#e8e8ed!important;border:1px solid rgba(0,0,0,.06)!important;
+  box-shadow:0 2px 4px rgba(0,0,0,.16),0 18px 50px rgba(0,0,0,.4)!important}
+.metric-pending .metric-n{color:#1d1d1f}
+.metric-pending .metric-lbl{color:#6e6e73}
+.metric-pending .metric-ctx{color:#6e6e73}
+.metric-pending .metric-ctx b{color:#1d1d1f}
+.metric-pending .metric-top{border-bottom-color:rgba(0,0,0,.10)}
+.metric-pending .metric-tag{color:var(--blue);background:rgba(0,102,255,.10);
+  border-color:rgba(0,102,255,.26)}
+
+/* ═══════════════════════════════════════
+   PAGE MERCI — AJUSTEMENTS
+   ═══════════════════════════════════════ */
+
+/* Section 1 compacte : titre + texte + bouton + vidéo sans scroll */
+.m-sec-a{padding:34px 0 46px}
+.m-sec-a .merci-h1{font-size:clamp(24px,4vw,34px);margin-bottom:10px}
+.m-sec-a .merci-sub{font-size:14.5px;margin-bottom:22px;max-width:44ch;margin-inline:auto}
+.m-sec-a .cta-micro{margin-top:9px}
+.def-mini{max-width:480px;margin:20px auto 0;padding:16px 20px;border-radius:18px;
+  background:#f5f5f7;border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 2px 4px rgba(0,0,0,.16),0 14px 40px rgba(0,0,0,.38);
+  font-size:14px;line-height:1.55;color:#6e6e73;text-align:center}
+.def-mini strong{color:#1d1d1f;font-weight:700;display:block;margin-bottom:6px;font-size:15px}
+.m-sec-a .vid-box{margin:20px auto 0;max-width:290px}
+@media(max-width:600px){
+  .m-sec-a{padding:26px 0 38px}
+  .m-sec-a .vid-box{max-width:250px}
+  .def-mini{padding:14px 16px;font-size:13.5px}
+}
+
+/* Halo derrière l'étape suivante */
+.m-sec-b{position:relative}
+.m-sec-b::before{content:'';position:absolute;inset:0 -5%;z-index:-1;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 40%,rgba(0,102,255,.15) 0%,rgba(0,102,255,0) 68%);
+  filter:blur(80px);pointer-events:none}
+
+/* Badge gratuit */
+.free-tag{display:inline-block;margin-left:9px;font-size:10.5px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#fff;
+  border-radius:100px;padding:3px 11px;vertical-align:2px}
+
+/* Bouton 14 day plus esthétique */
+.ig-row button{background:#fff;color:var(--blue);border:0;border-radius:100px;
+  padding:13px 24px;font-weight:700;font-size:14.5px;letter-spacing:.01em;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .18s ease,box-shadow .18s ease}
+.ig-row button:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,0,0,.24)}
+.ig-row .fi{border-radius:100px;padding:13px 20px;border:0}
+/* section 1 : tout visible sans scroll sur mobile */
+@media(max-width:600px){
+  .m-sec-a{padding:18px 0 32px}
+  .m-sec-a .merci-h1{font-size:23px;line-height:1.18;margin-bottom:8px}
+  .m-sec-a .merci-sub{font-size:13.5px;line-height:1.5;margin-bottom:16px}
+  .m-sec-a .cta-main{padding:14px 26px;font-size:15px}
+  .m-sec-a .cta-micro{font-size:11.5px;margin-top:7px}
+  .def-mini{margin-top:14px;padding:12px 15px;font-size:13px}
+  .def-mini strong{font-size:14px;margin-bottom:4px}
+  .m-sec-a .vid-box{margin-top:14px;max-width:200px}
+}
+/* avertissement détaché de la carte CTA, sur fond clair */
+body.plan-light .disc{background:transparent;padding:52px 20px 60px;margin-top:0;border:0}
+body.plan-light .disc p{color:#86868b;font-size:.78rem;line-height:1.7;max-width:64ch;margin:0 auto;text-align:center}
+body.plan-light .disc strong{color:#6e6e73}
+.free-tag-dark{display:inline-block;margin-left:10px;font-size:10.5px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--blue);
+  background:rgba(0,102,255,.10);border:1px solid rgba(0,102,255,.26);
+  border-radius:100px;padding:3px 11px;vertical-align:3px}
+body.plan-light .club-btn{border-radius:100px;padding:13px 24px;font-weight:700;
+  box-shadow:0 4px 14px rgba(0,102,255,.24);transition:transform .18s ease,box-shadow .18s ease}
+body.plan-light .club-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,102,255,.32)}
+body.plan-light .club-in{border-radius:100px;padding:13px 20px}
