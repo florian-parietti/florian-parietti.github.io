@@ -1169,3 +1169,85 @@ body.plan-light #s-routine .rout{background:transparent;border:0;backdrop-filter
 @media(max-width:600px){
   .m-sec-b .m-result{padding:18px 22px;font-size:15.5px;max-width:none;border-radius:60px}
 }
+
+/* ═══ ALLER PLUS LOIN : bloc sombre (alternance) ═══ */
+body.plan-light #s-plus{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:88px 0 80px;position:relative;overflow:hidden}
+body.plan-light #s-plus::after{content:'';position:absolute;inset:-30% -10% auto -10%;
+  height:70%;background:radial-gradient(ellipse at 50% 0%,rgba(0,102,255,.20) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(60px);pointer-events:none}
+body.plan-light #s-plus .s-ey,body.plan-light #s-plus .s-ey-w{color:#4d94ff}
+body.plan-light #s-plus .s-ti{color:#fff}
+body.plan-light #s-plus .s-de{color:rgba(255,255,255,.65)}
+body.plan-light #s-plus .care-grid{position:relative;z-index:1}
+body.plan-light #s-plus .card-dark{background:rgba(255,255,255,.05)!important;
+  border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+body.plan-light #s-plus .card-dark.card-white{background:rgba(255,255,255,.05)!important}
+body.plan-light #s-plus .ch-dark{color:#fff!important;border-bottom-color:rgba(255,255,255,.12)!important}
+body.plan-light #s-plus .card-dark ul li strong{color:#fff!important}
+body.plan-light #s-plus .card-dark ul li span{color:rgba(255,255,255,.68)!important}
+body.plan-light #s-plus .card-dark ul li{border-bottom-color:rgba(255,255,255,.08)!important}
+body.plan-light #s-plus .bw-intro{color:rgba(255,255,255,.7)!important}
+body.plan-light #s-plus .bw-note{color:rgba(255,255,255,.55)!important}
+body.plan-light #s-plus .bw{background:rgba(255,255,255,.07)!important;
+  border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important}
+body.plan-light #s-plus .bw-t{color:#fff!important}
+body.plan-light #s-plus .bw-d{color:rgba(255,255,255,.66)!important}
+body.plan-light #s-plus .bw-n{color:#4d94ff!important}
+body.plan-light #s-plus .sd{background:rgba(255,255,255,.07)!important;
+  border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important}
+body.plan-light #s-plus .sdn{color:#fff!important}
+body.plan-light #s-plus .sdf{color:rgba(255,255,255,.62)!important}
+@media(max-width:700px){
+  body.plan-light #s-plus{margin:0 12px;padding:58px 0 54px;border-radius:24px}
+}
+body.plan-light #s-plus h2.s-ti{color:#fff!important}
+body.plan-light #s-plus p.s-de{color:rgba(255,255,255,.65)!important}
+body.plan-light #s-plus div.s-ey{color:#4d94ff!important}
+
+/* ══════════════════════════════════════════════════════════
+   PAGE MERCI — THÈME CLAIR (comme le plan)
+   ══════════════════════════════════════════════════════════ */
+body.merci-light{background:#f5f5f7!important;background-attachment:scroll;color:#1d1d1f}
+body.merci-light::before{background:radial-gradient(circle,rgba(0,102,255,.13) 0%,rgba(0,102,255,0) 68%)}
+body.merci-light::after{background:radial-gradient(circle,rgba(0,102,255,.09) 0%,rgba(0,102,255,0) 70%)}
+
+/* Section 1 — intro claire */
+body.merci-light .merci-h1{color:#1d1d1f}
+body.merci-light .merci-sub{color:#6e6e73}
+body.merci-light .cta-micro{color:#86868b}
+body.merci-light .def-mini{background:#fff;border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.07)}
+body.merci-light .def-mini strong{color:#1d1d1f}
+body.merci-light .def-mini{color:#6e6e73}
+body.merci-light .vid-box{border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 8px 30px rgba(0,0,0,.12)}
+
+/* Section 2 — bloc sombre (moment de rupture) */
+body.merci-light .m-sec-b{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:80px 0 76px;position:relative;overflow:hidden}
+body.merci-light .m-sec-b::before{content:'';position:absolute;inset:-25% -10% auto -10%;
+  height:70%;background:radial-gradient(ellipse at 50% 0%,rgba(0,102,255,.22) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(60px);pointer-events:none;z-index:0;border-radius:0}
+body.merci-light .m-sec-b > *{position:relative;z-index:1}
+body.merci-light .m-sec-b .s2-ey{color:#4d94ff}
+body.merci-light .m-sec-b .m-h2{color:#fff}
+body.merci-light .m-sec-b .m-h2 em{color:#4d94ff}
+body.merci-light .m-sec-b .m-lead{color:rgba(255,255,255,.72)}
+body.merci-light .m-sec-b .m-lead b{color:#fff}
+body.merci-light .m-sec-b .wrong-order li{color:rgba(255,255,255,.82)}
+body.merci-light .m-sec-b .wrong-order li::before{color:#4d94ff}
+body.merci-light .m-card-light{background:#fff;border:0;
+  box-shadow:0 2px 6px rgba(0,0,0,.22),0 18px 50px rgba(0,0,0,.35)}
+body.merci-light .m-card-light .call-ti{color:var(--blue)}
+body.merci-light .m-card-light .call-list li{color:#1d1d1f}
+body.merci-light .m-sec-b .cta-micro{color:rgba(255,255,255,.6)}
+
+/* Section 3 — 14 Day */
+body.merci-light .m-sec-c{padding:56px 0 72px}
+body.merci-light .ig-box{box-shadow:0 8px 30px rgba(0,102,255,.24)}
+
+@media(max-width:700px){
+  body.merci-light .m-sec-b{margin:0 12px;padding:52px 0 50px;border-radius:24px}
+}
