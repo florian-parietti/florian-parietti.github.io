@@ -1128,3 +1128,44 @@ body.plan-light .club-btn{border-radius:100px;padding:13px 24px;font-weight:700;
   box-shadow:0 4px 14px rgba(0,102,255,.24);transition:transform .18s ease,box-shadow .18s ease}
 body.plan-light .club-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,102,255,.32)}
 body.plan-light .club-in{border-radius:100px;padding:13px 20px}
+
+/* ═══════════════════════════════════════════════
+   MOMENTS DE CONTRASTE — blocs sombres arrondis
+   ═══════════════════════════════════════════════ */
+
+/* PLAN : la routine devient un moment, pas un tableau */
+body.plan-light #s-routine{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:88px 0 80px;position:relative;overflow:hidden}
+body.plan-light #s-routine::after{content:'';position:absolute;inset:auto -10% -40% -10%;
+  height:60%;background:radial-gradient(ellipse at 50% 100%,rgba(0,102,255,.22) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(60px);pointer-events:none}
+body.plan-light #s-routine .s-ey{color:#4d94ff}
+body.plan-light #s-routine .s-ti{color:#fff}
+body.plan-light #s-routine .s-de{color:rgba(255,255,255,.65)}
+body.plan-light #s-routine .rout{background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);box-shadow:none;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:relative;z-index:1}
+body.plan-light #s-routine .rr{border-bottom-color:rgba(255,255,255,.08)}
+body.plan-light #s-routine .rt{color:#4d94ff}
+body.plan-light #s-routine .rd{color:rgba(255,255,255,.88)}
+body.plan-light #s-routine .rd strong{color:#fff}
+body.plan-light #s-routine .rout-note{color:rgba(255,255,255,.55);position:relative;z-index:1}
+@media(max-width:700px){
+  body.plan-light #s-routine{margin:0 12px;padding:58px 0 54px;border-radius:24px}
+}
+/* lignes de routine sur fond sombre */
+body.plan-light #s-routine .rr{background:rgba(255,255,255,.055)!important;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.08);box-shadow:none;border-bottom-color:rgba(255,255,255,.08)}
+body.plan-light #s-routine .rr:hover{background:rgba(255,255,255,.09)!important}
+body.plan-light #s-routine .rout{background:transparent;border:0;backdrop-filter:none}
+
+/* ═══ MERCI : "Résultat" en moment de rupture ═══ */
+.m-sec-b .m-result{margin:30px auto 0;padding:22px 28px;max-width:420px;
+  background:#1d1d1f;border-radius:100px;
+  font-size:16.5px;font-weight:700;color:#fff;text-align:center;
+  box-shadow:0 2px 4px rgba(0,0,0,.24),0 16px 44px rgba(0,0,0,.42);
+  border:0}
+@media(max-width:600px){
+  .m-sec-b .m-result{padding:18px 22px;font-size:15.5px;max-width:none;border-radius:60px}
+}
