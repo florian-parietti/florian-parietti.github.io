@@ -811,3 +811,237 @@ body{overflow-x:hidden}
 .def-mini strong{color:#fff;font-weight:700;display:block;margin-bottom:5px}
 .m-sec-a .vid-box{margin-top:22px}
 @media(max-width:600px){.def-mini{padding:16px 18px;font-size:14px}}
+
+/* ════════════════════════════════════════════════════════
+   UNIVERS VISUEL — FOND CONTINU + HALOS + CARTES + ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+
+/* 1. FOND CONTINU : plus aucun bloc de couleur */
+body{
+  background:linear-gradient(180deg,
+    #070c18 0%,
+    #0a0f1c 18%,
+    #080a12 38%,
+    #0a1020 58%,
+    #080b14 78%,
+    #070c18 100%);
+  background-attachment:fixed;
+}
+.s2,.s2-alt,.s2-def,.hero-v2{background:transparent!important;border:0!important}
+.s2-alt{backdrop-filter:none;-webkit-backdrop-filter:none}
+
+/* 2. HALOS diffus derrière les moments clés */
+body::before,body::after{content:'';position:fixed;pointer-events:none;z-index:0;
+  border-radius:50%;filter:blur(120px)}
+body::before{width:70vw;height:70vw;max-width:900px;max-height:900px;
+  top:-18%;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(0,102,255,.30) 0%,rgba(0,102,255,0) 68%)}
+body::after{width:60vw;height:60vw;max-width:760px;max-height:760px;
+  bottom:-14%;right:0;
+  background:radial-gradient(circle,rgba(0,102,255,.18) 0%,rgba(0,102,255,0) 70%)}
+.hero-v2,.s2,footer{position:relative;z-index:1}
+
+/* halo local derrière la section métriques */
+.s2.rv{position:relative}
+.metrics{position:relative}
+.metrics::before{content:'';position:absolute;inset:-14% 0;z-index:-1;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,102,255,.16) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(70px)}
+
+/* 3. ESPACE au lieu de couleur pour séparer */
+.s2{padding:104px 0}
+.s2-def{padding:0 0 104px}
+@media(max-width:700px){
+  .s2{padding:68px 0}
+  .s2-def{padding:0 0 68px}
+}
+
+/* 4. TEXTE lisible sur fond continu */
+.s2 .s2-tx,.s2-alt .s2-tx{color:#c8ccd4}
+.s2 .s2-ey,.s2-alt .s2-ey{color:#4d94ff}
+.s2 .s2-ti{color:#fff}
+.metric-src{color:rgba(255,255,255,.55)}
+
+/* 5. CARTES : elles portent tout le contraste */
+.metric{background:#fff;border:0;border-radius:22px;
+  box-shadow:0 2px 4px rgba(0,0,0,.2),0 18px 50px rgba(0,0,0,.45)}
+.metric-pending{background:#111318;border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.metric-pending .metric-n{color:#fff}
+.metric-pending .metric-lbl{color:rgba(255,255,255,.62)}
+.metric-pending .metric-ctx{color:rgba(255,255,255,.72)}
+.metric-pending .metric-ctx b{color:#fff}
+.metric-pending .metric-top{border-bottom-color:rgba(255,255,255,.14)}
+
+.form-wrap{background:#fff;border:0;border-radius:26px;
+  box-shadow:0 2px 4px rgba(0,0,0,.2),0 24px 60px rgba(0,0,0,.5)}
+
+/* définition : carte bleue */
+.def-box{background:#111318;border:1px solid rgba(255,255,255,.09);border-radius:24px;
+  padding:38px 34px;box-shadow:0 20px 56px rgba(0,0,0,.5)}
+@media(max-width:600px){.def-box{padding:28px 22px}}
+.def-ti{font-size:clamp(19px,2.5vw,25px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.28;color:#fff;margin:0 0 16px;max-width:24ch;margin-inline:auto}
+.def-main{font-size:15.5px;line-height:1.68;color:#c9ced8;margin:0 0 18px;font-weight:400}
+.def-sub{font-size:14.5px;line-height:1.6;color:#9aa3b2;margin:0;padding-top:16px;border-top:1px solid rgba(255,255,255,.10)}
+.def-sub strong{color:#fff;font-weight:700}
+
+/* story : image en carte détachée */
+.story picture img{border-radius:22px;border:0;
+  box-shadow:0 18px 50px rgba(0,0,0,.5)}
+
+/* 6. ANIMATIONS AU SCROLL */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+.stagger > *{opacity:0;transform:translateY(20px);
+  transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.stagger.in > *{opacity:1;transform:none}
+.stagger.in > *:nth-child(1){transition-delay:0ms}
+.stagger.in > *:nth-child(2){transition-delay:90ms}
+.stagger.in > *:nth-child(3){transition-delay:180ms}
+.stagger.in > *:nth-child(4){transition-delay:270ms}
+@media(prefers-reduced-motion:reduce){
+  .rv,.stagger > *{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* ═══ PAGE MERCI — FOND CONTINU ═══ */
+.m-sec,.m-sec-a,.m-sec-b,.m-sec-c{background:transparent!important;border:0!important;
+  backdrop-filter:none;-webkit-backdrop-filter:none}
+.m-sec-b .m-h2{color:#fff}
+.m-sec-b .m-lead{color:#c8ccd4}
+.m-sec-b .wrong-order li{color:#c8ccd4}
+.m-card,.m-card-light{background:#fff;border:0;border-radius:22px;
+  box-shadow:0 2px 4px rgba(0,0,0,.2),0 18px 50px rgba(0,0,0,.45)}
+.def-mini{background:#111318;border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.vid-box{border:1px solid rgba(255,255,255,.10);box-shadow:0 20px 56px rgba(0,0,0,.5)}
+.ig-box{box-shadow:0 20px 56px rgba(0,60,180,.35)}
+
+/* ══════════════════════════════════════════════════════════
+   PLAN — THÈME CLAIR (palette Apple)
+   ══════════════════════════════════════════════════════════ */
+body.plan-light{
+  background:#f5f5f7!important;
+  background-attachment:scroll;
+  color:#1d1d1f;
+}
+body.plan-light::before{
+  width:70vw;height:70vw;max-width:900px;max-height:900px;top:-16%;left:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(0,102,255,.13) 0%,rgba(0,102,255,0) 68%)}
+body.plan-light::after{
+  background:radial-gradient(circle,rgba(0,102,255,.09) 0%,rgba(0,102,255,0) 70%)}
+
+/* sections : fond continu, séparation par l'espace */
+body.plan-light .sec,
+body.plan-light .sec-gray,
+body.plan-light .sec-blue{background:transparent!important;border:0!important;
+  backdrop-filter:none;-webkit-backdrop-filter:none;padding:96px 0;border-radius:0;margin:0}
+@media(max-width:700px){body.plan-light .sec{padding:62px 0}}
+
+/* typographie */
+body.plan-light .s-ti,body.plan-light h2,body.plan-light h3{color:#1d1d1f}
+body.plan-light .s-de,body.plan-light p{color:#6e6e73}
+body.plan-light .s-ey,body.plan-light .s-ey-w{color:var(--blue)}
+
+/* cartes blanches */
+body.plan-light .card-dark,
+body.plan-light .tool,
+body.plan-light .ckg>*,
+body.plan-light .sd{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.07)}
+body.plan-light .card-dark .ch-dark{color:#1d1d1f;border-bottom-color:rgba(0,0,0,.08)}
+body.plan-light .card-dark ul li strong{color:#1d1d1f}
+body.plan-light .card-dark ul li span{color:#6e6e73}
+body.plan-light .card-dark ul li{border-bottom-color:rgba(0,0,0,.06)}
+body.plan-light .card-dark p{color:#6e6e73}
+body.plan-light .sdn{color:#1d1d1f}
+body.plan-light .sdf{color:#6e6e73}
+body.plan-light .tool h3{color:#1d1d1f}
+body.plan-light .tool p{color:#6e6e73}
+body.plan-light .tool-n{color:var(--blue)}
+
+/* carte accent bleue */
+body.plan-light .quote{background:rgba(0,102,255,.06);border-left:3px solid var(--blue);
+  border-radius:16px;color:#1d1d1f}
+body.plan-light .tip-blue{background:rgba(0,102,255,.06);border:1px solid rgba(0,102,255,.18);
+  border-radius:16px;color:#1d1d1f}
+body.plan-light .tip-blue strong{color:var(--blue)}
+
+/* verre : ici il fonctionne vraiment (fond clair) */
+body.plan-light .bw{background:rgba(255,255,255,.72);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.9);border-radius:16px;
+  box-shadow:0 4px 16px rgba(0,0,0,.05)}
+
+/* onglets piliers */
+body.plan-light .ptabs{background:rgba(0,0,0,.045)}
+body.plan-light .pbtn{color:#6e6e73}
+body.plan-light .pbtn.active{background:#fff;color:#1d1d1f;box-shadow:0 1px 3px rgba(0,0,0,.10)}
+body.plan-light .pbtn-n{color:var(--blue)}
+
+/* routine */
+body.plan-light .rout{background:#fff;border-radius:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.07)}
+body.plan-light .rr{border-bottom-color:rgba(0,0,0,.06)}
+body.plan-light .rt{color:var(--blue)}
+body.plan-light .rd{color:#1d1d1f}
+body.plan-light .rd strong{color:#1d1d1f}
+body.plan-light .rout-note{color:#6e6e73}
+
+/* timeline */
+body.plan-light .t-item3{background:#fff;border:1px solid rgba(0,0,0,.06);color:#1d1d1f;
+  box-shadow:0 1px 3px rgba(0,0,0,.05)}
+
+/* photos : plus besoin de cadre sur fond clair */
+body.plan-light .t-photo-img{border:0;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+
+/* nav latérale */
+body.plan-light .snav-label{background:#1d1d1f;color:#fff}
+body.plan-light .snav-dot{background:rgba(0,0,0,.2)}
+body.plan-light .snav-item.active .snav-dot{background:var(--blue)}
+body.plan-light .snav-line{background:rgba(0,0,0,.12)}
+body.plan-light .snav-fill{background:var(--blue)}
+
+/* CTA final */
+body.plan-light .ctab{background:#1d1d1f;border-radius:24px;color:#fff}
+body.plan-light .ctab h2,body.plan-light .ctab p{color:#fff}
+
+/* formulaire team */
+body.plan-light .club-in{background:#f5f5f7;border-color:rgba(0,0,0,.10)}
+
+/* badge flottant */
+body.plan-light .float-cta{box-shadow:0 8px 28px rgba(0,102,255,.28)}
+
+/* ═══ PLAN CLAIR : section finale sombre (contraste de clôture) ═══ */
+body.plan-light .ctaf{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:88px 0 80px}
+body.plan-light .ctaf h2{color:#fff}
+body.plan-light .ctaf h2 em{color:rgba(255,255,255,.42);font-style:normal}
+body.plan-light .ctab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+body.plan-light .ctab-ti{color:#fff}
+body.plan-light .ctab-su{color:rgba(255,255,255,.62)}
+body.plan-light footer,body.plan-light .foot{color:#6e6e73}
+@media(max-width:700px){body.plan-light .ctaf{margin:0 12px;padding:60px 0 56px;border-radius:24px}}
+
+/* ═══ CONTENIR LES HALOS (pas de scroll horizontal) ═══ */
+html{overflow-x:hidden}
+body{overflow-x:clip;max-width:100vw;position:relative}
+body::before,body::after{max-width:100vw!important;right:auto}
+body::before{left:50%;transform:translateX(-50%)}
+body::after{left:50%;transform:translateX(20%);bottom:-14%}
+/* garde-fou final : aucun scroll horizontal possible */
+html{overflow-x:hidden!important}
+.s2,.sec,.m-sec{overflow-x:clip}
+/* Bloodwork sur plan clair */
+body.plan-light #s-plus .card-dark p{color:#6e6e73}
+body.plan-light .bw-t{color:#1d1d1f}
+body.plan-light .bw-d{color:#6e6e73}
+body.plan-light .bw-n{color:var(--blue)}
+body.plan-light .sg .sd{background:#f5f5f7;border:1px solid rgba(0,0,0,.06);box-shadow:none}
+.bw-intro{color:rgba(255,255,255,.72)}
+.bw-note{color:rgba(255,255,255,.6)}
+body.plan-light .bw-intro{color:#6e6e73}
+body.plan-light .bw-note{color:#86868b}

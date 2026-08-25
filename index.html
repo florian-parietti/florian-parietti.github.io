@@ -23,7 +23,7 @@
       <div class="hero-eyebrow">Plan complet gratuit — spécifique aux 20-45 ans</div>
 
       <h1><span class="b">Physique athlétique</span><span class="b">Énergie et concentration</span><span class="b">Sommeil profond</span>
-        <span class="h1-sub">Biohack ton corps et ta santé</span>
+        <span class="h1-sub">Transforme ton corps et ta santé — grâce au biohacking</span>
       </h1>
 
       <figure class="hero-wide">
@@ -54,22 +54,21 @@
 
 
 <!-- ══════════ DÉFINITION DU BIOHACKING ══════════ -->
-<section class="s2 s2-def">
+<section class="s2 s2-def rv">
   <div class="wrap">
     <div class="def-box">
-      <div class="def-ey">C'est quoi le biohacking ?</div>
-      <p class="def-main">L'art de l'optimisation personnelle : améliorer tes performances
-        physiques et mentales, ton apparence et ton bien-être — par la science et le mode de vie,
-        pas par des gadgets.</p>
-      <p class="def-sub"><strong>Mon approche :</strong> optimiser tout ce qui influence ton objectif,
-        pour obtenir les meilleurs résultats.</p>
+      <h2 class="def-ti">Le biohacking est l'art de l'optimisation personnelle.</h2>
+      <p class="def-main">Améliorer tes performances physiques et mentales, ton apparence
+        et ton bien-être grâce à la science, la technologie et un changement de mode de vie.</p>
+      <p class="def-sub"><strong>Mon approche :</strong> optimiser tout ce qui influence
+        tes objectifs pour avoir les meilleurs résultats.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ══════════ MÉTRIQUES SANTÉ ══════════ -->
-<section class="s2 s2-alt">
+<section class="s2 rv">
   <div class="wrap">
     <div class="s2-ey">Maîtrise biologique</div>
     <h2 class="s2-ti">Arrête de subir. Pilote.</h2>
@@ -86,7 +85,7 @@
       <p>Voici mes chiffres. Captures brutes, Apple Santé, juillet 2026.</p>
     </div>
 
-    <div class="metrics">
+    <div class="metrics stagger">
 
       <div class="metric">
         <div class="metric-top">
@@ -139,7 +138,7 @@
 
 
 <!-- ══════════ FORMULAIRE ══════════ -->
-<section class="s2" id="gate">
+<section class="s2 rv" id="gate">
   <div class="wrap">
 
     <div class="form-wrap">
@@ -167,7 +166,7 @@
 
 
 <!-- ══════════ QUI JE SUIS ══════════ -->
-<section class="s2 s2-alt">
+<section class="s2 rv">
   <div class="wrap">
     <div class="story">
       <picture>
@@ -259,5 +258,14 @@ document.getElementById('access-form').addEventListener('submit', function (e) {
 });
 </script>
 
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.rv,.stagger').forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>
