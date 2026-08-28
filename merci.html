@@ -16,7 +16,7 @@
 <section class="m-sec m-sec-a rv">
   <div class="wrap">
     <div class="merci">
-      <h1 class="merci-h1">C'est bon <span id="pn"></span>— ton plan est accessible.</h1>
+      <h1 class="merci-h1">C'est bon — ton plan est accessible.</h1>
       <p class="merci-sub">90 secondes de lecture avant de l'ouvrir. Tu sauras comment l'interpréter et par où commencer.</p>
 
       <a href="plan.html" class="cta-main">Ouvrir le plan maintenant</a>
@@ -98,17 +98,14 @@
 const SU = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
 
 /* Prénom dans le titre */
-try {
-  const p = sessionStorage.getItem('fp_prenom');
-  if (p) document.getElementById('pn').textContent = p + ' ';
-} catch (x) {}
+
 
 /* Instagram optionnel */
 document.getElementById('ig-btn').addEventListener('click', function () {
   const ig = document.getElementById('insta').value.trim();
   if (!ig) return;
   const params = new URLSearchParams({
-    prenom: sessionStorage.getItem('fp_prenom') || '',
+    prenom: '',
     email: sessionStorage.getItem('fp_email') || '',
     instagram: ig,
     objectif_physique: '', objectif_sante: '', autre: '',

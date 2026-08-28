@@ -143,22 +143,29 @@
 
     <div class="form-wrap">
       <div class="g-ti">Accède au plan complet</div>
-      <p class="g-su">Deux champs. Le plan s'ouvre immédiatement après.</p>
+      <p class="g-su">Le plan s'ouvre immédiatement après.</p>
 
       <form id="access-form" novalidate>
         <div class="fg">
-          <label class="fl" for="prenom">Prénom</label>
-          <input class="fi" type="text" id="prenom" name="prenom" autocomplete="given-name" placeholder="Ton prénom">
-        </div>
-        <div class="fg">
-          <label class="fl" for="email">Adresse email</label>
-          <input class="fi" type="email" id="email" name="email" autocomplete="email" placeholder="ton@email.com">
+          <label class="fl" for="insta">Instagram</label>
+          <div class="fi-at">
+            <span class="at">@</span>
+            <input class="fi" type="text" id="insta" name="insta" autocomplete="off"
+                   placeholder="toncompte" spellcheck="false" autocapitalize="off">
+          </div>
+          <p class="fh">Je t'envoie un message pour te dire par quel pilier commencer selon ta situation.</p>
         </div>
 
-        <p class="err" id="err">Renseigne ton prénom et une adresse email valide.</p>
+        <div class="fg">
+          <label class="fl" for="email">Adresse email <span class="opt">optionnel</span></label>
+          <input class="fi" type="email" id="email" name="email" autocomplete="email" placeholder="ton@email.com">
+          <p class="fh">Pour recevoir gratuitement les prochaines ressources.</p>
+        </div>
+
+        <p class="err" id="err">Renseigne ton compte Instagram.</p>
 
         <button type="submit" class="sbtn">Recevoir le plan gratuitement</button>
-        <p class="fn">Accès immédiat · Aucun spam · Désinscription en 1 clic</p>
+        <p class="fn">Accès immédiat · Aucun spam · Aucune newsletter</p>
       </form>
     </div>
   </div>
@@ -225,12 +232,23 @@ const SU = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vK
 document.getElementById('access-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const prenom = document.getElementById('prenom').value.trim();
-  const email  = document.getElementById('email').value.trim();
-  const err    = document.getElementById('err');
-  const okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const insta = document.getElementById('insta').value.trim().replace(/^@+/, '');
+  const email = document.getElementById('email').value.trim();
+  const err   = document.getElementById('err');
 
-  if (!prenom || !okMail) { err.style.display = 'block'; return; }
+  const okInsta = /^[A-Za-z0-9._]{1,30}$/.test(insta);
+  const okMail  = email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+  if (!okInsta) {
+    err.textContent = 'Renseigne un compte Instagram valide (sans le @).';
+    err.style.display = 'block';
+    return;
+  }
+  if (!okMail) {
+    err.textContent = 'Cette adresse email ne semble pas valide.';
+    err.style.display = 'block';
+    return;
+  }
   err.style.display = 'none';
 
   const btn = this.querySelector('.sbtn');
@@ -240,7 +258,10 @@ document.getElementById('access-form').addEventListener('submit', function (e) {
   try {
     const params = new URLSearchParams({
       date: new Date().toLocaleString('fr-BE'),
-      prenom: prenom, email: email, statut: 'Nouveau', instagram: ''
+      prenom: '',
+      email: email,
+      statut: 'Nouveau',
+      instagram: '@' + insta
     });
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
@@ -249,7 +270,7 @@ document.getElementById('access-form').addEventListener('submit', function (e) {
   } catch (x) {}
 
   try {
-    sessionStorage.setItem('fp_prenom', prenom);
+    sessionStorage.setItem('fp_insta', '@' + insta);
     sessionStorage.setItem('fp_email', email);
   } catch (x) {}
 
