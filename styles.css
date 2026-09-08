@@ -1281,3 +1281,38 @@ body.plan-light .snav-fill{background:var(--blue)}
 .fl .opt{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   color:rgba(0,0,0,.38);margin-left:7px}
 .fh{margin-top:7px;font-size:12.5px;line-height:1.5;color:rgba(0,0,0,.5)}
+
+/* ═══════════════════════════════════════════════
+   FORMULAIRE DANS LE HERO (conversion immédiate)
+   ═══════════════════════════════════════════════ */
+.hero-form{max-width:520px;margin:0 auto}
+.hf-row{display:flex;gap:10px;flex-direction:column}
+.hero-form .fi-at{flex:1}
+.hero-form .fi{width:100%;background:rgba(255,255,255,.97);border:1.5px solid rgba(255,255,255,.22);
+  border-radius:100px;padding:16px 20px 16px 40px;font-size:16px;color:#1d1d1f;
+  font-family:var(--font);box-shadow:0 8px 26px rgba(0,0,0,.28)}
+.hero-form .fi::placeholder{color:rgba(0,0,0,.4)}
+.hero-form .fi:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,102,255,.28)}
+.hero-form .fi-at .at{left:20px;color:rgba(0,0,0,.42);font-size:16px}
+.hero-form .sbtn{width:100%;background:var(--blue);color:#fff;border:0;border-radius:100px;
+  padding:17px 26px;font-size:16px;font-weight:700;font-family:var(--font);cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,102,255,.36);transition:transform .18s ease,background .18s ease}
+.hero-form .sbtn:hover{background:var(--blue2);transform:translateY(-1px)}
+.hero-form .sbtn:disabled{opacity:.7;transform:none}
+.hero-form .err{display:none;margin-top:10px;font-size:13px;color:#ff8080;font-weight:600}
+.hero-form .cta-micro{margin-top:11px}
+.hf-more{display:inline-block;margin-top:14px;background:none;border:0;cursor:pointer;
+  font-family:var(--font);font-size:13px;font-weight:600;color:#4d94ff;
+  text-decoration:underline;text-underline-offset:3px;padding:4px}
+.hf-more:hover{color:#7db0ff}
+.hf-email{margin-top:12px}
+.hf-email .fi{padding-left:20px}
+.hero-form .fh{margin-top:7px;font-size:12.5px;color:rgba(255,255,255,.6);text-align:center}
+@media(min-width:620px){
+  .hf-row{flex-direction:row;align-items:stretch}
+  .hero-form .sbtn{width:auto;white-space:nowrap;padding:17px 30px}
+}
+@media(min-width:620px){
+  .hero-form .fi-at{flex:1 1 auto;min-width:220px}
+  .hero-form .sbtn{flex:0 0 auto}
+}

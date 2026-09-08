@@ -20,7 +20,7 @@
   <div class="wrap" style="position:relative;z-index:1">
     <div class="hero-center">
 
-      <div class="hero-eyebrow">Plan complet gratuit — spécifique aux 20-45 ans</div>
+      <div class="hero-eyebrow">Tous mes protocoles gratuits</div>
 
       <h1><span class="b">Physique athlétique</span><span class="b">Énergie et concentration</span><span class="b">Sommeil profond</span>
         <span class="h1-sub">Transforme ton corps et ta santé — grâce au biohacking</span>
@@ -38,8 +38,25 @@
         <figcaption>Ma transformation · 2020 → 2025</figcaption>
       </figure>
 
-      <a href="#gate" class="cta-main">Recevoir le plan gratuitement</a>
-      <p class="cta-micro">Accès immédiat · Aucun paiement · Aucun spam</p>
+      <form id="access-form" class="hero-form" novalidate>
+        <div class="hf-row">
+          <div class="fi-at">
+            <span class="at">@</span>
+            <input class="fi" type="text" id="insta" name="insta" autocomplete="off"
+                   placeholder="toncompte" spellcheck="false" autocapitalize="off"
+                   aria-label="Ton compte Instagram">
+          </div>
+          <button type="submit" class="sbtn">Accéder aux protocoles gratuitement</button>
+        </div>
+        <p class="err" id="err">Renseigne ton compte Instagram.</p>
+        <p class="cta-micro">Accès immédiat · Aucun paiement · Aucun spam</p>
+        <button type="button" class="hf-more" id="hfMore">+ Ajouter mon email (optionnel)</button>
+        <div class="hf-email" id="hfEmail" hidden>
+          <input class="fi" type="email" id="email" name="email" autocomplete="email"
+                 placeholder="ton@email.com" aria-label="Ton adresse email">
+          <p class="fh">Pour recevoir gratuitement les prochaines ressources.</p>
+        </div>
+      </form>
 
       <p class="hero-sub">
         <strong>6 ans d'expérimentation et d'ajustement :</strong>
@@ -137,39 +154,7 @@
 </section>
 
 
-<!-- ══════════ FORMULAIRE ══════════ -->
-<section class="s2 rv" id="gate">
-  <div class="wrap">
 
-    <div class="form-wrap">
-      <div class="g-ti">Accède au plan complet</div>
-      <p class="g-su">Le plan s'ouvre immédiatement après.</p>
-
-      <form id="access-form" novalidate>
-        <div class="fg">
-          <label class="fl" for="insta">Instagram</label>
-          <div class="fi-at">
-            <span class="at">@</span>
-            <input class="fi" type="text" id="insta" name="insta" autocomplete="off"
-                   placeholder="toncompte" spellcheck="false" autocapitalize="off">
-          </div>
-          <p class="fh">Pour recevoir ton point de départ personnalisé : par quel pilier commencer.</p>
-        </div>
-
-        <div class="fg">
-          <label class="fl" for="email">Adresse email <span class="opt">optionnel</span></label>
-          <input class="fi" type="email" id="email" name="email" autocomplete="email" placeholder="ton@email.com">
-          <p class="fh">Pour recevoir gratuitement les prochaines ressources.</p>
-        </div>
-
-        <p class="err" id="err">Renseigne ton compte Instagram.</p>
-
-        <button type="submit" class="sbtn">Recevoir le plan gratuitement</button>
-        <p class="fn">Accès immédiat · Aucun spam · Aucune newsletter</p>
-      </form>
-    </div>
-  </div>
-</section>
 
 
 <!-- ══════════ QUI JE SUIS ══════════ -->
@@ -206,7 +191,7 @@
         </div>
 
         <div class="story-cta">
-          <a href="#gate" class="cta-main">Recevoir le plan gratuitement</a>
+          <a href="#s-hero" class="cta-main">Accéder aux protocoles gratuitement</a>
           <p class="cta-micro">Accès immédiat · Aucun paiement · Aucun spam</p>
         </div>
       </div>
@@ -233,7 +218,8 @@ document.getElementById('access-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
   const insta = document.getElementById('insta').value.trim().replace(/^@+/, '');
-  const email = document.getElementById('email').value.trim();
+  const emailEl = document.getElementById('email');
+  const email = emailEl ? emailEl.value.trim() : '';
   const err   = document.getElementById('err');
 
   const okInsta = /^[A-Za-z0-9._]{1,30}$/.test(insta);
@@ -277,6 +263,15 @@ document.getElementById('access-form').addEventListener('submit', function (e) {
   document.cookie = 'plan_ok=1;max-age=' + (365 * 86400) + ';path=/';
   setTimeout(function () { window.location.href = 'merci.html'; }, 700);
 });
+
+(function(){
+  var b=document.getElementById('hfMore'), box=document.getElementById('hfEmail');
+  if(!b||!box) return;
+  b.addEventListener('click',function(){
+    box.hidden=false; b.style.display='none';
+    var i=document.getElementById('email'); if(i) i.focus();
+  });
+})();
 </script>
 
 
