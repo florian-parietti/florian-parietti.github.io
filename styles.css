@@ -1438,3 +1438,53 @@ body.merci-light.pure .def-mini strong{color:#1d1d1f!important;font-weight:600}
 body.merci-light.pure .vid-box{border:0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.08);
   border-radius:20px}
 body.merci-light.pure .m-card-light{border-radius:22px}
+
+/* ═══ SECTION COGNITIVE (fond bleu, même traitement que journée type) ═══ */
+body.plan-light #s-cognitif{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:88px 0 80px;position:relative;overflow:hidden}
+body.plan-light #s-cognitif::after{content:'';position:absolute;inset:auto -10% -40% -10%;
+  height:60%;background:radial-gradient(ellipse at 50% 100%,rgba(0,102,255,.22) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(60px);pointer-events:none}
+body.plan-light #s-cognitif .s-ey,body.plan-light #s-cognitif .s-ey-w{color:#4d94ff!important}
+body.plan-light #s-cognitif h2.s-ti{color:#fff!important}
+body.plan-light #s-cognitif p.s-de{color:rgba(255,255,255,.65)!important}
+body.plan-light #s-cognitif .ptabs{background:rgba(255,255,255,.07);position:relative;z-index:1}
+body.plan-light #s-cognitif .pbtn{color:rgba(255,255,255,.55)}
+body.plan-light #s-cognitif .pbtn.active{background:rgba(255,255,255,.12);color:#fff;box-shadow:none}
+body.plan-light #s-cognitif .pbtn-n{color:#4d94ff}
+body.plan-light #s-cognitif .pp{position:relative;z-index:1}
+body.plan-light #s-cognitif .quote{background:rgba(255,255,255,.05);border-left:3px solid #4d94ff;
+  color:rgba(255,255,255,.88)}
+body.plan-light #s-cognitif .card-dark{background:rgba(255,255,255,.05)!important;
+  border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+body.plan-light #s-cognitif .ch-dark{color:#fff!important;border-bottom-color:rgba(255,255,255,.12)!important}
+body.plan-light #s-cognitif .card-dark ul li strong{color:#fff!important}
+body.plan-light #s-cognitif .card-dark ul li span{color:rgba(255,255,255,.68)!important}
+body.plan-light #s-cognitif .card-dark ul li{border-bottom-color:rgba(255,255,255,.08)!important}
+body.plan-light #s-cognitif .rout{background:transparent;border:0;box-shadow:none}
+body.plan-light #s-cognitif .rr{background:rgba(255,255,255,.055)!important;
+  border:1px solid rgba(255,255,255,.08);box-shadow:none}
+body.plan-light #s-cognitif .rt{color:#4d94ff}
+body.plan-light #s-cognitif .rd{color:rgba(255,255,255,.88)}
+body.plan-light #s-cognitif .rd strong{color:#fff}
+body.plan-light #s-cognitif .rout-note{color:rgba(255,255,255,.55)}
+
+/* ═══ SECTION TRANSFO (même traitement) ═══ */
+body.plan-light #s-transfo{background:#1d1d1f!important;border-radius:32px;
+  margin:0 20px;padding:80px 0 72px;position:relative;overflow:hidden}
+body.plan-light #s-transfo::after{content:'';position:absolute;inset:-30% -10% auto -10%;
+  height:70%;background:radial-gradient(ellipse at 50% 0%,rgba(0,102,255,.20) 0%,rgba(0,102,255,0) 70%);
+  filter:blur(60px);pointer-events:none}
+body.plan-light #s-transfo .s-ey,body.plan-light #s-transfo .s-ey-w{color:#4d94ff!important}
+body.plan-light #s-transfo h2.s-ti{color:#fff!important}
+body.plan-light #s-transfo .t-item3{background:rgba(255,255,255,.07)!important;
+  border:1px solid rgba(255,255,255,.10)!important;color:#fff!important;box-shadow:none!important}
+body.plan-light #s-transfo > *{position:relative;z-index:1}
+@media(max-width:700px){
+  body.plan-light #s-cognitif,body.plan-light #s-transfo{margin:0 12px;padding:58px 0 54px;border-radius:24px}
+}
+/* onglets : défilement horizontal, jamais d'empilement */
+.ptabs{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.ptabs::-webkit-scrollbar{display:none}
+.ptabs .pbtn{flex:0 0 auto;white-space:nowrap}
