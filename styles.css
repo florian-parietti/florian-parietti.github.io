@@ -1316,3 +1316,125 @@ body.plan-light .snav-fill{background:var(--blue)}
   .hero-form .fi-at{flex:1 1 auto;min-width:220px}
   .hero-form .sbtn{flex:0 0 auto}
 }
+
+/* ════════════════════════════════════════════════════════════
+   THÈME PURE — sobre, clair, beaucoup d'air (réf. Immortals)
+   ════════════════════════════════════════════════════════════ */
+body.pure{
+  background:#f5f5f7!important;
+  background-attachment:scroll;
+  color:#1d1d1f;
+  -webkit-font-smoothing:antialiased;
+}
+body.pure::before{
+  width:80vw;height:60vw;max-width:1100px;max-height:800px;
+  top:-22%;left:50%;transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(0,102,255,.10) 0%,rgba(0,102,255,0) 66%);
+  filter:blur(90px)}
+body.pure::after{display:none}
+body.pure .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* ─── HERO ─────────────────────────────── */
+.pure-hero{padding:66px 0 84px;position:relative;z-index:1}
+.ph-inner{max-width:720px;margin:0 auto;text-align:center}
+.ph-eyebrow{display:inline-block;font-size:11.5px;font-weight:650;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:26px}
+.ph-h1{font-size:clamp(29px,3.9vw,44px);line-height:1.14;font-weight:600;
+  letter-spacing:-.03em;color:#1d1d1f;margin:0 auto 20px;max-width:22ch}
+.ph-sub{font-size:clamp(15.5px,1.8vw,18px);line-height:1.62;color:#6e6e73;
+  margin:0 auto 32px;max-width:52ch;font-weight:400}
+.ph-list{list-style:none;display:inline-flex;flex-direction:column;gap:12px;
+  margin:0 auto 40px;text-align:left}
+.ph-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;
+  line-height:1.5;color:#1d1d1f;font-weight:450}
+.ph-list li::before{content:'+';color:var(--blue);font-weight:600;font-size:17px;
+  line-height:1.35;flex:0 0 auto}
+
+/* ─── SECTIONS ─────────────────────────── */
+.pure-sec{padding:104px 0;position:relative;z-index:1}
+@media(max-width:740px){.pure-sec{padding:70px 0}}
+.ps-head{max-width:640px;margin:0 auto 52px;text-align:center}
+.ps-ey{font-size:11.5px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px}
+.ps-ti{font-size:clamp(25px,3.4vw,38px);line-height:1.16;font-weight:600;
+  letter-spacing:-.028em;color:#1d1d1f;margin:0 0 16px}
+.ps-de{font-size:16px;line-height:1.6;color:#6e6e73;margin:0}
+
+/* ─── 4 PILIERS ────────────────────────── */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+.pcard{background:#fff;border-radius:22px;padding:34px 32px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.06)}
+@media(max-width:600px){.pcard{padding:28px 24px}}
+.pc-n{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--blue);margin-bottom:16px}
+.pcard h3{font-size:20px;font-weight:650;letter-spacing:-.02em;color:#1d1d1f;margin:0 0 8px}
+.pcard > p{font-size:14.5px;line-height:1.55;color:#6e6e73;margin:0 0 20px}
+.pcard ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;
+  padding-top:18px;border-top:1px solid rgba(0,0,0,.07)}
+.pcard ul li{display:flex;gap:10px;font-size:14px;line-height:1.5;color:#1d1d1f}
+.pcard ul li::before{content:'';flex:0 0 5px;height:5px;margin-top:8px;border-radius:50%;
+  background:var(--blue);opacity:.55}
+
+/* ─── PREUVES ──────────────────────────── */
+body.pure .metrics{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:0}
+@media(max-width:900px){body.pure .metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){body.pure .metrics{grid-template-columns:1fr}}
+body.pure .metric{background:#fff;border:0;border-radius:20px;padding:28px 24px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.06)}
+body.pure .metric-top{flex-direction:column;align-items:flex-start;gap:12px;
+  padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid rgba(0,0,0,.07)}
+body.pure .metric-lbl{font-size:10.5px;letter-spacing:.11em;color:#86868b;max-width:none}
+body.pure .metric-n{font-size:clamp(34px,3.4vw,42px);font-weight:600;letter-spacing:-.035em;color:#1d1d1f}
+body.pure .metric-n span{color:var(--blue);font-size:.40em;font-weight:600}
+body.pure .metric-ctx{font-size:13.5px;line-height:1.55;color:#6e6e73}
+body.pure .metric-ctx b{color:#1d1d1f;font-weight:600}
+body.pure .metric-pending{background:#ececf0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+body.pure .metric-tag{margin-top:14px;color:var(--blue);background:rgba(0,102,255,.09);
+  border:1px solid rgba(0,102,255,.20)}
+
+.proof-photo{margin:44px auto 0;max-width:620px;text-align:center}
+.proof-photo img{width:100%;height:auto;display:block;border-radius:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.07)}
+.proof-photo figcaption{margin-top:16px;font-size:13px;color:#86868b;letter-spacing:.01em}
+
+/* ─── HISTOIRE ─────────────────────────── */
+.story-pure{max-width:660px;margin:0 auto;text-align:center}
+.story-pure .ps-ti{margin-bottom:28px}
+.sp-text{text-align:left}
+.sp-text p{font-size:15.5px;line-height:1.72;color:#6e6e73;margin:0 0 18px}
+.sp-text strong{color:#1d1d1f;font-weight:600}
+.sp-cta{margin-top:40px}
+
+/* ─── FORMULAIRE SUR FOND CLAIR ────────── */
+body.pure .hero-form{max-width:480px;margin:0 auto}
+body.pure .hero-form .fi{background:#fff;border:1px solid rgba(0,0,0,.10);color:#1d1d1f;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);font-size:16px}
+body.pure .hero-form .fi::placeholder{color:#b0b0b6}
+body.pure .hero-form .fi:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,102,255,.14)}
+body.pure .hero-form .fi-at .at{color:#b0b0b6}
+body.pure .hero-form .sbtn{box-shadow:0 4px 16px rgba(0,102,255,.22)}
+body.pure .hero-form .err{color:#d92020}
+body.pure .cta-micro{color:#86868b}
+body.pure .hf-more{color:var(--blue)}
+body.pure .hf-more:hover{color:var(--blue2)}
+body.pure .hero-form .fh{color:#86868b}
+
+/* ─── CTA ──────────────────────────────── */
+body.pure .cta-main{box-shadow:0 4px 16px rgba(0,102,255,.22)}
+
+/* ─── FOOTER ───────────────────────────── */
+.pure-foot{padding:56px 0 68px;border-top:1px solid rgba(0,0,0,.07);position:relative;z-index:1}
+.pure-foot p{font-size:12.5px;line-height:1.7;color:#86868b;max-width:64ch;
+  margin:0 auto;text-align:center}
+
+/* ─── MERCI : alignement thème pure ─── */
+body.merci-light.pure .merci-h1{font-size:clamp(25px,3.6vw,36px);font-weight:600;letter-spacing:-.03em}
+body.merci-light.pure .m-h2{font-weight:600;letter-spacing:-.028em}
+body.merci-light.pure .ps-ey,body.merci-light.pure .s2-ey{font-weight:650;letter-spacing:.14em}
+body.merci-light.pure .def-mini{background:#fff!important;border:0!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.06)!important;
+  color:#6e6e73!important;border-radius:20px}
+body.merci-light.pure .def-mini strong{color:#1d1d1f!important;font-weight:600}
+body.merci-light.pure .vid-box{border:0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(0,0,0,.08);
+  border-radius:20px}
+body.merci-light.pure .m-card-light{border-radius:22px}
