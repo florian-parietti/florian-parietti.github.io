@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Performance cognitive et mentale — Florian Parietti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="plan-light">
+
+<header class="plan-nav">
+  <div class="pn-inner">
+    <a href="plan.html" class="pn-logo">Le Plan</a>
+    <nav class="pn-links">
+      <a href="plan.html" class="pn-link">Santé &amp; Physique</a>
+      <a href="plan-apparence.html" class="pn-link">Apparence</a>
+      <a href="plan-cognitif.html" class="pn-link active">Cognitif</a>
+      <a href="plan-transformation.html" class="pn-link">Ma transformation</a>
+      <a href="plan-bloodwork.html" class="pn-link">Aller plus loin</a>
+      <a href="plan-outils.html" class="pn-link">Outils gratuits</a>
+    </nav>
+    <a href="https://calendly.com/florian-parietti/30min" target="_blank" rel="noopener" class="pn-cta">Réserver un appel</a>
+  </div>
+</header>
+
+<main class="plan-main">
+<section class="sec" id="s-cognitif">
+  <div class="wrap">
+    <div class="s-ey s-ey-w reveal">Dimension 04</div>
+    <h2 class="s-ti reveal d1">Performance cognitive et mentale</h2>
+    <p class="s-de reveal d2">Organiser sa journée par niveau d'énergie, protéger sa concentration, ancrer le tout dans une routine.</p>
+
+    <div class="ptabs reveal d2" id="ctabs">
+      <button class="pbtn active" onclick="sp(event,'organisation')"><span class="pbtn-n">01</span>Organisation</button>
+      <button class="pbtn" onclick="sp(event,'focus')"><span class="pbtn-n">02</span>Concentration &amp; productivité</button>
+      <button class="pbtn" onclick="sp(event,'routines')"><span class="pbtn-n">03</span>Routines</button>
+    </div>
+
+    <div class="pp active" id="p-organisation">
+      <div class="quote">"Avoir un réel impact — construire ma liberté — Polyvalence — apprentissage continu."</div>
+      <div class="card-dark"><div class="ch-dark">Organisation</div><ul>
+        <li><strong>Deep work & création tôt le matin</strong><span>Tâches complexes ou urgentes</span></li>
+        <li><strong>Coaching</strong><span>En fin de matinée ou après-midi</span></li>
+        <li><strong>Simple work</strong><span>Fin d'après-midi</span></li>
+      </ul></div>
+    </div>
+
+    <div class="pp" id="p-focus">
+      <div class="card-dark"><div class="ch-dark">Concentration &amp; productivité</div><ul>
+        <li><strong>Environnement</strong><span>Silence / bruit blanc — mode ne pas déranger</span></li>
+        <li><strong>Timer</strong><span>45 minutes (micro pauses actives) — 1h30 (pauses actives)</span></li>
+        <li><strong>Setup</strong><span>Écran surélevé — hydratation — luminosité élevée — caféine (optionnel)</span></li>
+      </ul></div>
+    </div>
+
+    <div class="pp" id="p-routines">
+      <p class="s-de" style="margin-bottom:22px">Ma journée type, conçue pour réguler le rythme circadien, maintenir une énergie et une productivité élevées, et maximiser la qualité du sommeil.</p>
+      <div class="reveal d3"><div class="rout">
+      <div class="rr"><div class="rt">5h00</div><div class="rd"><strong>Éveil circadien</strong> — Hydratation + minéraux, luminothérapie, mobilisation et marche, respiration</div></div>
+      <div class="rr"><div class="rt">5h30</div><div class="rd"><strong>Petit déjeuner</strong> — Protéines + bonnes graisses + myrtilles ou fruits rouges</div></div>
+      <div class="rr"><div class="rt">6h00</div><div class="rd"><strong>Deep work 1</strong> — Tâches complexes et primordiales. Sans téléphone au préalable. Pièce lumineuse.</div></div>
+      <div class="rr"><div class="rt">7h30</div><div class="rd">Pause active — marche, mobilisation, exposition soleil<br><strong>Deep work 2</strong></div></div>
+      <div class="rr"><div class="rt">9h15</div><div class="rd"><strong>Deep work 3</strong></div></div>
+      <div class="rr"><div class="rt">11h00</div><div class="rd">Marche dehors — <strong>stop caféine</strong><br>Session professionnelle</div></div>
+      <div class="rr"><div class="rt">12h00</div><div class="rd"><strong>Déjeuner</strong> — Protéines ++ · Glucides complexes ++ · Lipides +<br>Session professionnelle</div></div>
+      <div class="rr"><div class="rt">14h30</div><div class="rd"><strong>Entraînement + Sauna</strong> — Pré-workout : glucides simples</div></div>
+      <div class="rr"><div class="rt">16h15</div><div class="rd">Post-workout protéiné (optionnel) + tâche simple ou session professionnelle</div></div>
+      <div class="rr"><div class="rt">18h30</div><div class="rd"><strong>Dîner — dernier repas</strong> — Protéines ++ · Lipides + · Glucides complexes +<br>Tâche simple et suivi</div></div>
+      <div class="rr"><div class="rt">19h30</div><div class="rd">Lunettes anti-lumière bleue · Préparation du lendemain — suivi</div></div>
+      <div class="rr"><div class="rt">20h30</div><div class="rd"><strong>Isolement numérique</strong> — Lumière tamisée ou rouge · Relax ou moment social</div></div>
+      <div class="rr"><div class="rt">21h00</div><div class="rd">Préparation au sommeil — zéro stimulation, obscurité, 18–21°C, calme absolu</div></div>
+      <div class="rr"><div class="rt">21h30</div><div class="rd"><strong>Début du premier cycle de sommeil</strong></div></div>
+    </div>
+    <p class="rout-note">C'est une journée type. Elle varie selon ma programmation, ma charge de travail et les imprévus.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ctaf" id="s-bilan">
+  <div class="wrap">
+    <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
+    <div class="ctab reveal d2">
+      <div class="ctab-ti">Appel — 20 minutes</div>
+      <p class="ctab-su">20 minutes en visio. J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements.</p>
+      <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn" target="_blank">Réserver mon appel</a>
+      <p class="ctab-no">En visio · Gratuit · Sans engagement</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="disc">
+  <div class="wrap"><p><strong>Avertissement.</strong> Ce plan est basé sur mon expérience personnelle et mes recherches. Il ne remplace pas un avis médical professionnel. Consulte un médecin avant tout changement significatif. Les résultats sont individuels.</p></div>
+</div>
+
+<script>
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+function sp(e, id) {
+  var sec = e.currentTarget.closest('section');
+  sec.querySelectorAll('.pbtn').forEach(b => b.classList.remove('active'));
+  sec.querySelectorAll('.pp').forEach(p => p.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  var t = document.getElementById('p-' + id);
+  if (t) t.classList.add('active');
+}
+</script>
+
+</body>
+</html>

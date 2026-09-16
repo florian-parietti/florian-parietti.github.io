@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Ton plan personnalisé — Florian Parietti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="pure quiz-body">
+
+<div class="qz-bar"><div class="qz-fill" id="qzFill"></div></div>
+
+<main class="qz-main">
+  <div class="wrap">
+
+    <!-- ÉTAPE 1 — ÂGE -->
+    <section class="qz-step active" data-step="1">
+      <div class="qz-count">Question 1 / 5</div>
+      <h2 class="qz-q">Quel âge as-tu&nbsp;?</h2>
+      <div class="qz-opts">
+        <button class="qz-opt" data-v="Moins de 20 ans">Moins de 20 ans</button>
+        <button class="qz-opt" data-v="20-25 ans">20 – 25 ans</button>
+        <button class="qz-opt" data-v="26-32 ans">26 – 32 ans</button>
+        <button class="qz-opt" data-v="33-40 ans">33 – 40 ans</button>
+        <button class="qz-opt" data-v="Plus de 40 ans">Plus de 40 ans</button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 2 — PROFESSION -->
+    <section class="qz-step" data-step="2">
+      <div class="qz-count">Question 2 / 5</div>
+      <h2 class="qz-q">Que fais-tu dans la vie&nbsp;?</h2>
+      <p class="qz-help">Ça détermine le temps et l'énergie dont tu disposes réellement.</p>
+      <div class="qz-opts">
+        <button class="qz-opt" data-v="Étudiant">Étudiant</button>
+        <button class="qz-opt" data-v="Salarié">Salarié</button>
+        <button class="qz-opt" data-v="Entrepreneur / indépendant">Entrepreneur / indépendant</button>
+        <button class="qz-opt" data-v="Profession physique">Métier physique</button>
+        <button class="qz-opt" data-v="Autre">Autre</button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 3 — PILIER -->
+    <section class="qz-step" data-step="3">
+      <div class="qz-count">Question 3 / 5</div>
+      <h2 class="qz-q">Quel pilier veux-tu optimiser en priorité&nbsp;?</h2>
+      <p class="qz-help">Un seul. C'est par là qu'on commencera.</p>
+      <div class="qz-opts qz-opts-grid">
+        <button class="qz-opt" data-v="Nutrition">Nutrition</button>
+        <button class="qz-opt" data-v="Entraînement">Entraînement</button>
+        <button class="qz-opt" data-v="Sommeil">Sommeil</button>
+        <button class="qz-opt" data-v="Environnement non toxique">Environnement non toxique<span>Eau, coton, inox</span></button>
+        <button class="qz-opt" data-v="Récupération">Récupération<span>Sauna, froid, grounding</span></button>
+        <button class="qz-opt" data-v="Skin / hair care">Skin / hair care</button>
+        <button class="qz-opt" data-v="Hygiène bucco-dentaire">Hygiène bucco-dentaire</button>
+        <button class="qz-opt" data-v="Organisation">Organisation<span>Blocs de travail</span></button>
+        <button class="qz-opt" data-v="Concentration & productivité">Concentration &amp; productivité</button>
+        <button class="qz-opt" data-v="Routines">Routines</button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 4 — OBJECTIF -->
+    <section class="qz-step" data-step="4">
+      <div class="qz-count">Question 4 / 5</div>
+      <h2 class="qz-q">Ton objectif précis&nbsp;?</h2>
+      <p class="qz-help">Optionnel — mais c'est ce qui me permet de te répondre vraiment.</p>
+      <textarea class="qz-ta" id="qzGoal" rows="4"
+        placeholder="Ex : perdre 6 kg de gras sans perdre de muscle, arrêter de m'effondrer à 15h, dormir 7h vraiment réparatrices…"></textarea>
+      <div class="qz-nav">
+        <button class="qz-skip" data-skip="4">Passer</button>
+        <button class="qz-next" data-next="4">Continuer</button>
+      </div>
+    </section>
+
+    <!-- ÉTAPE 5 — CONTACT -->
+    <section class="qz-step" data-step="5">
+      <div class="qz-count">Dernière étape</div>
+      <h2 class="qz-q">Où je t'envoie ton point de départ&nbsp;?</h2>
+      <p class="qz-help">Aucun spam, aucune newsletter. Un message, pour te dire par quoi commencer.</p>
+
+      <div class="qz-field">
+        <label class="qz-lab" for="qzInsta">Instagram</label>
+        <div class="fi-at">
+          <span class="at">@</span>
+          <input class="fi" type="text" id="qzInsta" placeholder="toncompte"
+                 autocomplete="off" spellcheck="false" autocapitalize="off">
+        </div>
+      </div>
+
+      <div class="qz-field">
+        <label class="qz-lab" for="qzWa">WhatsApp <span class="opt">optionnel</span></label>
+        <div class="fi-at">
+          <span class="at">+</span>
+          <input class="fi" type="tel" id="qzWa" placeholder="32 470 00 00 00" autocomplete="tel">
+        </div>
+      </div>
+
+      <p class="err" id="qzErr">Renseigne ton compte Instagram.</p>
+
+      <button class="qz-submit" id="qzSubmit">Accéder à mon plan</button>
+      <p class="qz-micro">Accès immédiat · Gratuit · Aucun spam</p>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const SU = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+const A = { age:'', profession:'', pilier:'', objectif:'' };
+let step = 1;
+const TOTAL = 5;
+
+function show(n){
+  document.querySelectorAll('.qz-step').forEach(s => s.classList.remove('active'));
+  const el = document.querySelector('.qz-step[data-step="'+n+'"]');
+  if (el) el.classList.add('active');
+  step = n;
+  document.getElementById('qzFill').style.width = ((n-1)/TOTAL*100) + '%';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+document.querySelectorAll('.qz-step[data-step="1"] .qz-opt, .qz-step[data-step="2"] .qz-opt, .qz-step[data-step="3"] .qz-opt')
+  .forEach(function(b){
+    b.addEventListener('click', function(){
+      const s = +this.closest('.qz-step').dataset.step;
+      if (s===1) A.age = this.dataset.v;
+      if (s===2) A.profession = this.dataset.v;
+      if (s===3) A.pilier = this.dataset.v;
+      this.classList.add('picked');
+      setTimeout(function(){ show(s+1); }, 180);
+    });
+  });
+
+document.querySelector('.qz-next').addEventListener('click', function(){
+  A.objectif = document.getElementById('qzGoal').value.trim();
+  show(5);
+});
+document.querySelector('.qz-skip').addEventListener('click', function(){ show(5); });
+
+document.getElementById('qzSubmit').addEventListener('click', function(){
+  const insta = document.getElementById('qzInsta').value.trim().replace(/^@+/, '');
+  const wa    = document.getElementById('qzWa').value.trim().replace(/^\++/, '').replace(/[\s.-]/g,'');
+  const err   = document.getElementById('qzErr');
+
+  if (!/^[A-Za-z0-9._]{1,30}$/.test(insta)) {
+    err.textContent = 'Renseigne un compte Instagram valide (sans le @).';
+    err.style.display = 'block';
+    return;
+  }
+  if (wa !== '' && !/^[0-9]{8,15}$/.test(wa)) {
+    err.textContent = 'Ce numéro WhatsApp ne semble pas valide.';
+    err.style.display = 'block';
+    return;
+  }
+  err.style.display = 'none';
+
+  this.textContent = 'Chargement...';
+  this.disabled = true;
+  document.getElementById('qzFill').style.width = '100%';
+
+  try {
+    const params = new URLSearchParams({
+      date: new Date().toLocaleString('fr-BE'),
+      prenom: '',
+      email: '',
+      statut: 'Quiz',
+      instagram: '@' + insta,
+      whatsapp: wa ? '+' + wa : '',
+      age: A.age,
+      profession: A.profession,
+      pilier: A.pilier,
+      objectif: A.objectif
+    });
+    const f = document.createElement('iframe');
+    f.style.display = 'none';
+    f.src = SU + '?' + params.toString();
+    document.body.appendChild(f);
+  } catch (e) {}
+
+  try {
+    sessionStorage.setItem('fp_insta', '@' + insta);
+    sessionStorage.setItem('fp_pilier', A.pilier);
+  } catch (e) {}
+
+  document.cookie = 'plan_ok=1;max-age=' + (365*86400) + ';path=/';
+  setTimeout(function(){ window.location.href = 'merci.html'; }, 800);
+});
+
+show(1);
+</script>
+
+</body>
+</html>

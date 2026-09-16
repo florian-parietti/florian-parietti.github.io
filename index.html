@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Optimisation personnelle — Protocoles gratuits | Florian Parietti</title>
-<meta name="description" content="Tous mes protocoles d'optimisation personnelle : santé, physique, apparence, mental. 6 ans d'expérimentation. Gratuit, accès immédiat.">
+<title>Ton plan d'optimisation personnalisé | Florian Parietti</title>
+<meta name="description" content="Quelles dimensions dois-tu optimiser pour atteindre ta meilleure version ? Physique, santé, mental, apparence. Plan gratuit, résultat immédiat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -12,48 +12,32 @@
 <link rel="preload" as="image" href="img/hero-face-m.webp" media="(max-width:700px)">
 <link rel="preload" as="image" href="img/hero-face.webp" media="(min-width:701px)">
 </head>
-<body class="pure">
+<body class="pure entry">
 
-<!-- ══════════ HERO ══════════ -->
-<section class="pure-hero" id="s-hero">
+<main class="en-main">
   <div class="wrap">
-    <div class="ph-inner">
 
-      <div class="ph-eyebrow">Tous mes protocoles — gratuits</div>
+    <div class="en-badge"><span class="dot"></span>Plan gratuit — 2 minutes</div>
 
-      <h1 class="ph-h1">Optimise ton corps, ta santé et ton mental.</h1>
+    <h1 class="en-h1">Quelles dimensions dois-tu optimiser pour atteindre <em>ta meilleure version</em>&nbsp;?</h1>
 
-      <p class="ph-sub">
-        6 ans d'expérimentation, réunis en un seul plan.
-        Entraînement, nutrition, sommeil, environnement, recharge, apparence, focus.
-        Chiffré, applicable dès demain matin.
-      </p>
+    <ul class="en-dims">
+      <li>Physique athlétique</li>
+      <li>Santé ultra-optimisée</li>
+      <li>Performance mentale et cognitive</li>
+      <li>Apparence</li>
+    </ul>
 
-      <form id="access-form" class="hero-form" novalidate>
-        <div class="hf-row">
-          <div class="fi-at">
-            <span class="at">@</span>
-            <input class="fi" type="text" id="insta" name="insta" autocomplete="off"
-                   placeholder="toncompte" spellcheck="false" autocapitalize="off"
-                   aria-label="Ton compte Instagram">
-          </div>
-          <button type="submit" class="sbtn">Accéder aux protocoles</button>
-        </div>
-        <p class="err" id="err">Renseigne ton compte Instagram.</p>
-        <p class="cta-micro">Accès immédiat · Aucun paiement · Aucun spam</p>
-        <button type="button" class="hf-more" id="hfMore">+ Ajouter mon email (optionnel)</button>
-        <div class="hf-email" id="hfEmail" hidden>
-          <input class="fi" type="email" id="email" name="email" autocomplete="email"
-                 placeholder="ton@email.com" aria-label="Ton adresse email">
-          <p class="fh">Pour recevoir gratuitement les prochaines ressources.</p>
-        </div>
-      </form>
+    <a href="quiz.html" class="en-cta">Accéder à mon plan <span aria-hidden="true">→</span></a>
 
-    </div>
+    <ul class="en-check">
+      <li>Gratuit</li>
+      <li>Plan personnalisé</li>
+      <li>Accès immédiat</li>
+    </ul>
 
-    <!-- PREUVE COMBINÉE : transformation + données -->
-    <div class="proof-strip">
-      <figure class="ps-photo">
+    <div class="en-proof">
+      <figure class="en-photo">
         <picture>
           <source media="(max-width:700px)" type="image/webp" srcset="img/hero-face-m.webp">
           <source media="(max-width:700px)" type="image/jpeg" srcset="img/hero-face-m.jpg">
@@ -62,187 +46,18 @@
                alt="Transformation physique de Florian Parietti entre 2020 et 2025"
                width="1836" height="1512" fetchpriority="high" decoding="async">
         </picture>
-        <figcaption>Ma transformation · 2020 → 2025</figcaption>
       </figure>
-
-      <div class="ps-data">
-        <div class="psd-ey">Mes données · Apple Santé, juillet 2026</div>
-        <div class="psd-grid">
-          <div class="psd"><div class="psd-n">59</div><div class="psd-l">VO₂ max<span>Classé « Élevé »</span></div></div>
-          <div class="psd"><div class="psd-n">50<em>bpm</em></div><div class="psd-l">FC au repos<span>Zone sportif entraîné</span></div></div>
-          <div class="psd"><div class="psd-n">22<em>%</em></div><div class="psd-l">Sommeil profond<span>Au-dessus de la norme</span></div></div>
-          <div class="psd"><div class="psd-n">24<em>%</em></div><div class="psd-l">Sommeil paradoxal<span>Au-dessus de la norme</span></div></div>
-        </div>
-        <p class="psd-note">Captures brutes, aucune retouche. Le physique est la partie visible — le reste se mesure.</p>
+      <div class="en-data">
+        <div class="end"><b>59</b><span>VO₂ max</span></div>
+        <div class="end"><b>50</b><span>FC repos</span></div>
+        <div class="end"><b>22<i>%</i></b><span>Profond</span></div>
+        <div class="end"><b>24<i>%</i></b><span>Paradoxal</span></div>
       </div>
+      <p class="en-note">Mes données · Apple Santé, juillet 2026 · aucune retouche</p>
     </div>
 
   </div>
-</section>
-
-
-<!-- ══════════ LES 4 DIMENSIONS ══════════ -->
-<section class="pure-sec rv" id="s-pillars">
-  <div class="wrap">
-    <div class="ps-head">
-      <div class="ps-ey">Le système</div>
-      <h2 class="ps-ti">Quatre dimensions, un seul système</h2>
-      <p class="ps-de">Chacune amplifie les autres. C'est pour ça qu'on les travaille ensemble.</p>
-    </div>
-
-    <div class="pgrid">
-      <article class="pcard">
-        <div class="pc-n">01</div>
-        <h3>Santé &amp; Biohacking</h3>
-        <p>Sommeil, nutrition, récupération, mouvement, environnement.</p>
-        <ul>
-          <li>Protocole sommeil chiffré</li>
-          <li>Répartition et quantités exactes</li>
-          <li>Sauna, froid, lumière, respiration</li>
-          <li>Ce qui t'intoxique au quotidien</li>
-        </ul>
-      </article>
-
-      <article class="pcard">
-        <div class="pc-n">02</div>
-        <h3>Physique athlétique</h3>
-        <p>Entraînement, composition corporelle, transformation.</p>
-        <ul>
-          <li>Split 5 jours détaillé</li>
-          <li>Séries, reps, RIR, temps de repos</li>
-          <li>Cardio zone 2 et zone 4-5</li>
-          <li>Réglages par groupe musculaire</li>
-        </ul>
-      </article>
-
-      <article class="pcard">
-        <div class="pc-n">03</div>
-        <h3>Apparence</h3>
-        <p>Peau, cheveux, hygiène, esthétique.</p>
-        <ul>
-          <li>Routine skincare minimaliste</li>
-          <li>Protocole cheveux et nutrition capillaire</li>
-          <li>Bucco-dentaire complet</li>
-          <li>Ce qui se voit en premier</li>
-        </ul>
-      </article>
-
-      <article class="pcard">
-        <div class="pc-n">04</div>
-        <h3>Performance cognitive</h3>
-        <p>Focus, discipline, productivité, routines.</p>
-        <ul>
-          <li>Journée type heure par heure</li>
-          <li>Blocs de deep work</li>
-          <li>Organisation par niveau d'énergie</li>
-          <li>Setup de concentration</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════ POURQUOI M'ÉCOUTER ══════════ -->
-<section class="pure-sec rv" id="s-story">
-  <div class="wrap">
-    <div class="story-pure">
-      <div class="ps-ey">Pourquoi m'écouter</div>
-      <h2 class="ps-ti">J'ai mis 5 ans à trouver l'ordre. Toi tu peux le lire en 20 minutes.</h2>
-
-      <div class="sp-text">
-        <p>2020 : blessure au genou, méniscectomie, fin du football. <strong>Skinny fat</strong>, de l'acné, aucune direction. 2023 : du muscle, mais en force brute — peu de définition, de la procrastination, un crash d'énergie chaque après-midi.</p>
-        <p>Ce qui a changé, ce n'est ni la motivation ni la quantité d'informations. C'est d'avoir arrêté de traiter chaque problème séparément. De voir l'humain comme <strong>un système d'éléments en interaction</strong>, où chaque dimension amplifie les autres.</p>
-        <p>Diplôme en coaching sportif &amp; wellness, spécialisations en transformation physique et biohacking. 6 ans à tester ces protocoles sur moi. Ce que tu vas lire, c'est exactement ce que j'applique.</p>
-      </div>
-
-      <div class="sp-cta">
-        <a href="#s-hero" class="cta-main">Accéder aux protocoles</a>
-        <p class="cta-micro">Accès immédiat · Aucun paiement · Aucun spam</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<footer class="pure-foot">
-  <div class="wrap">
-    <p>Florian Parietti · Ces protocoles sont basés sur mon expérience personnelle et mes recherches.
-      Ils ne remplacent pas un avis médical. Consulte un médecin avant tout changement significatif.
-      Les résultats sont individuels.</p>
-  </div>
-</footer>
-
-
-<script>
-const SU = "https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
-
-document.getElementById('access-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const insta = document.getElementById('insta').value.trim().replace(/^@+/, '');
-  const emailEl = document.getElementById('email');
-  const email = emailEl ? emailEl.value.trim() : '';
-  const err   = document.getElementById('err');
-
-  const okInsta = /^[A-Za-z0-9._]{1,30}$/.test(insta);
-  const okMail  = email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-
-  if (!okInsta) {
-    err.textContent = 'Renseigne un compte Instagram valide (sans le @).';
-    err.style.display = 'block';
-    return;
-  }
-  if (!okMail) {
-    err.textContent = 'Cette adresse email ne semble pas valide.';
-    err.style.display = 'block';
-    return;
-  }
-  err.style.display = 'none';
-
-  const btn = this.querySelector('.sbtn');
-  btn.textContent = 'Chargement...';
-  btn.disabled = true;
-
-  try {
-    const params = new URLSearchParams({
-      date: new Date().toLocaleString('fr-BE'),
-      prenom: '',
-      email: email,
-      statut: 'Nouveau',
-      instagram: '@' + insta
-    });
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = SU + '?' + params.toString();
-    document.body.appendChild(iframe);
-  } catch (x) {}
-
-  try {
-    sessionStorage.setItem('fp_insta', '@' + insta);
-    sessionStorage.setItem('fp_email', email);
-  } catch (x) {}
-
-  document.cookie = 'plan_ok=1;max-age=' + (365 * 86400) + ';path=/';
-  setTimeout(function () { window.location.href = 'merci.html'; }, 700);
-});
-
-(function(){
-  var b=document.getElementById('hfMore'), box=document.getElementById('hfEmail');
-  if(!b||!box) return;
-  b.addEventListener('click',function(){
-    box.hidden=false; b.style.display='none';
-    var i=document.getElementById('email'); if(i) i.focus();
-  });
-})();
-
-(function(){
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.08,rootMargin:'0px 0px -60px 0px'});
-  document.querySelectorAll('.rv,.stagger').forEach(function(el){io.observe(el);});
-})();
-</script>
+</main>
 
 </body>
 </html>

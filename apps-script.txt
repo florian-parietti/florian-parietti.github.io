@@ -1,0 +1,30 @@
+function doGet(e) {
+  try {
+    var sheet = SpreadsheetApp
+      .openById("1N1HyFaykcNsPy5ESyrGHXHYGDGyYmkir81Jscg-AqB4")
+      .getSheetByName("Leads");
+
+    sheet.appendRow([
+      e.parameter.date       || new Date().toLocaleString("fr-BE"),  // A  Date
+      e.parameter.prenom     || "",                                  // B  Prénom
+      e.parameter.email      || "",                                  // C  Email
+      e.parameter.statut     || "Nouveau",                           // D  Statut
+      "",                                                            // E  Relance
+      "",                                                            // F  Notes
+      e.parameter.instagram  || "",                                  // G  Instagram
+      e.parameter.whatsapp   || "",                                  // H  WhatsApp
+      e.parameter.age        || "",                                  // I  Âge
+      e.parameter.profession || "",                                  // J  Profession
+      e.parameter.pilier     || "",                                  // K  Pilier
+      e.parameter.objectif   || ""                                   // L  Objectif
+    ]);
+
+    return ContentService.createTextOutput("OK")
+      .setMimeType(ContentService.MimeType.TEXT);
+  } catch(err) {
+    return ContentService.createTextOutput("Error: " + err.toString())
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+}
+
+function doPost(e) { return doGet(e); }
