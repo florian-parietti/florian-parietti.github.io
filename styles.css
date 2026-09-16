@@ -1439,37 +1439,6 @@ body.merci-light.pure .vid-box{border:0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 1
   border-radius:20px}
 body.merci-light.pure .m-card-light{border-radius:22px}
 
-/* ═══ SECTION COGNITIVE (fond bleu, même traitement que journée type) ═══ */
-body.plan-light #s-cognitif{background:#1d1d1f!important;border-radius:32px;
-  margin:0 20px;padding:88px 0 80px;position:relative;overflow:hidden}
-body.plan-light #s-cognitif::after{content:'';position:absolute;inset:auto -10% -40% -10%;
-  height:60%;background:radial-gradient(ellipse at 50% 100%,rgba(0,102,255,.22) 0%,rgba(0,102,255,0) 70%);
-  filter:blur(60px);pointer-events:none}
-body.plan-light #s-cognitif .s-ey,body.plan-light #s-cognitif .s-ey-w{color:#4d94ff!important}
-body.plan-light #s-cognitif h2.s-ti{color:#fff!important}
-body.plan-light #s-cognitif p.s-de{color:rgba(255,255,255,.65)!important}
-body.plan-light #s-cognitif .ptabs{background:rgba(255,255,255,.07);position:relative;z-index:1}
-body.plan-light #s-cognitif .pbtn{color:rgba(255,255,255,.55)}
-body.plan-light #s-cognitif .pbtn.active{background:rgba(255,255,255,.12);color:#fff;box-shadow:none}
-body.plan-light #s-cognitif .pbtn-n{color:#4d94ff}
-body.plan-light #s-cognitif .pp{position:relative;z-index:1}
-body.plan-light #s-cognitif .quote{background:rgba(255,255,255,.05);border-left:3px solid #4d94ff;
-  color:rgba(255,255,255,.88)}
-body.plan-light #s-cognitif .card-dark{background:rgba(255,255,255,.05)!important;
-  border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-body.plan-light #s-cognitif .ch-dark{color:#fff!important;border-bottom-color:rgba(255,255,255,.12)!important}
-body.plan-light #s-cognitif .card-dark ul li strong{color:#fff!important}
-body.plan-light #s-cognitif .card-dark ul li span{color:rgba(255,255,255,.68)!important}
-body.plan-light #s-cognitif .card-dark ul li{border-bottom-color:rgba(255,255,255,.08)!important}
-body.plan-light #s-cognitif .rout{background:transparent;border:0;box-shadow:none}
-body.plan-light #s-cognitif .rr{background:rgba(255,255,255,.055)!important;
-  border:1px solid rgba(255,255,255,.08);box-shadow:none}
-body.plan-light #s-cognitif .rt{color:#4d94ff}
-body.plan-light #s-cognitif .rd{color:rgba(255,255,255,.88)}
-body.plan-light #s-cognitif .rd strong{color:#fff}
-body.plan-light #s-cognitif .rout-note{color:rgba(255,255,255,.55)}
-
 /* ═══ SECTION TRANSFO (même traitement) ═══ */
 body.plan-light #s-transfo{background:#1d1d1f!important;border-radius:32px;
   margin:0 20px;padding:80px 0 72px;position:relative;overflow:hidden}
@@ -1488,3 +1457,25 @@ body.plan-light #s-transfo > *{position:relative;z-index:1}
 .ptabs{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .ptabs::-webkit-scrollbar{display:none}
 .ptabs .pbtn{flex:0 0 auto;white-space:nowrap}
+
+/* ═══ PREUVE COMBINÉE : transformation + données ═══ */
+.proof-strip{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;
+  max-width:980px;margin:64px auto 0}
+@media(max-width:860px){.proof-strip{grid-template-columns:1fr;gap:24px;margin-top:44px}}
+.ps-photo{margin:0}
+.ps-photo img{width:100%;height:auto;display:block;border-radius:20px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 38px rgba(0,0,0,.09)}
+.ps-photo figcaption{margin-top:12px;font-size:12.5px;color:#86868b;text-align:center}
+.ps-data{background:#fff;border-radius:20px;padding:30px 28px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 38px rgba(0,0,0,.07)}
+@media(max-width:600px){.ps-data{padding:24px 20px}}
+.psd-ey{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:#86868b;margin-bottom:20px}
+.psd-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px}
+@media(max-width:400px){.psd-grid{gap:18px 14px}}
+.psd-n{font-size:32px;font-weight:600;letter-spacing:-.035em;line-height:1;color:#1d1d1f}
+.psd-n em{font-style:normal;font-size:.42em;font-weight:600;color:var(--blue);margin-left:3px}
+.psd-l{margin-top:7px;font-size:12.5px;font-weight:600;color:#1d1d1f;line-height:1.35}
+.psd-l span{display:block;font-size:11.5px;font-weight:400;color:#86868b;margin-top:3px}
+.psd-note{margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(0,0,0,.07);
+  font-size:12px;line-height:1.55;color:#86868b}
