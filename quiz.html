@@ -44,22 +44,31 @@
       </div>
     </section>
 
-    <!-- ÉTAPE 3 — PILIER -->
+    <!-- ÉTAPE 3 — LEVIERS (multi-sélection) -->
     <section class="qz-step" data-step="3">
       <div class="qz-count">Question 3 / 5</div>
-      <h2 class="qz-q">Quel pilier veux-tu optimiser en priorité&nbsp;?</h2>
-      <p class="qz-help">Un seul. C'est par là qu'on commencera.</p>
-      <div class="qz-opts qz-opts-grid">
-        <button class="qz-opt" data-v="Nutrition">Nutrition</button>
-        <button class="qz-opt" data-v="Entraînement">Entraînement</button>
-        <button class="qz-opt" data-v="Sommeil">Sommeil</button>
-        <button class="qz-opt" data-v="Environnement non toxique">Environnement non toxique<span>Eau, coton, inox</span></button>
-        <button class="qz-opt" data-v="Récupération">Récupération<span>Sauna, froid, grounding</span></button>
-        <button class="qz-opt" data-v="Skin / hair care">Skin / hair care</button>
-        <button class="qz-opt" data-v="Hygiène bucco-dentaire">Hygiène bucco-dentaire</button>
-        <button class="qz-opt" data-v="Organisation">Organisation<span>Blocs de travail</span></button>
-        <button class="qz-opt" data-v="Concentration & productivité">Concentration &amp; productivité</button>
-        <button class="qz-opt" data-v="Routines">Routines</button>
+      <h2 class="qz-q">Quels leviers voudrais-tu optimiser&nbsp;?</h2>
+      <p class="qz-help">Autant que tu veux. C'est ce qui déterminera ton point de départ.</p>
+
+      <button class="qz-all" id="qzAll" type="button">
+        <span class="qa-box"></span>Tout optimiser
+      </button>
+
+      <div class="qz-opts qz-opts-grid" id="qzLevers">
+        <button class="qz-multi" data-v="Nutrition"><span class="qm-box"></span>Nutrition</button>
+        <button class="qz-multi" data-v="Entraînement"><span class="qm-box"></span>Entraînement</button>
+        <button class="qz-multi" data-v="Sommeil"><span class="qm-box"></span>Sommeil</button>
+        <button class="qz-multi" data-v="Environnement non toxique"><span class="qm-box"></span>Environnement non toxique<i>Eau, coton, inox</i></button>
+        <button class="qz-multi" data-v="Récupération"><span class="qm-box"></span>Récupération<i>Sauna, froid, grounding</i></button>
+        <button class="qz-multi" data-v="Skin / hair care"><span class="qm-box"></span>Skin / hair care</button>
+        <button class="qz-multi" data-v="Hygiène bucco-dentaire"><span class="qm-box"></span>Hygiène bucco-dentaire</button>
+        <button class="qz-multi" data-v="Organisation"><span class="qm-box"></span>Organisation<i>Blocs de travail</i></button>
+        <button class="qz-multi" data-v="Concentration & productivité"><span class="qm-box"></span>Concentration &amp; productivité</button>
+        <button class="qz-multi" data-v="Routines"><span class="qm-box"></span>Routines</button>
+      </div>
+
+      <div class="qz-nav">
+        <button class="qz-next" id="qzNext3" disabled>Continuer</button>
       </div>
     </section>
 
@@ -123,19 +132,52 @@ function show(n){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-document.querySelectorAll('.qz-step[data-step="1"] .qz-opt, .qz-step[data-step="2"] .qz-opt, .qz-step[data-step="3"] .qz-opt')
+document.querySelectorAll('.qz-step[data-step="1"] .qz-opt, .qz-step[data-step="2"] .qz-opt')
   .forEach(function(b){
     b.addEventListener('click', function(){
       const s = +this.closest('.qz-step').dataset.step;
       if (s===1) A.age = this.dataset.v;
       if (s===2) A.profession = this.dataset.v;
-      if (s===3) A.pilier = this.dataset.v;
       this.classList.add('picked');
       setTimeout(function(){ show(s+1); }, 180);
     });
   });
 
-document.querySelector('.qz-next').addEventListener('click', function(){
+
+// --- Étape 3 : multi-sélection ---
+const LEV = new Set();
+const nextBtn = document.getElementById('qzNext3');
+const allBtn  = document.getElementById('qzAll');
+
+function syncLevers(){
+  nextBtn.disabled = LEV.size === 0;
+  const total = document.querySelectorAll('.qz-multi').length;
+  allBtn.classList.toggle('on', LEV.size === total);
+}
+document.querySelectorAll('.qz-multi').forEach(function(b){
+  b.addEventListener('click', function(){
+    const v = this.dataset.v;
+    if (LEV.has(v)) { LEV.delete(v); this.classList.remove('on'); }
+    else { LEV.add(v); this.classList.add('on'); }
+    syncLevers();
+  });
+});
+allBtn.addEventListener('click', function(){
+  const btns = document.querySelectorAll('.qz-multi');
+  const all = LEV.size === btns.length;
+  LEV.clear();
+  btns.forEach(function(b){
+    if (all) b.classList.remove('on');
+    else { b.classList.add('on'); LEV.add(b.dataset.v); }
+  });
+  syncLevers();
+});
+nextBtn.addEventListener('click', function(){
+  A.pilier = Array.from(LEV).join(', ');
+  show(4);
+});
+
+document.querySelector('.qz-step[data-step="4"] .qz-next').addEventListener('click', function(){
   A.objectif = document.getElementById('qzGoal').value.trim();
   show(5);
 });
@@ -187,7 +229,7 @@ document.getElementById('qzSubmit').addEventListener('click', function(){
   } catch (e) {}
 
   document.cookie = 'plan_ok=1;max-age=' + (365*86400) + ';path=/';
-  setTimeout(function(){ window.location.href = 'merci.html'; }, 800);
+  setTimeout(function(){ window.location.href = 'plan.html'; }, 800);
 });
 
 show(1);

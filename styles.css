@@ -23,6 +23,7 @@
   --r-md:14px;   /* cards secondaires */
   --rs:10px;     /* petites bulles */
   --r-xs:6px;    /* tags, pills */
+}
 body{font-family:var(--font);background:var(--glass);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 .wrap{max-width:820px;margin:0 auto;padding:0 28px}
@@ -1664,3 +1665,143 @@ body.entry{min-height:100vh;display:flex;flex-direction:column;justify-content:c
   .end b{font-size:18px}
   .en-note{margin-top:10px;font-size:11px}
 }
+
+/* ══════════════════════════════════════════════════════════
+   PALETTE MARINE PREMIUM — remplace tout gris rosé
+   ══════════════════════════════════════════════════════════ */
+:root{
+  --nv-bg:#eceff5;          /* fond clair, marine très pâle */
+  --nv-bg2:#e4e9f2;         /* variante */
+  --nv-card:#ffffff;
+  --nv-900:#0a1628;         /* marine nuit */
+  --nv-800:#0f1e33;
+  --nv-700:#16273f;
+  --nv-line:rgba(13,27,42,.09);
+  --nv-ink:#0d1b2a;         /* texte principal */
+  --nv-mid:#54657c;         /* texte secondaire */
+  --nv-soft:#8494a8;        /* texte tertiaire */
+  --nv-blue:#2b6fff;        /* bleu éclatant */
+  --nv-blue2:#1a5ae0;
+  --nv-blue-lt:#7aa6ff;     /* bleu clair sur fond sombre */
+}
+
+/* fonds clairs : plus aucun rosé */
+body.pure,body.entry,body.quiz-body,body.merci-light,body.plan-light{
+  background:var(--nv-bg)!important;color:var(--nv-ink)}
+body.pure::before,body.entry::before,body.quiz-body::before,body.plan-light::before{
+  background:radial-gradient(ellipse,rgba(43,111,255,.12) 0%,rgba(43,111,255,0) 66%)}
+
+/* textes */
+body.pure .ph-h1,body.pure .ps-ti,body.pure h1,body.pure h2,body.pure h3,
+body.plan-light .s-ti,body.plan-light h2,body.plan-light h3,
+.en-h1,.qz-q,.merci-h1{color:var(--nv-ink)}
+body.pure .ps-de,body.plan-light .s-de,body.plan-light p,.qz-help,.merci-sub{color:var(--nv-mid)}
+.en-note,.cta-micro,.qz-micro,.pure-foot p,body.plan-light .disc p{color:var(--nv-soft)}
+
+/* accents bleus */
+.ph-eyebrow,.ps-ey,.qz-count,.en-badge,.psd-l,.pc-n,.tool-n,
+body.plan-light .s-ey,body.plan-light .s-ey-w,.call-ti,.pn-cta{color:var(--nv-blue)}
+.en-h1 em,.metric-n span,.psd-n em,.end b i,.bw-n,body.plan-light .rt{color:var(--nv-blue)}
+.cta-main,.sbtn,.en-cta,.qz-submit,.qz-next,.ctab-btn,.pn-link.active,.club-btn{
+  background:var(--nv-blue)!important;box-shadow:0 6px 22px rgba(43,111,255,.26)!important}
+.cta-main:hover,.sbtn:hover,.en-cta:hover,.qz-submit:hover,.qz-next:hover,.ctab-btn:hover{
+  background:var(--nv-blue2)!important}
+
+/* cartes */
+body.pure .metric,body.plan-light .card-dark,body.plan-light .tool,
+.pcard,.ps-data,.en-badge,.en-dims li,.qz-opt,.qz-ta,.m-card,.m-card-light,
+body.plan-light .rout,body.plan-light .sd,.form-wrap,.def-box{
+  background:var(--nv-card)!important;border-color:var(--nv-line)!important;
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 10px 34px rgba(13,27,42,.07)!important}
+
+/* blocs sombres : marine nuit, plus de noir pur */
+body.plan-light #s-transfo,body.plan-light #s-plus,body.plan-light .ctaf,
+body.merci-light .m-sec-b,.metric-pending{background:var(--nv-900)!important}
+body.plan-light #s-transfo .s-ey,body.plan-light #s-plus .s-ey,
+body.plan-light #s-plus .s-ey-w,body.merci-light .m-sec-b .s2-ey{color:var(--nv-blue-lt)!important}
+body.plan-light #s-plus .bw-n{color:var(--nv-blue-lt)!important}
+body.plan-light .ctaf h2 em{color:rgba(255,255,255,.34)}
+
+/* navigation plan */
+.plan-nav{background:rgba(236,239,245,.86);border-bottom-color:var(--nv-line)}
+.pn-logo{color:var(--nv-ink)}
+.pn-link{color:var(--nv-mid)}
+.pn-link:hover{color:var(--nv-ink);background:rgba(13,27,42,.05)}
+.pn-cta{border-color:rgba(43,111,255,.28);background:rgba(43,111,255,.07)}
+
+/* onglets */
+body.plan-light .ptabs{background:rgba(13,27,42,.05)}
+body.plan-light .pbtn{color:var(--nv-mid)}
+body.plan-light .pbtn.active{background:var(--nv-card);color:var(--nv-ink)}
+body.plan-light .pbtn-n{color:var(--nv-blue)}
+body.plan-light .quote{background:rgba(43,111,255,.05);border-left-color:var(--nv-blue);color:var(--nv-ink)}
+body.plan-light .tip-blue{background:rgba(43,111,255,.05);border-color:rgba(43,111,255,.16);color:var(--nv-ink)}
+body.plan-light .t-item3{background:rgba(255,255,255,.07)!important;color:#fff!important}
+
+/* champs */
+.fi,.qz-ta{border-color:var(--nv-line)!important}
+.fi:focus,.qz-ta:focus{border-color:var(--nv-blue)!important;
+  box-shadow:0 0 0 4px rgba(43,111,255,.14)!important}
+html{background:var(--nv-bg)}
+body.entry,body.pure,body.quiz-body,body.plan-light,body.merci-light{background-color:var(--nv-bg)!important}
+/* correctif : texte des boutons toujours blanc */
+.cta-main,.sbtn,.en-cta,.qz-submit,.qz-next,.ctab-btn,.pn-link.active,.club-btn,
+.cta-main:hover,.sbtn:hover,.en-cta:hover,.qz-submit:hover,.qz-next:hover{color:#fff!important}
+.en-cta span{color:#fff!important}
+
+/* ═══ PAGE D'ENTRÉE — mise en page premium ═══ */
+.en-badge{background:var(--nv-card);color:var(--nv-blue);
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 6px 20px rgba(13,27,42,.06)}
+.en-h1{font-size:clamp(24px,3.4vw,36px);line-height:1.2;letter-spacing:-.034em;
+  font-weight:600;max-width:20ch;margin:0 auto 26px}
+
+.en-dims{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  max-width:560px;margin:0 auto 28px}
+@media(max-width:600px){.en-dims{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:22px}}
+.endim{background:var(--nv-card);border-radius:14px;padding:14px 12px;text-align:left;
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 6px 18px rgba(13,27,42,.05)}
+.endim b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  color:var(--nv-blue);margin-bottom:6px}
+.endim span{display:block;font-size:12.5px;font-weight:550;line-height:1.3;color:var(--nv-ink)}
+
+.en-panel{display:flex;align-items:center;gap:22px;max-width:520px;margin:32px auto 0;
+  background:var(--nv-card);border-radius:20px;padding:18px;
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 12px 38px rgba(13,27,42,.08)}
+@media(max-width:520px){.en-panel{flex-direction:column;gap:16px;padding:16px}}
+.en-photo{margin:0;flex:0 0 auto;width:190px}
+@media(max-width:520px){.en-photo{width:100%;max-width:230px}}
+.en-photo img{width:100%;height:auto;display:block;border-radius:12px}
+.en-stats{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px 12px;width:100%}
+.enst b{display:block;font-size:24px;font-weight:600;letter-spacing:-.035em;
+  color:var(--nv-ink);line-height:1}
+.enst b i{font-style:normal;font-size:.46em;color:var(--nv-blue);margin-left:1px}
+.enst span{display:block;font-size:10.5px;color:var(--nv-soft);margin-top:5px;
+  letter-spacing:.03em;text-transform:uppercase;font-weight:600}
+.en-note{margin-top:14px;font-size:11.5px;color:var(--nv-soft)}
+
+/* ═══ QUIZ — MULTI-SÉLECTION ═══ */
+.qz-all{display:flex;align-items:center;gap:11px;width:100%;margin-bottom:14px;
+  background:var(--nv-card);border:1.5px solid var(--nv-line);border-radius:16px;
+  padding:16px 20px;font-family:var(--font);font-size:15.5px;font-weight:650;
+  color:var(--nv-ink);cursor:pointer;transition:border-color .18s,background .18s;
+  box-shadow:0 1px 2px rgba(13,27,42,.04)}
+.qz-all:hover{border-color:var(--nv-blue)}
+.qz-all.on{border-color:var(--nv-blue);background:rgba(43,111,255,.06)}
+.qa-box,.qm-box{flex:0 0 20px;width:20px;height:20px;border-radius:6px;
+  border:1.5px solid rgba(13,27,42,.18);background:#fff;position:relative;transition:all .18s}
+.qz-all.on .qa-box,.qz-multi.on .qm-box{background:var(--nv-blue);border-color:var(--nv-blue)}
+.qz-all.on .qa-box::after,.qz-multi.on .qm-box::after{content:'';position:absolute;
+  left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg)}
+
+.qz-multi{display:flex;align-items:center;gap:11px;text-align:left;flex-wrap:wrap;
+  background:var(--nv-card);border:1.5px solid var(--nv-line);border-radius:16px;
+  padding:16px 18px;font-family:var(--font);font-size:15px;font-weight:500;
+  color:var(--nv-ink);cursor:pointer;transition:border-color .18s,background .18s,transform .18s;
+  box-shadow:0 1px 2px rgba(13,27,42,.04)}
+.qz-multi i{flex-basis:100%;font-style:normal;font-size:12px;color:var(--nv-soft);
+  margin-left:31px;margin-top:2px}
+.qz-multi:hover{border-color:var(--nv-blue);transform:translateY(-1px)}
+.qz-multi.on{border-color:var(--nv-blue);background:rgba(43,111,255,.05)}
+.qz-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none!important}
+.qz-step[data-step="3"] .qz-nav{margin-top:24px}
