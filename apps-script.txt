@@ -1,29 +1,61 @@
+/* ═══════════════════════════════════════════════════════════
+   SCRIPT À COLLER DANS APPS SCRIPT
+   Il crée les en-têtes automatiquement si la feuille est vide.
+   ═══════════════════════════════════════════════════════════ */
+
+var SHEET_ID = "1N1HyFaykcNsPy5ESyrGHXHYGDGyYmkir81Jscg-AqB4";
+
 function doGet(e) {
   try {
-    var sheet = SpreadsheetApp
-      .openById("1N1HyFaykcNsPy5ESyrGHXHYGDGyYmkir81Jscg-AqB4")
-      .getSheetByName("Leads");
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+
+    // cherche "Leads", sinon prend la première feuille
+    var sheet = ss.getSheetByName("Leads") || ss.getSheets()[0];
+
+    // crée les en-têtes si la feuille est vide
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Date","Statut","Instagram","WhatsApp","Age",
+        "Profession","Leviers","Objectif","Email","Relance","Notes"
+      ]);
+    }
+
+    var p = (e && e.parameter) ? e.parameter : {};
 
     sheet.appendRow([
-      e.parameter.date       || new Date().toLocaleString("fr-BE"),  // A  Date
-      e.parameter.statut     || "Nouveau",                           // B  Statut
-      e.parameter.instagram  || "",                                  // C  Instagram
-      e.parameter.whatsapp   || "",                                  // D  WhatsApp
-      e.parameter.age        || "",                                  // E  Âge
-      e.parameter.profession || "",                                  // F  Profession
-      e.parameter.pilier     || "",                                  // G  Leviers
-      e.parameter.objectif   || "",                                  // H  Objectif
-      e.parameter.email      || "",                                  // I  Email
-      "",                                                            // J  Relance
-      ""                                                             // K  Notes
+      p.date       || new Date().toLocaleString("fr-BE"),
+      p.statut     || "Nouveau",
+      p.instagram  || "",
+      p.whatsapp   || "",
+      p.age        || "",
+      p.profession || "",
+      p.pilier     || "",
+      p.objectif   || "",
+      p.email      || "",
+      "",
+      ""
     ]);
 
     return ContentService.createTextOutput("OK")
       .setMimeType(ContentService.MimeType.TEXT);
-  } catch(err) {
-    return ContentService.createTextOutput("Error: " + err.toString())
+
+  } catch (err) {
+    return ContentService.createTextOutput("ERREUR: " + err.toString())
       .setMimeType(ContentService.MimeType.TEXT);
   }
 }
 
 function doPost(e) { return doGet(e); }
+
+/* ───────────────────────────────────────────────
+   TEST : lance cette fonction depuis Apps Script.
+   Une ligne "TEST" doit apparaître dans le Sheet.
+   ─────────────────────────────────────────────── */
+function testEcriture() {
+  var res = doGet({ parameter: {
+    statut: "TEST", instagram: "@test", whatsapp: "+32470000000",
+    age: "26-32 ans", profession: "Entrepreneur",
+    pilier: "Nutrition, Sommeil", objectif: "verifier que ca marche"
+  }});
+  Logger.log(res.getContent());
+}

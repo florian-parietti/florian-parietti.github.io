@@ -135,7 +135,7 @@ function show(n){
   if (el) el.classList.add('active');
   step = n;
   document.getElementById('qzFill').style.width = ((n-1)/TOTAL*100) + '%';
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo(0,0);
 }
 
 document.querySelectorAll('.qz-step[data-step="1"] .qz-opt, .qz-step[data-step="2"] .qz-opt')
@@ -235,7 +235,7 @@ document.getElementById('qzSubmit').addEventListener('click', function(){
   } catch (e) {}
 
   document.cookie = 'plan_ok=1;max-age=' + (365*86400) + ';path=/';
-  setTimeout(function(){ window.location.href = 'plan.html'; }, 800);
+  setTimeout(function(){ window.location.href = 'plan.html'; }, 450);
 });
 
 document.querySelectorAll('.qz-back').forEach(function(b){

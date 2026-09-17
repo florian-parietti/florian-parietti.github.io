@@ -1974,3 +1974,45 @@ body.plan-light #s-plus{margin-bottom:34px}
 .act-in:focus{outline:0;border-color:var(--nv-blue-lt);background:rgba(255,255,255,.12)}
 .act-btn2{flex:0 0 auto;margin-top:0;padding:15px 22px;font-size:14.5px}
 .act-ok{display:none;margin-top:13px;font-size:13px;font-weight:650;color:var(--nv-blue-lt)}
+
+/* ═══ QUIZ : transitions sans à-coup ═══ */
+.qz-step{animation:none}
+.qz-step.active{animation:qzIn .32s cubic-bezier(.22,.61,.36,1)}
+@keyframes qzIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.qz-main{min-height:calc(100vh - 3px)}
+
+/* ═══ ENTRÉE : titre plus large + mots-clés en marine ═══ */
+.en-h1{font-size:clamp(27px,4.4vw,46px);max-width:17ch;letter-spacing:-.035em;font-weight:650}
+@media(max-width:600px){.en-h1{font-size:26px}}
+
+.endc{background:var(--nv-card)!important;
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 10px 30px rgba(13,27,42,.06)!important}
+.endc-k{color:var(--nv-ink)}
+.endc-d{color:var(--nv-mid)}
+.endc ul{border-top-color:var(--nv-line)}
+.endc ul li{color:#fff!important;background:var(--nv-900)!important}
+
+/* ═══ PASSE À L'ACTION : offre sur fond clair ═══ */
+.of-ti-dark{color:var(--nv-ink)!important}
+.of-dims-dark{color:var(--nv-mid)!important}
+.of-dims-dark span{color:var(--nv-blue)}
+#s-outils .of-ey{color:var(--nv-blue)}
+.of-card-solid{background:var(--nv-900)!important;border:0!important;backdrop-filter:none;
+  box-shadow:0 2px 6px rgba(13,27,42,.16),0 18px 50px rgba(13,27,42,.20)!important}
+
+/* ═══ 14 DAY MOMENTUM ═══ */
+.sec-momentum{padding-top:0!important}
+.mo-card{max-width:560px;margin:0 auto;background:var(--nv-900);border-radius:24px;
+  padding:34px 30px 28px;text-align:center;
+  box-shadow:0 2px 6px rgba(13,27,42,.16),0 16px 44px rgba(13,27,42,.18)}
+@media(max-width:600px){.mo-card{padding:28px 22px 24px}}
+.mo-badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--nv-blue-lt);background:rgba(122,166,255,.14);
+  border:1px solid rgba(122,166,255,.3);border-radius:100px;padding:5px 13px;margin-bottom:16px}
+.mo-ti{font-size:clamp(22px,3vw,30px);font-weight:650;letter-spacing:-.025em;
+  color:#fff;margin:0 0 12px}
+.mo-de{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.68);margin:0 auto 20px;max-width:44ch}
+.mo-lab{font-size:14px;font-weight:650;color:#fff;margin:0 0 18px}
+.mo-card .act-row{justify-content:center}
+.mo-ti{color:#fff!important}
+.mo-card .reveal,.mo-card{opacity:1}
