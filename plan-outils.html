@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Outils gratuits — Florian Parietti</title>
+<title>Passe à l'action — Florian Parietti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -21,35 +21,49 @@
       <a href="plan-cognitif.html" class="pn-link">Cognitif</a>
       <a href="plan-transformation.html" class="pn-link">Ma transformation</a>
       <a href="plan-bloodwork.html" class="pn-link">Aller plus loin</a>
-      <a href="plan-outils.html" class="pn-link active">Outils gratuits</a>
+      <a href="plan-outils.html" class="pn-link active">Passe à l'action</a>
     </nav>
     <a href="https://calendly.com/florian-parietti/30min" target="_blank" rel="noopener" class="pn-cta">Réserver un appel</a>
   </div>
 </header>
 
 <main class="plan-main">
-<section class="sec sec-gray" id="s-outils">
+<section class="sec" id="s-outils">
   <div class="wrap">
-    <div class="s-ey s-ey-w reveal">Passe à l'action</div>
-    <h2 class="s-ti reveal d1">Outils gratuits</h2>
-    <p class="s-de reveal d2">Pour passer du plan à l'action.</p>
-    <div class="tg">
-      <a href="https://calendly.com/florian-parietti/30min" class="tool reveal d3" target="_blank">
-        <div class="tool-n">OUTIL 01</div>
-        <h3>Appel — 20 min</h3>
-        <p>20 minutes en visio. J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements.</p>
-        <div class="tool-a">Réserver maintenant →</div>
-      </a>
-      <div class="tool reveal d4" style="grid-column:1/-1;border:1.5px dashed rgba(0,0,0,.15);background:rgba(255,255,255,.6)">
-        <div class="tool-n" style="color:var(--blue)">BIENTÔT</div>
-        <h3>14 Day Momentum<span class="free-tag-dark">100 % gratuit</span></h3>
-        <p style="font-weight:500;color:var(--black);margin-bottom:14px">Un challenge 100 % gratuit, en groupe. Deux semaines pendant lesquelles je t'accompagne pour démarrer le biohacking, ressentir les premiers effets, et enclencher une dynamique que tu n'auras plus envie de casser.</p>
-        <p style="font-weight:600;color:var(--black);margin-bottom:12px">Prochaine session bientôt — laisse ton Instagram pour être dans les premiers.</p>
-        <div class="club-row">
-          <input class="club-in" type="text" id="clubInsta" placeholder="@toncompte" autocomplete="off">
-          <button type="button" class="club-btn" id="clubBtn">Je suis intéressé</button>
+    <div class="s-ey reveal">Maintenant</div>
+    <h2 class="s-ti reveal d1">Passe à l'action</h2>
+    <p class="s-de reveal d2">Deux façons de démarrer. Les deux sont gratuites.</p>
+
+    <div class="act-grid">
+      <div class="act-card reveal d2">
+        <div class="act-n">01</div>
+        <h3>Appel — 20 minutes</h3>
+        <p>J'analyse ta situation, j'identifie le seul blocage qui t'empêche d'avancer,
+          et je te donne l'ordre exact de tes 3 prochains changements.</p>
+        <ul>
+          <li>En visio</li>
+          <li>Gratuit</li>
+          <li>Sans engagement</li>
+        </ul>
+        <a href="https://calendly.com/florian-parietti/30min" class="act-btn" target="_blank" rel="noopener">Réserver mon appel</a>
+      </div>
+
+      <div class="act-card reveal d3">
+        <div class="act-n">02</div>
+        <h3>14 Day Momentum</h3>
+        <p>Un challenge en groupe. Deux semaines pour démarrer, ressentir les premiers effets
+          et enclencher une dynamique que tu n'auras plus envie de casser.</p>
+        <ul>
+          <li>100 % gratuit</li>
+          <li>En groupe</li>
+          <li>Prochaine session bientôt</li>
+        </ul>
+        <div class="act-row">
+          <input class="act-in" type="text" id="clubInsta" placeholder="@toncompte"
+                 autocomplete="off" spellcheck="false" autocapitalize="off">
+          <button type="button" class="act-btn act-btn2" id="clubBtn">Je suis intéressé</button>
         </div>
-        <p id="clubOk" style="display:none;margin-top:12px;color:var(--blue);font-size:.85rem;font-weight:600">C'est noté. Tu seras dans les premiers prévenus.</p>
+        <p id="clubOk" class="act-ok">C'est noté. Tu seras dans les premiers prévenus.</p>
       </div>
     </div>
   </div>
@@ -102,5 +116,34 @@ function sp(e, id) {
 }
 </script>
 
+
+<script>
+(function(){
+  var nav=document.querySelector('.pn-links');
+  var act=document.querySelector('.pn-link.active');
+  if(nav&&act){
+    var target = act.offsetLeft - (nav.clientWidth/2) + (act.clientWidth/2);
+    nav.scrollLeft = Math.max(0, target);
+  }
+})();
+</script>
+
+<script>
+(function(){
+  var SU="https://script.google.com/macros/s/AKfycbzn0xHdy_gdTVK5RfOhGaL3pI-vKQZ02wXCI2dZdYPxrKDcUjMPWI0hF8Wp6ML5O1fk/exec";
+  var btn=document.getElementById('clubBtn');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    var ig=document.getElementById('clubInsta').value.trim().replace(/^@+/,'');
+    if(!/^[A-Za-z0-9._]{1,30}$/.test(ig)) return;
+    var p=new URLSearchParams({date:new Date().toLocaleString('fr-BE'),prenom:'',email:'',
+      statut:'14 Day Momentum',instagram:'@'+ig,whatsapp:'',age:'',profession:'',pilier:'',objectif:''});
+    var f=document.createElement('iframe'); f.style.display='none';
+    f.src=SU+'?'+p.toString(); document.body.appendChild(f);
+    btn.disabled=true;
+    document.getElementById('clubOk').style.display='block';
+  });
+})();
+</script>
 </body>
 </html>

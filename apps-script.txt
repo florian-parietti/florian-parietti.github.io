@@ -6,17 +6,16 @@ function doGet(e) {
 
     sheet.appendRow([
       e.parameter.date       || new Date().toLocaleString("fr-BE"),  // A  Date
-      e.parameter.prenom     || "",                                  // B  Prénom
-      e.parameter.email      || "",                                  // C  Email
-      e.parameter.statut     || "Nouveau",                           // D  Statut
-      "",                                                            // E  Relance
-      "",                                                            // F  Notes
-      e.parameter.instagram  || "",                                  // G  Instagram
-      e.parameter.whatsapp   || "",                                  // H  WhatsApp
-      e.parameter.age        || "",                                  // I  Âge
-      e.parameter.profession || "",                                  // J  Profession
-      e.parameter.pilier     || "",                                  // K  Pilier
-      e.parameter.objectif   || ""                                   // L  Objectif
+      e.parameter.statut     || "Nouveau",                           // B  Statut
+      e.parameter.instagram  || "",                                  // C  Instagram
+      e.parameter.whatsapp   || "",                                  // D  WhatsApp
+      e.parameter.age        || "",                                  // E  Âge
+      e.parameter.profession || "",                                  // F  Profession
+      e.parameter.pilier     || "",                                  // G  Leviers
+      e.parameter.objectif   || "",                                  // H  Objectif
+      e.parameter.email      || "",                                  // I  Email
+      "",                                                            // J  Relance
+      ""                                                             // K  Notes
     ]);
 
     return ContentService.createTextOutput("OK")

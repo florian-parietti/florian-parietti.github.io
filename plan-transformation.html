@@ -21,7 +21,7 @@
       <a href="plan-cognitif.html" class="pn-link">Cognitif</a>
       <a href="plan-transformation.html" class="pn-link active">Ma transformation</a>
       <a href="plan-bloodwork.html" class="pn-link">Aller plus loin</a>
-      <a href="plan-outils.html" class="pn-link">Outils gratuits</a>
+      <a href="plan-outils.html" class="pn-link">Passe à l'action</a>
     </nav>
     <a href="https://calendly.com/florian-parietti/30min" target="_blank" rel="noopener" class="pn-cta">Réserver un appel</a>
   </div>
@@ -118,5 +118,16 @@ function sp(e, id) {
 }
 </script>
 
+
+<script>
+(function(){
+  var nav=document.querySelector('.pn-links');
+  var act=document.querySelector('.pn-link.active');
+  if(nav&&act){
+    var target = act.offsetLeft - (nav.clientWidth/2) + (act.clientWidth/2);
+    nav.scrollLeft = Math.max(0, target);
+  }
+})();
+</script>
 </body>
 </html>

@@ -1907,3 +1907,70 @@ body.plan-light .pnav .pbtn.active .pbtn-n{color:#fff}
   -webkit-mask-composite:xor;mask-composite:exclude}
 .of-note{margin-top:16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.56)}
 .ctab-no{margin-top:12px;font-size:12px;color:rgba(255,255,255,.44);font-weight:600}
+
+/* ═══ ENTRÉE : cartes définition en marine nuit ═══ */
+.endc{background:var(--nv-900)!important;border:0!important;
+  box-shadow:0 2px 6px rgba(13,27,42,.16),0 14px 40px rgba(13,27,42,.20)!important}
+.endc-k{color:#fff}
+.endc-d{color:rgba(255,255,255,.62)}
+.endc ul{border-top-color:rgba(255,255,255,.12)}
+.endc ul li{color:var(--nv-blue-lt);background:rgba(122,166,255,.14)}
+
+/* ═══ ENTRÉE : compacter le haut ═══ */
+body.entry-long .en-main{padding:26px 0 72px}
+.en-over{margin-bottom:16px;font-size:13px}
+.en-h1{margin-bottom:22px}
+@media(max-width:600px){
+  body.entry-long .en-main{padding:18px 0 56px}
+  .en-over{margin-bottom:13px;font-size:12.5px}
+  .en-h1{margin-bottom:18px}
+}
+
+/* ═══ CTA LÉGER (pages de contenu) ═══ */
+.ctaf-light{background:transparent!important;padding:20px 0 76px;margin:0}
+.ctaf-light .ctab{max-width:520px;margin:0 auto;background:var(--nv-900);
+  border:0;border-radius:24px;padding:32px 28px;text-align:center;
+  box-shadow:0 2px 6px rgba(13,27,42,.16),0 16px 44px rgba(13,27,42,.20)}
+@media(max-width:600px){.ctaf-light .ctab{padding:26px 22px}}
+.ctaf-light .ctab-ti{font-size:19px;font-weight:650;color:#fff;margin-bottom:10px}
+.ctaf-light .ctab-su{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.66);
+  margin:0 auto 22px;max-width:40ch}
+.ctaf-light .ctab-no{margin-top:12px;font-size:12px;color:rgba(255,255,255,.44);font-weight:600}
+
+/* espace avant l'offre / le CTA */
+body.plan-light #s-plus{margin-bottom:34px}
+@media(max-width:700px){body.plan-light #s-plus{margin-bottom:22px}}
+
+/* la nav ne doit jamais faire défiler la page */
+.plan-nav{scroll-margin:0}
+.pn-links{scroll-behavior:auto}
+
+/* ═══ PASSE À L'ACTION ═══ */
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:38px}
+@media(max-width:780px){.act-grid{grid-template-columns:1fr}}
+.act-card{background:var(--nv-900);border-radius:24px;padding:32px 28px;
+  box-shadow:0 2px 6px rgba(13,27,42,.16),0 16px 44px rgba(13,27,42,.18);
+  display:flex;flex-direction:column}
+@media(max-width:600px){.act-card{padding:26px 22px}}
+.act-n{font-size:11.5px;font-weight:700;letter-spacing:.11em;color:var(--nv-blue-lt);
+  margin-bottom:14px}
+.act-card h3{font-size:21px;font-weight:650;letter-spacing:-.02em;color:#fff;margin:0 0 12px}
+.act-card > p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.68);margin:0 0 20px}
+.act-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;
+  padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.10)}
+.act-card ul li{font-size:11.5px;font-weight:650;color:var(--nv-blue-lt);
+  background:rgba(122,166,255,.14);border-radius:100px;padding:5px 12px}
+.act-btn{display:block;text-align:center;background:var(--nv-blue);color:#fff;
+  font-family:var(--font);font-size:15.5px;font-weight:700;padding:16px 24px;border:0;
+  border-radius:100px;text-decoration:none;cursor:pointer;margin-top:auto;
+  box-shadow:0 6px 22px rgba(43,111,255,.30);transition:background .2s,transform .18s}
+.act-btn:hover{background:var(--nv-blue2);transform:translateY(-1px)}
+.act-btn:disabled{opacity:.6;transform:none}
+.act-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto}
+.act-in{flex:1 1 140px;min-width:130px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:15px 20px;
+  font-family:var(--font);font-size:15px;color:#fff}
+.act-in::placeholder{color:rgba(255,255,255,.42)}
+.act-in:focus{outline:0;border-color:var(--nv-blue-lt);background:rgba(255,255,255,.12)}
+.act-btn2{flex:0 0 auto;margin-top:0;padding:15px 22px;font-size:14.5px}
+.act-ok{display:none;margin-top:13px;font-size:13px;font-weight:650;color:var(--nv-blue-lt)}

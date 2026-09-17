@@ -21,7 +21,7 @@
       <a href="plan-cognitif.html" class="pn-link">Cognitif</a>
       <a href="plan-transformation.html" class="pn-link">Ma transformation</a>
       <a href="plan-bloodwork.html" class="pn-link">Aller plus loin</a>
-      <a href="plan-outils.html" class="pn-link">Outils gratuits</a>
+      <a href="plan-outils.html" class="pn-link">Passe à l'action</a>
     </nav>
     <a href="https://calendly.com/florian-parietti/30min" target="_blank" rel="noopener" class="pn-cta">Réserver un appel</a>
   </div>
@@ -53,28 +53,13 @@
   </div>
 </section>
 
-<section class="ctaf" id="s-bilan">
+<section class="ctaf ctaf-light" id="s-bilan">
   <div class="wrap">
-    <div class="of-head reveal">
-      <div class="of-ey">Coaching 1-1</div>
-      <h2 class="of-ti">8 semaines pour changer d'identité</h2>
-      <p class="of-dims">Santé <span>·</span> Apparence <span>·</span> Exécution</p>
-    </div>
-
-    <div class="of-card reveal d2">
-      <div class="of-badge">Offre en cours</div>
-      <div class="of-name">Coaching 1-1 intensif</div>
-      <ul class="of-list">
-        <li>Ultra-personnalisation de chaque dimension</li>
-        <li>Bilan hebdomadaire</li>
-        <li>Messagerie privée</li>
-        <li>Accès à la communauté</li>
-        <li>Équipe de professionnels en soutien pour les besoins avancés</li>
-      </ul>
+    <div class="ctab reveal">
+      <div class="ctab-ti">Appel — 20 minutes</div>
+      <p class="ctab-su">J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements.</p>
       <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn" target="_blank" rel="noopener">Réserver mon appel</a>
-      <p class="of-note">Places limitées — l'ultra-personnalisation et l'accompagnement intensif
-        ne permettent qu'un petit nombre de clients par mois.</p>
-      <p class="ctab-no">Appel de 20 min · En visio · Gratuit · Sans engagement</p>
+      <p class="ctab-no">En visio · Gratuit · Sans engagement</p>
     </div>
   </div>
 </section>
@@ -100,5 +85,16 @@ function sp(e, id) {
 }
 </script>
 
+
+<script>
+(function(){
+  var nav=document.querySelector('.pn-links');
+  var act=document.querySelector('.pn-link.active');
+  if(nav&&act){
+    var target = act.offsetLeft - (nav.clientWidth/2) + (act.clientWidth/2);
+    nav.scrollLeft = Math.max(0, target);
+  }
+})();
+</script>
 </body>
 </html>
