@@ -38,10 +38,13 @@
       <div class="qz-opts">
         <button class="qz-opt" data-v="Étudiant">Étudiant</button>
         <button class="qz-opt" data-v="Salarié">Salarié</button>
-        <button class="qz-opt" data-v="Entrepreneur / indépendant">Entrepreneur / indépendant</button>
-        <button class="qz-opt" data-v="Profession physique">Métier physique</button>
+        <button class="qz-opt" data-v="Indépendant">Indépendant</button>
+        <button class="qz-opt" data-v="Entrepreneur">Entrepreneur</button>
+        <button class="qz-opt" data-v="Dirigeant">Dirigeant</button>
+        <button class="qz-opt" data-v="Propriétaire d'entreprise">Propriétaire d'entreprise</button>
         <button class="qz-opt" data-v="Autre">Autre</button>
       </div>
+      <button class="qz-back" data-back="1">← Retour</button>
     </section>
 
     <!-- ÉTAPE 3 — LEVIERS (multi-sélection) -->
@@ -58,16 +61,17 @@
         <button class="qz-multi" data-v="Nutrition"><span class="qm-box"></span>Nutrition</button>
         <button class="qz-multi" data-v="Entraînement"><span class="qm-box"></span>Entraînement</button>
         <button class="qz-multi" data-v="Sommeil"><span class="qm-box"></span>Sommeil</button>
-        <button class="qz-multi" data-v="Environnement non toxique"><span class="qm-box"></span>Environnement non toxique<i>Eau, coton, inox</i></button>
-        <button class="qz-multi" data-v="Récupération"><span class="qm-box"></span>Récupération<i>Sauna, froid, grounding</i></button>
+        <button class="qz-multi" data-v="Environnement non toxique"><span class="qm-box"></span>Environnement non toxique<i>ex : eau, coton, inox</i></button>
+        <button class="qz-multi" data-v="Récupération"><span class="qm-box"></span>Récupération<i>ex : sauna, froid, grounding</i></button>
         <button class="qz-multi" data-v="Skin / hair care"><span class="qm-box"></span>Skin / hair care</button>
         <button class="qz-multi" data-v="Hygiène bucco-dentaire"><span class="qm-box"></span>Hygiène bucco-dentaire</button>
-        <button class="qz-multi" data-v="Organisation"><span class="qm-box"></span>Organisation<i>Blocs de travail</i></button>
+        <button class="qz-multi" data-v="Organisation"><span class="qm-box"></span>Organisation<i>ex : blocs de travail</i></button>
         <button class="qz-multi" data-v="Concentration & productivité"><span class="qm-box"></span>Concentration &amp; productivité</button>
         <button class="qz-multi" data-v="Routines"><span class="qm-box"></span>Routines</button>
       </div>
 
       <div class="qz-nav">
+        <button class="qz-back qz-back-inline" data-back="2">← Retour</button>
         <button class="qz-next" id="qzNext3" disabled>Continuer</button>
       </div>
     </section>
@@ -80,6 +84,7 @@
       <textarea class="qz-ta" id="qzGoal" rows="4"
         placeholder="Ex : perdre 6 kg de gras sans perdre de muscle, arrêter de m'effondrer à 15h, dormir 7h vraiment réparatrices…"></textarea>
       <div class="qz-nav">
+        <button class="qz-back qz-back-inline" data-back="3">← Retour</button>
         <button class="qz-skip" data-skip="4">Passer</button>
         <button class="qz-next" data-next="4">Continuer</button>
       </div>
@@ -89,7 +94,7 @@
     <section class="qz-step" data-step="5">
       <div class="qz-count">Dernière étape</div>
       <h2 class="qz-q">Où je t'envoie ton point de départ&nbsp;?</h2>
-      <p class="qz-help">Aucun spam, aucune newsletter. Un message, pour te dire par quoi commencer.</p>
+      <p class="qz-help">Aucun spam, aucune newsletter.</p>
 
       <div class="qz-field">
         <label class="qz-lab" for="qzInsta">Instagram</label>
@@ -112,6 +117,7 @@
 
       <button class="qz-submit" id="qzSubmit">Accéder à mon plan</button>
       <p class="qz-micro">Accès immédiat · Gratuit · Aucun spam</p>
+      <button class="qz-back" data-back="4">← Retour</button>
     </section>
 
   </div>
@@ -230,6 +236,10 @@ document.getElementById('qzSubmit').addEventListener('click', function(){
 
   document.cookie = 'plan_ok=1;max-age=' + (365*86400) + ';path=/';
   setTimeout(function(){ window.location.href = 'plan.html'; }, 800);
+});
+
+document.querySelectorAll('.qz-back').forEach(function(b){
+  b.addEventListener('click', function(){ show(+this.dataset.back); });
 });
 
 show(1);

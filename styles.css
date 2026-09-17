@@ -1805,3 +1805,105 @@ body.entry,body.pure,body.quiz-body,body.plan-light,body.merci-light{background-
 .qz-multi.on{border-color:var(--nv-blue);background:rgba(43,111,255,.05)}
 .qz-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none!important}
 .qz-step[data-step="3"] .qz-nav{margin-top:24px}
+
+/* ═══ ENTRÉE — surtitre, définition, impacts ═══ */
+.en-over{font-size:13.5px;line-height:1.55;color:var(--nv-mid);max-width:44ch;
+  margin:0 auto 20px;font-weight:500}
+body.entry-long{display:block}
+body.entry-long .en-main{padding:52px 0 72px}
+.en-panel{margin:0 auto}
+.en-cta2{margin-top:36px}
+
+.en-def{margin-top:64px;padding-top:52px;border-top:1px solid var(--nv-line)}
+.end-ti{font-size:clamp(21px,2.8vw,30px);line-height:1.2;font-weight:600;
+  letter-spacing:-.03em;color:var(--nv-ink);margin:0 0 34px}
+.end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.end-grid{grid-template-columns:1fr;gap:12px}}
+.endc{background:var(--nv-card);border-radius:18px;padding:26px 24px;text-align:left;
+  box-shadow:0 1px 2px rgba(13,27,42,.04),0 10px 30px rgba(13,27,42,.06)}
+.endc-k{font-size:16.5px;font-weight:650;letter-spacing:-.02em;color:var(--nv-ink);margin-bottom:7px}
+.endc-d{font-size:13.5px;line-height:1.5;color:var(--nv-mid);margin:0 0 16px}
+.endc ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px;padding-top:15px;
+  border-top:1px solid var(--nv-line)}
+.endc ul li{font-size:12px;font-weight:600;color:var(--nv-blue);
+  background:rgba(43,111,255,.08);border-radius:100px;padding:5px 12px}
+
+/* ═══ ONGLETS : intérieur bleu foncé ═══ */
+body.plan-light .ptabs{background:var(--nv-900);padding:5px;border-radius:100px}
+body.plan-light .pbtn{color:rgba(255,255,255,.58);background:transparent}
+body.plan-light .pbtn:hover{color:rgba(255,255,255,.85)}
+body.plan-light .pbtn.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
+body.plan-light .pbtn-n{color:var(--nv-blue-lt)}
+body.plan-light .pbtn.active .pbtn-n{color:#fff}
+
+/* ═══ ESPACE ENTRE TRANSFORMATION ET CHANGE NOW ═══ */
+body.plan-light #s-transfo{margin-bottom:34px}
+.ctaf{margin-top:34px}
+@media(max-width:700px){
+  body.plan-light #s-transfo{margin-bottom:22px}
+  .ctaf{margin-top:22px}
+}
+/* barre d'onglets : vraie classe .pnav */
+body.plan-light .pnav{background:var(--nv-900)!important;padding:5px;border-radius:100px;
+  display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+body.plan-light .pnav::-webkit-scrollbar{display:none}
+body.plan-light .pnav .pbtn{flex:0 0 auto;white-space:nowrap;color:rgba(255,255,255,.58);
+  background:transparent}
+body.plan-light .pnav .pbtn:hover{color:rgba(255,255,255,.85)}
+body.plan-light .pnav .pbtn.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
+body.plan-light .pnav .pbtn-n{color:var(--nv-blue-lt)}
+body.plan-light .pnav .pbtn.active .pbtn-n{color:#fff}
+
+/* ═══ DONNÉES SANTÉ : petites cartes marine nuit ═══ */
+.en-panel{background:var(--nv-card)!important;gap:18px;padding:18px}
+.en-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.enst{background:var(--nv-900);border-radius:13px;padding:14px 14px 13px;text-align:left}
+.enst b{display:block;font-size:23px;font-weight:600;letter-spacing:-.035em;
+  color:#fff;line-height:1}
+.enst b i{font-style:normal;font-size:.44em;color:var(--nv-blue-lt);margin-left:1px}
+.enst span{display:block;font-size:9.5px;color:rgba(255,255,255,.56);margin-top:6px;
+  letter-spacing:.06em;text-transform:uppercase;font-weight:650;line-height:1.3}
+@media(max-width:520px){
+  .enst{padding:12px 12px 11px}
+  .enst b{font-size:20px}
+}
+
+/* ═══ QUIZ : sélection bleu accent + bouton retour ═══ */
+.qz-opt.picked{border-color:var(--nv-blue)!important;background:var(--nv-blue)!important;
+  color:#fff!important}
+.qz-opt.picked span{color:rgba(255,255,255,.72)!important}
+.qz-back{display:inline-flex;align-items:center;gap:6px;margin-top:22px;background:none;
+  border:0;font-family:var(--font);font-size:14px;font-weight:600;color:var(--nv-soft);
+  cursor:pointer;padding:9px 4px;transition:color .18s}
+.qz-back:hover{color:var(--nv-ink)}
+.qz-back-inline{margin-top:0;flex:0 0 auto;padding:10px 6px}
+.qz-step[data-step="3"] .qz-nav,.qz-step[data-step="4"] .qz-nav{
+  display:flex;gap:10px;align-items:center}
+.qz-step[data-step="3"] .qz-next,.qz-step[data-step="4"] .qz-next{flex:1}
+
+/* ═══ OFFRE COACHING 1-1 (bas de chaque page du plan) ═══ */
+.of-head{text-align:center;max-width:620px;margin:0 auto 38px}
+.of-ey{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--nv-blue-lt);margin-bottom:16px}
+.of-ti{font-size:clamp(26px,3.8vw,42px);line-height:1.14;font-weight:600;letter-spacing:-.032em;
+  color:#fff;margin:0 0 16px}
+.of-dims{font-size:15px;font-weight:600;color:rgba(255,255,255,.62);margin:0;letter-spacing:.01em}
+.of-dims span{color:var(--nv-blue-lt);margin:0 6px}
+
+.of-card{position:relative;max-width:520px;margin:0 auto;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:34px 30px 28px;text-align:center;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+@media(max-width:600px){.of-card{padding:28px 22px 24px}}
+.of-badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--nv-blue-lt);background:rgba(122,166,255,.14);
+  border:1px solid rgba(122,166,255,.3);border-radius:100px;padding:5px 13px;margin-bottom:18px}
+.of-name{font-size:19px;font-weight:650;letter-spacing:-.02em;color:#fff;margin-bottom:22px}
+.of-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:12px;
+  margin:0 0 26px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.10)}
+.of-list li{display:flex;gap:11px;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88)}
+.of-list li::before{content:'';flex:0 0 17px;height:17px;margin-top:3px;border-radius:50%;
+  background:var(--nv-blue);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' stroke='black' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat, linear-gradient(#000,#000);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.of-note{margin-top:16px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.56)}
+.ctab-no{margin-top:12px;font-size:12px;color:rgba(255,255,255,.44);font-weight:600}

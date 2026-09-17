@@ -33,50 +33,48 @@
     <div class="s-ey reveal">Dimension 03</div>
     <h2 class="s-ti reveal d1">Apparence &amp; self-care</h2>
     <p class="s-de reveal d2">L'apparence extérieure reflète ce que tu construis de l'intérieur. Protocoles minimalistes.</p>
-    <div class="care-grid">
-      <div class="care-card reveal d2">
-        <div class="care-num">PEAU</div>
-        <h3>Skincare</h3>
-        <ul>
-          <li>Soir : nettoyant adapté → séchage microfibre → sérum → crème hydratante</li>
-          <li>Matin : rinçage à l'eau + crème solaire SPF50+</li>
-          <li>Après sauna : crème hydratante légère</li>
-          <li>Exposition solaire matinale sans protection pour la vitamine D</li>
-        </ul>
-      </div>
-      <div class="care-card reveal d3">
-        <div class="care-num">CHEVEUX</div>
-        <h3>Hair care</h3>
-        <ul>
-          <li>Shampoing sans sulfates tous les 3–4 jours</li>
-          <li>Séchage microfibre — sèche-cheveux rarement</li>
-          <li>Produit coiffant naturel à base aqueuse</li>
-          <li>Nutrition capillaire : protéines, Oméga-3, Zinc, Biotine, Vitamines C/D/E</li>
-        </ul>
-      </div>
-      <div class="care-card reveal d4">
-        <div class="care-num">BOUCHE</div>
-        <h3>Bucco-dentaire</h3>
-        <ul>
-          <li>Matin & soir : hydropulseur ou jet dentaire</li>
-          <li>Soie dentaire</li>
-          <li>Brosse électrique à poils souples</li>
-          <li>Gratte-langue (occasionnel)</li>
-          <li>Dentiste 2×/an minimum</li>
-        </ul>
-      </div>
+    <div class="pnav reveal d2">
+      <button class="pbtn active" onclick="sp(event,'skin')"><span class="pbtn-n">01</span>Skincare</button>
+      <button class="pbtn" onclick="sp(event,'hair')"><span class="pbtn-n">02</span>Hair care</button>
+      <button class="pbtn" onclick="sp(event,'oral')"><span class="pbtn-n">03</span>Bucco-dentaire</button>
+    </div>
+
+    <div class="pp active" id="p-skin">
+      <div class="card-dark"><div class="ch-dark">Skincare</div><ul><li><span>Soir : nettoyant adapté → séchage microfibre → sérum → crème hydratante</span></li><li><span>Matin : rinçage à l'eau + crème solaire SPF50+</span></li><li><span>Après sauna : crème hydratante légère</span></li><li><span>Exposition solaire matinale sans protection pour la vitamine D</span></li></ul></div>
+    </div>
+
+    <div class="pp" id="p-hair">
+      <div class="card-dark"><div class="ch-dark">Hair care</div><ul><li><span>Shampoing sans sulfates tous les 3–4 jours</span></li><li><span>Séchage microfibre — sèche-cheveux rarement</span></li><li><span>Produit coiffant naturel à base aqueuse</span></li><li><span>Nutrition capillaire : protéines, Oméga-3, Zinc, Biotine, Vitamines C/D/E</span></li></ul></div>
+    </div>
+
+    <div class="pp" id="p-oral">
+      <div class="card-dark"><div class="ch-dark">Bucco-dentaire</div><ul><li><span>Matin & soir : hydropulseur ou jet dentaire</span></li><li><span>Soie dentaire</span></li><li><span>Brosse électrique à poils souples</span></li><li><span>Gratte-langue (occasionnel)</span></li><li><span>Dentiste 2×/an minimum</span></li></ul></div>
     </div>
   </div>
 </section>
 
 <section class="ctaf" id="s-bilan">
   <div class="wrap">
-    <h2 class="reveal">Change now.<br><em>Or stay where you were<br>one year ago.</em></h2>
-    <div class="ctab reveal d2">
-      <div class="ctab-ti">Appel — 20 minutes</div>
-      <p class="ctab-su">20 minutes en visio. J'identifie ton blocage principal et l'ordre exact de tes 3 prochains changements.</p>
-      <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn" target="_blank">Réserver mon appel</a>
-      <p class="ctab-no">En visio · Gratuit · Sans engagement</p>
+    <div class="of-head reveal">
+      <div class="of-ey">Coaching 1-1</div>
+      <h2 class="of-ti">8 semaines pour changer d'identité</h2>
+      <p class="of-dims">Santé <span>·</span> Apparence <span>·</span> Exécution</p>
+    </div>
+
+    <div class="of-card reveal d2">
+      <div class="of-badge">Offre en cours</div>
+      <div class="of-name">Coaching 1-1 intensif</div>
+      <ul class="of-list">
+        <li>Ultra-personnalisation de chaque dimension</li>
+        <li>Bilan hebdomadaire</li>
+        <li>Messagerie privée</li>
+        <li>Accès à la communauté</li>
+        <li>Équipe de professionnels en soutien pour les besoins avancés</li>
+      </ul>
+      <a href="https://calendly.com/florian-parietti/30min" class="ctab-btn" target="_blank" rel="noopener">Réserver mon appel</a>
+      <p class="of-note">Places limitées — l'ultra-personnalisation et l'accompagnement intensif
+        ne permettent qu'un petit nombre de clients par mois.</p>
+      <p class="ctab-no">Appel de 20 min · En visio · Gratuit · Sans engagement</p>
     </div>
   </div>
 </section>
