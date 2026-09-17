@@ -179,7 +179,8 @@ allBtn.addEventListener('click', function(){
   syncLevers();
 });
 nextBtn.addEventListener('click', function(){
-  A.pilier = Array.from(LEV).join(', ');
+  var total = document.querySelectorAll('.qz-multi').length;
+  A.pilier = (LEV.size === total) ? 'Tout' : Array.from(LEV).join(', ');
   show(4);
 });
 

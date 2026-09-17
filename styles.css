@@ -2016,3 +2016,18 @@ body.plan-light #s-plus{margin-bottom:34px}
 .mo-card .act-row{justify-content:center}
 .mo-ti{color:#fff!important}
 .mo-card .reveal,.mo-card{opacity:1}
+
+/* ═══ ENTRÉE : titre plus épais ═══ */
+.en-h1{font-weight:700!important;letter-spacing:-.038em!important}
+
+/* ═══ ENTRÉE : cartes définition en marine plein ═══ */
+.endc{background:var(--nv-900)!important;border:0!important;
+  box-shadow:0 2px 8px rgba(13,27,42,.20),0 18px 46px rgba(13,27,42,.22)!important;
+  position:relative;overflow:hidden}
+.endc::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--nv-blue) 0%,rgba(43,111,255,0) 70%)}
+.endc-k{color:#fff!important;font-size:17.5px;font-weight:700}
+.endc-d{color:rgba(255,255,255,.60)!important}
+.endc ul{border-top-color:rgba(255,255,255,.12)!important}
+.endc ul li{color:var(--nv-blue-lt)!important;background:rgba(122,166,255,.13)!important;
+  border:1px solid rgba(122,166,255,.22)}
